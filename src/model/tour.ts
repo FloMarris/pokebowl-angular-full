@@ -1,4 +1,5 @@
 import {Combat} from "./combat";
+import {PokemonMatch} from "./pokemon-match";
 
 export class Tour{
   id: number;

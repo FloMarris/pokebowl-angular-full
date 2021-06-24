@@ -1,5 +1,7 @@
-import {Salon} from "./Salon";
+
 import {Tour} from "./tour";
+import {Equipe} from "./equipe";
+import {Salon} from "./salon";
 
 export class Combat{
   id: number;
