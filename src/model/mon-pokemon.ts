@@ -1,5 +1,7 @@
 import {Equipe} from "./equipe";
 import {PokemonMatch} from "./pokemon-match";
+import {Attaque} from "./attaque";
+import {Pokemon} from "./pokemon";
 
 export class MonPokemon {
 
