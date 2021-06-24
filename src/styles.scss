@@ -1,5 +1,31 @@
+@charset "UTF-8";
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~@fortawesome/fontawesome-free-webfonts/scss/fontawesome.scss";
 @import "~@fortawesome/fontawesome-free-webfonts/scss/fa-regular.scss";
 @import "~@fortawesome/fontawesome-free-webfonts/scss/fa-brands.scss";
 @import "~@fortawesome/fontawesome-free-webfonts/scss/fa-solid.scss";
+
+@font-face {
+  font-family: pokemonFont;
+  src : url("assets/PokemonSolid.ttf");
+}
+.nav{
+  position: relative;
+  background-color : rgba(0,0,0,0.6);
+  border-bottom-style: groove;
+  border-bottom-color:  #cc423f;
+  padding : 5px;
+}
+
+a:link, a:visited{
+  color: #ffcc00;
+}
+
+li{
+  display: inline;
+  padding: 15px;
+  font-family: pokemonFont;
+  font-size: 20px;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+}
