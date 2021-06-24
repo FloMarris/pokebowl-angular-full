@@ -1,0 +1,15 @@
+<div class="nav">
+  <ul>
+    <li><a [routerLink]="['/accueil']">Acceuil</a></li>
+    <li><a [routerLink]="['/connexion']">Pokedex</a></li>
+    <li><a [routerLink]="['/inscription']"><img src="pokedex.png" width="30" height="40"> Inscription</a></li>
+    <li><a [routerLink]="['/parametresEquipe']">Paramètres de l'équipe</a></li>
+    <li><a [routerLink]="['/pokedex']">Pokedex</a></li>
+    <li><a [routerLink]="['/salon']">Salon</a></li>
+    <li><a [routerLink]="['/match']">Match</a></li>
+  </ul>
+</div>
+
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
