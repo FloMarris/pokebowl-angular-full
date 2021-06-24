@@ -1,4 +1,4 @@
-import {Combat} from "./Combat";
+import {Combat} from "./combat";
 
 export class Tour{
   id: number;
