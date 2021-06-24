@@ -15,7 +15,7 @@ export class Pokemon{
   poids:number;
   generation:number;
   description:string;
-  attaques:Array<Attaque>;
+  attaques:Array<Attaque> = new Array<Attaque>();
   type1:TypeClass;
   type2:TypeClass;
 
