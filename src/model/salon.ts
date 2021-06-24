@@ -1,7 +1,7 @@
 import {Utilisateur} from "./utilisateur";
 import {Combat} from "./combat";
 
-export class salon {
+export class Salon {
   id: number;
   version: number;
   nom: string;

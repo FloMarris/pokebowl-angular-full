@@ -1,6 +1,5 @@
 import {Pokemon} from "./pokemon";
 import {TypeClass} from "./type-class";
-import {newArray} from "@angular/compiler/src/util";
 
 export class Attaque{
   id:number;

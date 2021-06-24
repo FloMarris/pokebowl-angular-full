@@ -1,4 +1,5 @@
 import {MonPokemon} from "./mon-pokemon";
+import {Combat} from "./combat";
 
 export class PokemonMatch {
 

@@ -1,10 +1,11 @@
 import {Combat} from "./combat";
+import {PokemonMatch} from "./pokemon-match";
 
 export class Tour{
   id: number;
   version: number;
-  actionJoueur1: Action;
-  actionJoueur2: Action;
+  actionJoueur1: string;
+  actionJoueur2: string;
   attaquePokemon1: string;
   attaquePokemon2: string;
 
@@ -12,7 +13,7 @@ export class Tour{
   pokemonMatch1: PokemonMatch;
   pokemonMatch2: PokemonMatch;
 
-  constructor(id?: number, version?: number, actionJoueur1?: Action, actionJoueur2?: Action, attaquePokemon1?: string, attaquePokemon2?: string) {
+  constructor(id?: number, version?: number, actionJoueur1?: string, actionJoueur2?: string, attaquePokemon1?: string, attaquePokemon2?: string) {
     this.id=id;
     this.version=version;
     this.actionJoueur1=actionJoueur1;
