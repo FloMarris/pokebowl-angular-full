@@ -1,4 +1,5 @@
 import {MonPokemon} from "./mon-pokemon";
+import {Utilisateur} from "./utilisateur";
 
 export class Equipe {
 
