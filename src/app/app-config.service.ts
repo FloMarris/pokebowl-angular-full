@@ -17,12 +17,12 @@ export class AppConfigService {
     return this.http.get<Array<string>>(this.backEndUrl + "actions");
   }
   findAllCategorieAttaques(): Observable<Array<string>> {
-    return this.http.get<Array<string>>(this.backEndUrl + "actions");
+    return this.http.get<Array<string>>(this.backEndUrl + "categorieAttaques");
   }
   findAllStatuts(): Observable<Array<string>> {
-    return this.http.get<Array<string>>(this.backEndUrl + "actions");
+    return this.http.get<Array<string>>(this.backEndUrl + "statuts");
   }
   findAllTypeEnums(): Observable<Array<string>> {
-    return this.http.get<Array<string>>(this.backEndUrl + "actions");
+    return this.http.get<Array<string>>(this.backEndUrl + "typeEnums");
   }
 }
