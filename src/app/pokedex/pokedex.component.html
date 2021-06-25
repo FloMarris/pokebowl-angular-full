@@ -4,123 +4,246 @@
 
 <div style="text-align: center">
   <input class="search" type="text" value="Chercher un Pokémon..." [(ngModel)]="valeur"><br><br>
-
+  <div *ngIf="type1==''">
   <div class="btn-group btn-group-toggle" data-toggle="buttons">
     <span class="typeFiltre">Type 1 : </span>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="acier" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Acier
+      <input type="radio" name="options" id="acier" value="acier" autocomplete="off" (click)="clickBouton1('acier')">Acier
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="combat" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Combat
+      <input type="radio" name="options" id="combat" value="combat" autocomplete="off" (click)="clickBouton1('combat')"> Combat
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="dragon" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Dragon
+      <input type="radio" name="options" id="dragon" value="dragon" autocomplete="off" (click)="clickBouton1('dragon')"> Dragon
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="eau" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Eau
+      <input type="radio" name="options" id="eau" value="eau" autocomplete="off" (click)="clickBouton1('eau')"> Eau
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="electrique" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Electrique
+      <input type="radio" name="options" id="electrique" value="electrique" autocomplete="off" (click)="clickBouton1('electrique')"> Electrique
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="fee" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Fée
+      <input type="radio" name="options" id="fee" autocomplete="off" value="fee" (click)="clickBouton1('fee')"> Fée
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="feu" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Feu
+      <input type="radio" name="options" id="feu" autocomplete="off" value="feu" (click)="clickBouton1('feu')"> Feu
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="glace" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Glace
+      <input type="radio" name="options" id="glace" autocomplete="off" value="glace" (click)="clickBouton1('glace')"> Glace
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="insecte" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Insecte
+      <input type="radio" name="options" id="insecte" autocomplete="off" value="insecte" (click)="clickBouton1('insecte')"> Insecte
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="normal" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Normal
+      <input type="radio" name="options" id="normal" autocomplete="off" value="normal" (click)="clickBouton1('normal')"> Normal
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="plante" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Plante
+      <input type="radio" name="options" id="plante" autocomplete="off" value="plante" (click)="clickBouton1('plante')"> Plante
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="poison" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Poison
+      <input type="radio" name="options" id="poison" autocomplete="off" value="poison" (click)="clickBouton1('poison')"> Poison
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="psy" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Psy
+      <input type="radio" name="options" id="psy" autocomplete="off" value="psy" (click)="clickBouton1('psy')"> Psy
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="roche" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Roche
+      <input type="radio" name="options" id="roche" autocomplete="off" value="roche" (click)="clickBouton1('roche')"> Roche
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="sol" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Sol
+      <input type="radio" name="options" id="sol" autocomplete="off" value="sol" (click)="clickBouton1('sol')"> Sol
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="spectre" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Spectre
+      <input type="radio" name="options" id="spectre" autocomplete="off" value="spectre" (click)="clickBouton1('spectre')"> Spectre
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="tenebres" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Ténèbres
+      <input type="radio" name="options" id="tenebres" autocomplete="off" value="tenebres" (click)="clickBouton1('tenebres')"> Ténèbres
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options" id="vol" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Vol
+      <input type="radio" name="options" id="vol" autocomplete="off" value="vol" (click)="clickBouton1('vol')"> Vol
     </label>
+  </div>
+</div>
+
+  <div *ngIf="type1!=''">
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <span class="typeFiltre">Type 1 : </span>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='acier'">
+        <input type="radio" name="options" id="acier" value="acier" autocomplete="off" (click)="clickBouton1('acier')">Acier
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='combat'">
+        <input type="radio" name="options" id="combat" value="combat" autocomplete="off" (click)="clickBouton1('combat')"> Combat
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='dragon'">
+        <input type="radio" name="options" id="dragon" value="dragon" autocomplete="off" (click)="clickBouton1('dragon')"> Dragon
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='eau'">
+        <input type="radio" name="options" id="eau" value="eau" autocomplete="off" (click)="clickBouton1('eau')"> Eau
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='electrique'">
+        <input type="radio" name="options" id="electrique" value="electrique" autocomplete="off" (click)="clickBouton1('electrique')"> Electrique
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='fee'">
+        <input type="radio" name="options" id="fee" autocomplete="off" value="fee" (click)="clickBouton1('fee')"> Fée
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='feu'">
+        <input type="radio" name="options" id="feu" autocomplete="off" value="feu" (click)="clickBouton1('feu')"> Feu
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='glace'">
+        <input type="radio" name="options" id="glace" autocomplete="off" value="glace" (click)="clickBouton1('glace')"> Glace
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='insecte'">
+        <input type="radio" name="options" id="insecte" autocomplete="off" value="insecte" (click)="clickBouton1('insecte')"> Insecte
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='normal'">
+        <input type="radio" name="options" id="normal" autocomplete="off" value="normal" (click)="clickBouton1('normal')"> Normal
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='plante'">
+        <input type="radio" name="options" id="plante" autocomplete="off" value="plante" (click)="clickBouton1('plante')"> Plante
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='poison'">
+        <input type="radio" name="options" id="poison" autocomplete="off" value="poison" (click)="clickBouton1('poison')"> Poison
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='psy'">
+        <input type="radio" name="options" id="psy" autocomplete="off" value="psy" (click)="clickBouton1('psy')"> Psy
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='roche'">
+        <input type="radio" name="options" id="roche" autocomplete="off" value="roche" (click)="clickBouton1('roche')"> Roche
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='sol'">
+        <input type="radio" name="options" id="sol" autocomplete="off" value="sol" (click)="clickBouton1('sol')"> Sol
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='spectre'">
+        <input type="radio" name="options" id="spectre" autocomplete="off" value="spectre" (click)="clickBouton1('spectre')"> Spectre
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='tenebres'">
+        <input type="radio" name="options" id="tenebres" autocomplete="off" value="tenebres" (click)="clickBouton1('tenebres')"> Ténèbres
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type1=='vol'">
+        <input type="radio" name="options" id="vol" autocomplete="off" value="vol" (click)="clickBouton1('vol')"> Vol
+      </label>
+    </div>
   </div>
 
   <p></p>
 
+  <div *ngIf="type2==''">
   <div class="btn-group btn-group-toggle" data-toggle="buttons">
     <span class="typeFiltre">Type 2 : </span>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="acier2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Acier
+      <input type="radio" name="options2" id="acier2" autocomplete="off" value="acier" (click)="clickBouton2('acier')">Acier
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="combat2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Combat
+      <input type="radio" name="options2" id="combat2" autocomplete="off" value="combat"  (click)="clickBouton2('combat')"> Combat
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="dragon2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Dragon
+      <input type="radio" name="options2" id="dragon2" autocomplete="off" value="dragon" (click)="clickBouton2('dragon')"> Dragon
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="eau2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Eau
+      <input type="radio" name="options2" id="eau2" autocomplete="off" value="eau" (click)="clickBouton2('eau')"> Eau
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="electrique2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Electrique
+      <input type="radio" name="options2" id="electrique2" autocomplete="off" value="electrique" (click)="clickBouton2('electrique')"> Electrique
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="fee2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Fée
+      <input type="radio" name="options2" id="fee2" autocomplete="off" value="fee" (click)="clickBouton2('fee')"> Fée
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="feu2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Feu
+      <input type="radio" name="options2" id="feu2" autocomplete="off" value="feu" (click)="clickBouton2('feu')"> Feu
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="glace2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Glace
+      <input type="radio" name="options2" id="glace2" autocomplete="off" value="glace" (click)="clickBouton2('glace')"> Glace
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="insecte2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Insecte
+      <input type="radio" name="options2" id="insecte2" autocomplete="off" value="insecte" (click)="clickBouton2('insecte')"> Insecte
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="normal2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Normal
+      <input type="radio" name="options2" id="normal2" autocomplete="off" value="normal" (click)="clickBouton2('normal')"> Normal
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="plante2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Plante
+      <input type="radio" name="options2" id="plante2" autocomplete="off" value="plante" (click)="clickBouton2('plante')"> Plante
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="poison2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Poison
+      <input type="radio" name="options2" id="poison2" autocomplete="off" value="poison" (click)="clickBouton2('poison')"> Poison
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="psy2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Psy
+      <input type="radio" name="options2" id="psy2" autocomplete="off" value="psy" (click)="clickBouton2('psy')"> Psy
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="roche2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Roche
+      <input type="radio" name="options2" id="roche2" autocomplete="off" value="roche" (click)="clickBouton2('roche')"> Roche
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="sol2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Sol
+      <input type="radio" name="options2" id="sol2" autocomplete="off" value="sol" (click)="clickBouton2('sol')"> Sol
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="spectre2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Spectre
+      <input type="radio" name="options2" id="spectre2" autocomplete="off" value="spectre" (click)="clickBouton2('spectre')"> Spectre
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="tenebres2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Ténèbres
+      <input type="radio" name="options2" id="tenebres2" autocomplete="off" value="tenebres" (click)="clickBouton2('tenebres')"> Ténèbres
     </label>
     <label class="btn btn-light btn-outline-dark">
-      <input type="radio" name="options2" id="vol2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Vol
+      <input type="radio" name="options2" id="vol2" autocomplete="off" value="vol" (click)="clickBouton2('vol')"> Vol
     </label>
+  </div>
+  </div>
+
+  <div *ngIf="type2!=''">
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <span class="typeFiltre">Type 2 : </span>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='acier'">
+        <input type="radio" name="options2" id="acier2" autocomplete="off" value="acier" (click)="clickBouton2('acier')">Acier
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='combat'">
+        <input type="radio" name="options2" id="combat2" autocomplete="off" value="combat"  (click)="clickBouton2('combat')"> Combat
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='dragon'">
+        <input type="radio" name="options2" id="dragon2" autocomplete="off" value="dragon" (click)="clickBouton2('dragon')"> Dragon
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='eau'">
+        <input type="radio" name="options2" id="eau2" autocomplete="off" value="eau" (click)="clickBouton2('eau')"> Eau
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='electrique'">
+        <input type="radio" name="options2" id="electrique2" autocomplete="off" value="electrique" (click)="clickBouton2('electrique')"> Electrique
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='fee'">
+        <input type="radio" name="options2" id="fee2" autocomplete="off" value="fee" (click)="clickBouton2('fee')"> Fée
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='feu'">
+        <input type="radio" name="options2" id="feu2" autocomplete="off" value="feu" (click)="clickBouton2('feu')"> Feu
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='glace'">
+        <input type="radio" name="options2" id="glace2" autocomplete="off" value="glace" (click)="clickBouton2('glace')"> Glace
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='insecte'">
+        <input type="radio" name="options2" id="insecte2" autocomplete="off" value="insecte" (click)="clickBouton2('insecte')"> Insecte
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='normal'">
+        <input type="radio" name="options2" id="normal2" autocomplete="off" value="normal" (click)="clickBouton2('normal')"> Normal
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='plante'">
+        <input type="radio" name="options2" id="plante2" autocomplete="off" value="plante" (click)="clickBouton2('plante')"> Plante
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='poison'">
+        <input type="radio" name="options2" id="poison2" autocomplete="off" value="poison" (click)="clickBouton2('poison')"> Poison
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='psy'">
+        <input type="radio" name="options2" id="psy2" autocomplete="off" value="psy" (click)="clickBouton2('psy')"> Psy
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='roche'">
+        <input type="radio" name="options2" id="roche2" autocomplete="off" value="roche" (click)="clickBouton2('roche')"> Roche
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='sol'">
+        <input type="radio" name="options2" id="sol2" autocomplete="off" value="sol" (click)="clickBouton2('sol')"> Sol
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='spectre'">
+        <input type="radio" name="options2" id="spectre2" autocomplete="off" value="spectre" (click)="clickBouton2('spectre')"> Spectre
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='tenebres'">
+        <input type="radio" name="options2" id="tenebres2" autocomplete="off" value="tenebres" (click)="clickBouton2('tenebres')"> Ténèbres
+      </label>
+      <label class="btn btn-light btn-outline-dark" [class.active]="type2=='vol'">
+        <input type="radio" name="options2" id="vol2" autocomplete="off" value="vol" (click)="clickBouton2('vol')"> Vol
+      </label>
+    </div>
   </div>
 
 <!--  <mat-button-toggle-group class="btn-group btn-group-toggle " data-toggle="buttons">-->
@@ -144,7 +267,7 @@
 </div>
 
 <br><br>
-<div *ngIf="valeur.length===0 && !type1 && !type2">
+<div *ngIf="valeur.length===0 && !click1 && !click2">
 <div class="casePokemon" *ngFor="let pokemon of list()">
   <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
   <p class="nomPoke">{{pokemon.nom}}</p>
@@ -160,7 +283,7 @@
 </div>
 </div>
 
-<div *ngIf="valeur.length>0 && !type1 && !type2">
+<div *ngIf="valeur.length>0 && !click1 && !click2">
   <div class="casePokemon" *ngFor="let pokemon of rechercheString()">
     <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
     <p class="nomPoke">{{pokemon.nom}}</p>
@@ -192,38 +315,84 @@
   </div>
 </div>
 
-<!--<div *ngIf="valeur.length===0; then thenBlock else elseBlock"></div>-->
+<div *ngIf="valeur.length===0 && !click1 && click2">
+  <div class="casePokemon" *ngFor="let pokemon of rechercheType2()">
+    <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
+    <p class="nomPoke">{{pokemon.nom}}</p>
+    <span class="tooltiptext">
+			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
+			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
+			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
+			<button class="choisir">Choisir</button>
+		</span>
+  </div>
+</div>
 
-<!--<ng-template #thenBlock>-->
-<!--  <div class="casePokemon" *ngFor="let pokemon of list()">-->
-<!--    <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>-->
-<!--    <p class="nomPoke">{{pokemon.nom}}</p>-->
-<!--    <span class="tooltiptext">-->
-<!--			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>-->
-<!--			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>-->
-<!--			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>-->
-<!--			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>-->
-<!--      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>-->
-<!--      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>-->
-<!--			<button class="choisir">Choisir</button>-->
-<!--		</span>-->
-<!--  </div>-->
-<!--</ng-template>-->
+<div *ngIf="valeur.length===0 && click1 && click2">
+  <div class="casePokemon" *ngFor="let pokemon of rechercheType1EtType2()">
+    <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
+    <p class="nomPoke">{{pokemon.nom}}</p>
+    <span class="tooltiptext">
+			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
+			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
+			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
+			<button class="choisir">Choisir</button>
+		</span>
+  </div>
+</div>
 
-<!--<ng-template #elseBlock>-->
-<!--  <div class="casePokemon" *ngFor="let pokemon of rechercheString()">-->
-<!--    <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>-->
-<!--    <p class="nomPoke">{{pokemon.nom}}</p>-->
-<!--    <span class="tooltiptext">-->
-<!--			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>-->
-<!--			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>-->
-<!--			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>-->
-<!--			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>-->
-<!--      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>-->
-<!--      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>-->
-<!--			<button class="choisir">Choisir</button>-->
-<!--		</span>-->
-<!--  </div>-->
-<!--</ng-template>-->
+<div *ngIf="valeur.length>0 && click1 && !click2">
+  <div class="casePokemon" *ngFor="let pokemon of RechercheStringEtType1()">
+    <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
+    <p class="nomPoke">{{pokemon.nom}}</p>
+    <span class="tooltiptext">
+			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
+			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
+			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
+			<button class="choisir">Choisir</button>
+		</span>
+  </div>
+</div>
+
+<div *ngIf="valeur.length>0 && !click1 && click2">
+  <div class="casePokemon" *ngFor="let pokemon of RechercheStringEtType2()">
+    <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
+    <p class="nomPoke">{{pokemon.nom}}</p>
+    <span class="tooltiptext">
+			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
+			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
+			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
+			<button class="choisir">Choisir</button>
+		</span>
+  </div>
+</div>
+
+<div *ngIf="valeur.length>0 && click1 && click2">
+  <div class="casePokemon" *ngFor="let pokemon of RechercheStringEtType1EtType2()">
+    <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
+    <p class="nomPoke">{{pokemon.nom}}</p>
+    <span class="tooltiptext">
+			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
+			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
+			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
+			<button class="choisir">Choisir</button>
+		</span>
+  </div>
+</div>
 
 </body>
