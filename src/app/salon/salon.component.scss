@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+.body {
+  background-image: url(../../assets/fondSalon.png);
+  background-color: #71BCE8;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.nav{
+  position: relative;
+  background-color : rgba(0,0,0,0.6);
+  border-bottom-style: groove;
+  border-bottom-color:  #cc423f;
+  padding : 5px;
+}
+
+a:link, a:visited{
+  color: #ffcc00;
+}
+
+li{
+  display: inline;
+  padding: 15px;
+  font-family: pokemonFont;
+  font-size: 20px;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+}
+
+.titre{
+  font-family: pokemonFont;
+  font-size: 75px;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+  text-align: center;
+  letter-spacing: 6px;
+}
+
+h1{
+  font-family: pokemonFont;
+  font-size: 75px;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+  text-align: center;
+}
+
+.caseAllJoueur{
+  margin: auto;
+  width: 80%;
+}
+
+.avatar{
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.caseJoueur{
+  position: relative;
+  display: inline-block;
+  width: 44%;
+  background-color : rgba(0,0,0,0.6);
+  border-style: groove;
+  border-color: #cc423f;
+  border-radius : 10px;
+  margin-top: 5px;
+}
+
+.caseVS{
+  position: relative;
+  display: inline-block;
+  width: 10%;
+  margin-top: 5px;
+}
+
+table{
+  width: 100%;
+  text-align: center;
+}
+
+.infoSalon {
+  font-family: pokemonFont;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+  margin-left: 10px;
+  margin-bottom: 0px;
+}
+
+.tablePokemon {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.container {
+  height: 150px;
+  position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 48.7%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-style: groove;
+  border-color: #cc423f;
+  border-radius : 10px;
+}
