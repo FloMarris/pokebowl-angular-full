@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Utilisateur} from "../../model/utilisateur";
 
 @Component({
   selector: 'app-connexion',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConnexionComponent implements OnInit {
 
+  utilisateurForm: Utilisateur = null;
   constructor() { }
 
   ngOnInit(): void {
