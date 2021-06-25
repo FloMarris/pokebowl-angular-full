@@ -13,8 +13,9 @@ export class PokedexComponent implements OnInit {
   valeur: string = "";
   type1: string = "";
   type2: string = "";
+  typePivot: string = "";
   click1: boolean = false;
-  click2: boolean = false;
+  click2: boolean = false
 
   constructor(private pokedexService: PokedexHttpService) {
   }
@@ -35,7 +36,7 @@ export class PokedexComponent implements OnInit {
 
   rechercheType1(): Array<Pokemon> {
     let l1: Array<Pokemon> = this.pokedexService.pokemons.filter(pokemon => pokemon.type1.type.toLowerCase() == this.type1.toLowerCase());
-    let l2: Array<Pokemon> = this.pokedexService.pokemons.filter(pokemon => pokemon.type2.type.toLowerCase() == this.type1.toLowerCase());
+    let l2: Array<Pokemon> = this.pokedexService.pokemons.filter(pokemon => pokemon.type2?.type.toLowerCase() == this.type1.toLowerCase());
     for(let poke of l2){
       l1.push(poke);
     }
@@ -43,24 +44,87 @@ export class PokedexComponent implements OnInit {
   }
 
   rechercheType2(): Array<Pokemon> {
-    return this.pokedexService.pokemons.filter(pokemon => (pokemon.type1.type == this.type2) || (pokemon.type2.type = this.type2));
+    let l1: Array<Pokemon> = this.pokedexService.pokemons.filter(pokemon => pokemon.type1.type.toLowerCase() == this.type2.toLowerCase());
+    let l2: Array<Pokemon> = this.pokedexService.pokemons.filter(pokemon => pokemon.type2?.type.toLowerCase() == this.type2.toLowerCase());
+    for(let poke of l2){
+      l1.push(poke);
+    }
+    return l1;
   }
 
-  clickBouton1(): void {
-    if (!this.click1) {
-      this.click1 = true;
+  rechercheType1EtType2(): Array<Pokemon> {
+    let l1: Array<Pokemon> = this.pokedexService.pokemons.filter(pokemon => (pokemon.type1.type.toLowerCase() == this.type1.toLowerCase()) && (pokemon.type2?.type.toLowerCase() == this.type2.toLowerCase()));
+    let l2: Array<Pokemon> = this.pokedexService.pokemons.filter(pokemon => (pokemon.type1.type.toLowerCase() == this.type2.toLowerCase()) && (pokemon.type2?.type.toLowerCase() == this.type1.toLowerCase()));
+    for(let poke of l2){
+      l1.push(poke);
     }
-    else {
+    return l1;
+  }
+
+  RechercheStringEtType1(): Array<Pokemon> {
+    let l1: Array<Pokemon> = this.rechercheString();
+    let l2: Array<Pokemon> = this.rechercheType1();
+    let liste: Array<Pokemon> = new Array<Pokemon>();
+    for(let poke of l2) {
+      if (this.PokeDansListe(poke, l1)){
+        liste.push(poke);
+      }
+    }
+    return liste;
+  }
+
+  RechercheStringEtType2(): Array<Pokemon> {
+    let l1: Array<Pokemon> = this.rechercheString();
+    let l2: Array<Pokemon> = this.rechercheType2();
+    let liste: Array<Pokemon> = new Array<Pokemon>();
+    for(let poke of l2) {
+      if (this.PokeDansListe(poke, l1)){
+        liste.push(poke);
+      }
+    }
+    return liste;
+  }
+
+  RechercheStringEtType1EtType2(): Array<Pokemon> {
+    let l1: Array<Pokemon> = this.rechercheString();
+    let l2: Array<Pokemon> = this.rechercheType1EtType2();
+    let liste: Array<Pokemon> = new Array<Pokemon>();
+    for(let poke of l2) {
+      if (this.PokeDansListe(poke, l1)){
+        liste.push(poke);
+      }
+    }
+    return liste;
+  }
+
+  PokeDansListe(poke: any, liste: Array<any>): boolean {
+    for(let i of liste){
+      if (poke===i){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  clickBouton1(value: string): void {
+    if (this.type1 == value){
+      this.type1 = "";
       this.click1 = false;
     }
+    else {
+      this.type1 = value;
+      this.click1 = true;
+    }
   }
 
-  clickBouton2(): void {
-    if (!this.click2) {
-      this.click2 = true;
+  clickBouton2(value: string): void {
+    if (this.type2 == value){
+      this.type2 = "";
+      this.click2 = false;
     }
     else {
-      this.click2 = false;
+      this.type2 = value;
+      this.click2 = true;
     }
   }
 
