@@ -14,13 +14,14 @@ export class Pokemon{
   taille:number;
   poids:number;
   generation:number;
+  avatar: string;
   description:string;
   attaques:Array<Attaque> = new Array<Attaque>();
   type1:TypeClass;
   type2:TypeClass;
 
   constructor(id?: number, version?:number, nom?:string, hp?:number, attaque?:number, defense?:number, attaqueSpe?:number,
-              defenseSpe?:number, speed?:number, taille?:number, poids?:number, generation?:number, description?:string,
+              defenseSpe?:number, speed?:number, taille?:number, poids?:number, generation?:number, avatar?: string, description?:string,
               attaques?:Array<Attaque>, type1?:TypeClass, type2?:TypeClass) {
     this.id=id!;
     this.version=version!;
@@ -34,6 +35,7 @@ export class Pokemon{
     this.taille=taille!;
     this.poids=poids!;
     this.generation=generation!;
+    this.avatar = avatar;
     this.description=description!;
     this.attaques=attaques!;
     this.type1=type1!;

@@ -1,1 +1,229 @@
-<p>pokedex works!</p>
+<body class="body">
+
+<p class="titre">Pokedex</p><br><br>
+
+<div style="text-align: center">
+  <input class="search" type="text" value="Chercher un Pokémon..." [(ngModel)]="valeur"><br><br>
+
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <span class="typeFiltre">Type 1 : </span>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="acier" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Acier
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="combat" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Combat
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="dragon" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Dragon
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="eau" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Eau
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="electrique" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Electrique
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="fee" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Fée
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="feu" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Feu
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="glace" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Glace
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="insecte" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Insecte
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="normal" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Normal
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="plante" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Plante
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="poison" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Poison
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="psy" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Psy
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="roche" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Roche
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="sol" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Sol
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="spectre" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Spectre
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="tenebres" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Ténèbres
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options" id="vol" autocomplete="off" (click)="clickBouton1()" [(ngModel)]="type1"> Vol
+    </label>
+  </div>
+
+  <p></p>
+
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <span class="typeFiltre">Type 2 : </span>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="acier2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Acier
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="combat2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Combat
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="dragon2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Dragon
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="eau2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Eau
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="electrique2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Electrique
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="fee2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Fée
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="feu2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Feu
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="glace2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Glace
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="insecte2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Insecte
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="normal2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Normal
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="plante2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Plante
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="poison2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Poison
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="psy2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Psy
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="roche2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Roche
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="sol2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Sol
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="spectre2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Spectre
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="tenebres2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Ténèbres
+    </label>
+    <label class="btn btn-light btn-outline-dark">
+      <input type="radio" name="options2" id="vol2" autocomplete="off" (click)="clickBouton2()" [(ngModel)]="type2"> Vol
+    </label>
+  </div>
+
+<!--  <mat-button-toggle-group class="btn-group btn-group-toggle " data-toggle="buttons">-->
+<!--    <span class="typeFiltre">Type 1 : </span>-->
+<!--    <div *ngFor="let type of listTypes()">-->
+<!--      <mat-button-toggle class="btn btn-sm btn-light btn-outline-dark">{{type}}</mat-button-toggle>-->
+<!--    </div>-->
+<!--  </mat-button-toggle-group>-->
+
+<!--  <p></p>-->
+
+<!--  <mat-button-toggle-group class="btn-group btn-group-toggle " data-toggle="buttons">-->
+<!--    <span class="typeFiltre">Type 2 : </span>-->
+<!--    <div *ngFor="let type of listTypes()">-->
+<!--      <mat-button-toggle class="btn btn-sm btn-light btn-outline-dark">{{type}}</mat-button-toggle>-->
+<!--    </div>-->
+<!--  </mat-button-toggle-group>-->
+
+
+
+</div>
+
+<br><br>
+<div *ngIf="valeur.length===0 && !type1 && !type2">
+<div class="casePokemon" *ngFor="let pokemon of list()">
+  <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
+  <p class="nomPoke">{{pokemon.nom}}</p>
+  <span class="tooltiptext">
+			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
+			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
+			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
+			<button class="choisir">Choisir</button>
+		</span>
+</div>
+</div>
+
+<div *ngIf="valeur.length>0 && !type1 && !type2">
+  <div class="casePokemon" *ngFor="let pokemon of rechercheString()">
+    <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
+    <p class="nomPoke">{{pokemon.nom}}</p>
+    <span class="tooltiptext">
+			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
+			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
+			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
+			<button class="choisir">Choisir</button>
+		</span>
+  </div>
+</div>
+
+<div *ngIf="valeur.length===0 && click1 && !click2">
+  <div class="casePokemon" *ngFor="let pokemon of rechercheType1()">
+    <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
+    <p class="nomPoke">{{pokemon.nom}}</p>
+    <span class="tooltiptext">
+			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
+			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
+			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
+			<button class="choisir">Choisir</button>
+		</span>
+  </div>
+</div>
+
+<!--<div *ngIf="valeur.length===0; then thenBlock else elseBlock"></div>-->
+
+<!--<ng-template #thenBlock>-->
+<!--  <div class="casePokemon" *ngFor="let pokemon of list()">-->
+<!--    <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>-->
+<!--    <p class="nomPoke">{{pokemon.nom}}</p>-->
+<!--    <span class="tooltiptext">-->
+<!--			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>-->
+<!--			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>-->
+<!--			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>-->
+<!--			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>-->
+<!--      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>-->
+<!--      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>-->
+<!--			<button class="choisir">Choisir</button>-->
+<!--		</span>-->
+<!--  </div>-->
+<!--</ng-template>-->
+
+<!--<ng-template #elseBlock>-->
+<!--  <div class="casePokemon" *ngFor="let pokemon of rechercheString()">-->
+<!--    <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>-->
+<!--    <p class="nomPoke">{{pokemon.nom}}</p>-->
+<!--    <span class="tooltiptext">-->
+<!--			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>-->
+<!--			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>-->
+<!--			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>-->
+<!--			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>-->
+<!--      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>-->
+<!--      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>-->
+<!--			<button class="choisir">Choisir</button>-->
+<!--		</span>-->
+<!--  </div>-->
+<!--</ng-template>-->
+
+</body>
