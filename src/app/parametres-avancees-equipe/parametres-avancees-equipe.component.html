@@ -1,37 +1,37 @@
 <body class="body">
 <p class="titre">Paramètres avancés de l'équipe</p><br><br>
 
-<div class="casePokemon" *ngFor = "let pokemon of equipeForm.listPokemons, let index = index;">
-  <h1>{{pokemon?.pokeReference.nom}}</h1><br>
-  <table>
+ <div class="casePokemon" *ngFor = "let pokemon of getEquipe().listPokemons, let index = index;">
+   <h1>{{pokemon?.pokeReference?.nom}}</h1><br>
+   <table>
     <tr>
       <th rowspan="2">
-        <img src= "{{pokemon?.pokeReference.avatar}}" alt="voltali.png" width="150" height="150">
+        <img src= "{{pokemon?.pokeReference?.avatar}}" alt="voltali.png" width="150" height="150">
       </th>
       <th>
         <select class="box sizeFixed" [(ngModel)]="equipeForm.listPokemons[index].attaque1">
           <option selected="selected" [ngValue]="pokemon?.attaque2">{{pokemon?.attaque1?.nom}}</option>
-          <option *ngFor="let attaque of findAttaque(pokemon?.pokeReference.nom)" [ngValue]="attaque">{{attaque?.nom}}</option>
+          <option *ngFor="let attaque of getAttaques(pokemon?.pokeReference.nom)" [ngValue]="attaque">{{attaque?.nom}}</option>
         </select>
       </th>
       <th>
         <select class="box sizeFixed" [(ngModel)]="equipeForm.listPokemons[index].attaque2">
           <option selected="selected" [ngValue]="pokemon?.attaque2">{{pokemon?.attaque2?.nom}}</option>
-          <option *ngFor="let attaque of findAttaque(pokemon?.pokeReference.nom)" [ngValue]="attaque">{{attaque?.nom}}</option>
+          <option *ngFor="let attaque of getAttaques(pokemon?.pokeReference.nom)" [ngValue]="attaque">{{attaque?.nom}}</option>
         </select>
       </th>
     </tr>
     <tr>
       <th>
-        <select class="box sizeFixed" [(ngModel)]="equipeForm.listPokemons[index].attaque3"> -->
+        <select class="box sizeFixed" [(ngModel)]="equipeForm.listPokemons[index].attaque3">
           <option selected="selected" [ngValue]="pokemon?.attaque3">{{pokemon?.attaque3?.nom}}</option>
-          <option *ngFor="let attaque of findAttaque(pokemon?.pokeReference.nom)" [ngValue]="attaque">{{attaque?.nom}}</option>
+          <option *ngFor="let attaque of getAttaques(pokemon?.pokeReference.nom)" [ngValue]="attaque">{{attaque?.nom}}</option>
         </select>
       </th>
       <th>
-        <select class="box sizeFixed" [(ngModel)]="equipeForm.listPokemons[index].attaque4"> -->
+        <select class="box sizeFixed" [(ngModel)]="equipeForm.listPokemons[index].attaque4">
           <option selected="selected" [ngValue]="pokemon?.attaque4">{{pokemon?.attaque4?.nom}}</option>
-          <option *ngFor="let attaque of findAttaque(pokemon?.pokeReference.nom)" [ngValue]="attaque">{{attaque?.nom}}</option>
+          <option *ngFor="let attaque of getAttaques(pokemon?.pokeReference.nom)" [ngValue]="attaque">{{attaque?.nom}}</option>
         </select>
       </th>
     </tr>
@@ -44,7 +44,7 @@
       <th>&nbsp;</th>
     <tr>
       <th>
-        <a href="Changer" class="changer">Changer</a>
+        <a [routerLink]="['/pokedex']" [queryParams]="{idEquipe: id, idMonPokemon: equipeForm.listPokemons[index].id}">Changer</a>
       </th>
     </tr>
   </table>

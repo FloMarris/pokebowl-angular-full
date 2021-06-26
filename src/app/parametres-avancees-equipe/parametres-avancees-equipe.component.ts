@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MonPokemon} from "../../model/mon-pokemon";
 import {Equipe} from "../../model/equipe";
 import {ParametresAvanceesEquipesService} from "./parametres-avancees-equipes.service";
-import {Attaque} from "../../model/attaque";
-import {Pokemon} from "../../model/pokemon";
-import {connectableObservableDescriptor} from "rxjs/internal/observable/ConnectableObservable";
-import {Utilisateur} from "../../model/utilisateur";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-parametres-avancees-equipe',
@@ -14,35 +10,34 @@ import {Utilisateur} from "../../model/utilisateur";
 })
 export class ParametresAvanceesEquipeComponent implements OnInit {
 
-  equipeForm: Equipe = new Equipe(-1, -1, -1, "", false, -1, new Utilisateur(), new Utilisateur(), new Utilisateur(), new Array<MonPokemon>())
+  equipeForm: Equipe = new Equipe();
   flag: boolean = false;
+  id: number = 36;
+  idEquipe: number;
 
-  constructor(private parametresAvanceesEquipesServive: ParametresAvanceesEquipesService) {
-    this.getEquipeForm();
+  constructor(private parametresAvanceesEquipesServive: ParametresAvanceesEquipesService, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.idEquipe = params['idEquipe'];
+    });
   }
 
-  findAllMonPokemon(): Array<MonPokemon> {
-    return this.parametresAvanceesEquipesServive.findMonPokemon();
+  getEquipe(): Equipe {
+    this.equipeForm = this.parametresAvanceesEquipesServive.findEquipe();
+    return this.parametresAvanceesEquipesServive.findEquipe();
   }
 
-  findAttaque(nom: string): Array<Attaque> {
-    return this.parametresAvanceesEquipesServive.findAttaques(nom);
-  }
-
-  getEquipeForm() {
-    this.parametresAvanceesEquipesServive.loadEquipe2(36).subscribe(resp => {
-      this.equipeForm = resp;
-
-    },error => console.log(error));
-  }
-
-  validerEquipe() {
-    console.log(this.equipeForm.listPokemons);
-    this.parametresAvanceesEquipesServive.modify(this.equipeForm).subscribe(resp =>{
-      }, error => console.log(error));
+  getAttaques(nom: string) {
+    return this.parametresAvanceesEquipesServive.findAttaques().get(nom);
   }
 
   ngOnInit(): void {
   }
 
+  validerEquipe() {
+    for(let i = 0; i < this.equipeForm.listPokemons.length; i++) {
+      this.equipeForm.listPokemons[i].equipe = new Equipe();
+      this.equipeForm.listPokemons[i].equipe.id = this.equipeForm.id;
+      this.parametresAvanceesEquipesServive.modify(this.equipeForm.listPokemons[i]);
+    }
+  }
 }
