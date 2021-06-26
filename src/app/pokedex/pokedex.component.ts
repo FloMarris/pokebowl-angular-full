@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {PokedexHttpService} from "./pokedex-http.service";
 import {Pokemon} from "../../model/pokemon";
 import {MajPuisMinPipe} from "../maj-puis-min.pipe";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Equipe} from "../../model/equipe";
+import {MonPokemon} from "../../model/mon-pokemon";
+import {ParametresAvanceesEquipesService} from "../parametres-avancees-equipe/parametres-avancees-equipes.service";
 
 @Component({
   selector: 'app-pokedex',
@@ -16,8 +20,23 @@ export class PokedexComponent implements OnInit {
   typePivot: string = "";
   click1: boolean = false;
   click2: boolean = false
+  idEquipe: number
+  idMonPokemon: number;
+  monPokemonForm: MonPokemon = new MonPokemon();
 
-  constructor(private pokedexService: PokedexHttpService) {
+  constructor(private pokedexService: PokedexHttpService, private route: ActivatedRoute,
+              private parametreAvancesEquipeService: ParametresAvanceesEquipesService,
+              private router: Router) {
+    this.route.queryParams.subscribe(params => {
+      this.idMonPokemon = params['idMonPokemon'];
+      this.idEquipe = params['idEquipe'];
+    });
+
+    if(this.idMonPokemon) {
+      this.pokedexService.findMonPokemonById(this.idMonPokemon).subscribe(resp =>{
+        this.monPokemonForm = resp;
+      }, error => console.log(error));
+    }
   }
 
   ngOnInit(): void {
@@ -143,4 +162,16 @@ export class PokedexComponent implements OnInit {
 
   }
 
+  validerMonPokemon(idPokemon: number) {
+      this.monPokemonForm.equipe = new Equipe();
+      this.monPokemonForm.equipe.id = this.idEquipe;
+      this.pokedexService.findPokemonById(idPokemon).subscribe(resp => {
+        this.monPokemonForm.pokeReference = resp;
+        console.log(this.monPokemonForm);
+        this.pokedexService.modifyMonPokemon(this.monPokemonForm).subscribe(resp => {
+          this.parametreAvancesEquipeService.loadEquipeAndListAttaques(this.idEquipe);
+          this.router.navigate(['/parametresEquipe']);
+        }, error => console.log(error));;
+      }, error => console.log(error));
+  }
 }
