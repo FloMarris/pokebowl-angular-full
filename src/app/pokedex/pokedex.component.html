@@ -1,7 +1,7 @@
 <body class="body">
 
 <p class="titre">Pokedex</p><br><br>
-
+<h1></h1>
 <div style="text-align: center">
   <input class="search" type="text" value="Chercher un Pokémon..." [(ngModel)]="valeur"><br><br>
   <div *ngIf="type1==''">
@@ -278,7 +278,7 @@
 			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
       <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
       <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
-			<button class="choisir" (click)="ChoisirPokemon(pokemon)" >Choisir</button>
+			<button class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button> <!-- <a [routerLink]="['/parametresEquipe']"> </a> -->
 		</span>
 </div>
 </div>
