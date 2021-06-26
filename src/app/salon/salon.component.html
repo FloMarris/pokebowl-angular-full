@@ -1,35 +1,36 @@
 <body class="body">
 
-<div class="infoSalon">Nom du salon : salon 1 <br> Code du salon : Hgf56x </div>
+<div class="infoSalon">Nom du salon : {{findNomSalon()}} <br> Code du salon : {{findCodeSalon()}} </div>
 
 <p class="titre">Salon</p>
 
 <div class="caseAllJoueur">
   <div class="caseJoueur">
-    <h1>Nom joueur 1</h1><br>
-    <img class="avatar" src="avatar1.png" width="100">
+    <h1 id="NomJoueur">{{findNomJ1()}}</h1><br>
+    <img class="avatar" src="{{findAvatarJ1()}}" alt="avatarJ1.png" width="100">
     <div class="tablePokemon">
+      <h1 id="liste">Combat avec :</h1>
       <table>
         <tr>
           <th>
-            <img src="arbok.png" width="130">
+            <img src="{{findEquipeJ1().listPokemons[0].pokeReference.avatar}}" alt="poke.png" width="130">
           </th>
           <th>
-            <img src="arcanin.png" width="130">
+            <img src="{{findEquipeJ1().listPokemons[1].pokeReference.avatar}}" alt="poke.png" width="130">
           </th>
           <th>
-            <img src="chrysacier.png" width="130">
+            <img src="{{findEquipeJ1().listPokemons[2].pokeReference.avatar}}" alt="poke.png" width="130">
           </th>
         </tr>
-        <tr>
+        <tr *ngIf="findEquipeJ1().listPokemons.length>3">
           <th>
-            <img src="florizarre.png" width="130">
+            <img src="{{findEquipeJ1().listPokemons[3].pokeReference.avatar}}" alt="poke.png" width="130">
           </th>
-          <th>
-            <img src="grolem.png" width="130">
+          <th *ngIf="findEquipeJ1().listPokemons.length>4">
+            <img src="{{findEquipeJ1().listPokemons[4].pokeReference.avatar}}" alt="poke.png" width="130">
           </th>
-          <th>
-            <img src="ronflex.png" width="130">
+          <th *ngIf="findEquipeJ1().listPokemons.length>5">
+            <img src="{{findEquipeJ1().listPokemons[5].pokeReference.avatar}}" alt="poke.png" width="130">
           </th>
         </tr>
       </table>
@@ -40,31 +41,32 @@
 
   </div>
 
-  <div class="caseJoueur">
-    <h1>Nom joueur 2</h1><br>
-    <img class="avatar" src="avatar1.png" width="100">
+  <div class="caseJoueur" *ngIf="IsJoueur2()">
+    <h1 id="NomJoueur">{{findNomJ2()}}</h1><br>
+    <img class="avatar" src="{{findAvatarJ2()}}" alt="avatar2.png" width="100">
     <div class="tablePokemon">
+      <h1 id="liste">Combat avec :</h1>
       <table>
         <tr>
           <th>
-            <img src="voltali.png" width="130">
+            <img src="{{findEquipeJ2().listPokemons[0].pokeReference.avatar}}" alt="poke.png" width="130">
           </th>
           <th>
-            <img src="grolem.png" width="130">
+            <img src="{{findEquipeJ2().listPokemons[1].pokeReference.avatar}}" alt="poke.png" width="130">
           </th>
           <th>
-            <img src="tauros.png" width="130">
+            <img src="{{findEquipeJ2().listPokemons[2].pokeReference.avatar}}" alt="poke.png" width="130">
           </th>
         </tr>
-        <tr>
+        <tr *ngIf="findEquipeJ2().listPokemons.length>3">
           <th>
-            <img src="scarabrute.png" width="130">
+            <img src="{{findEquipeJ2().listPokemons[3].pokeReference.avatar}}" alt="poke.png" width="130">
           </th>
-          <th>
-            <img src="voltali.png" width="130">
+          <th *ngIf="findEquipeJ2().listPokemons.length>4">
+            <img src="{{findEquipeJ2().listPokemons[4].pokeReference.avatar}}" alt="poke.png" width="130">
           </th>
-          <th>
-            <img src="roucarnage.png" width="130">
+          <th *ngIf="findEquipeJ2().listPokemons.length>5">
+            <img src="{{findEquipeJ2().listPokemons[5].pokeReference.avatar}}" alt="poke.png" width="130">
           </th>
         </tr>
       </table>
@@ -72,9 +74,16 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container" *ngIf="!IsJoueur2()">
   <div class="center">
-    <button style="background-color: rgba(0,0,0,0.6);"><h1>FIGHT</h1></button>
+    <button style="background-color: rgba(0,0,0,0.6);" disabled><h1>FIGHT</h1></button>
   </div>
 </div>
+
+<div class="container" *ngIf="IsJoueur2()">
+  <div class="center">
+    <button style="background-color: rgba(0,0,0,0.6);" (click)="fight()"><h1>FIGHT</h1></button>
+  </div>
+</div>
+
 </body>
