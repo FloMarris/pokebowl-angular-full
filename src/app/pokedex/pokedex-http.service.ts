@@ -26,8 +26,6 @@ export class PokedexHttpService {
     this.appConfig.findAllTypeEnums().subscribe(resp => {
       this.types = resp;
     }, error => console.log(error));
-
-    console.log(this.types);
   }
 
   findAll(): Array<Pokemon> {
