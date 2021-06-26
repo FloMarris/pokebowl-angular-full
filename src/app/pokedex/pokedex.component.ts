@@ -146,17 +146,6 @@ export class PokedexComponent implements OnInit {
     }
   }
 
-  ChoisirPokemon(pokemon: Pokemon){
-    //A faire
-    //Il faut différencier le cas où on vient de la page d'accueil du cas où on vient de la page profil
-    //On récupère un pokemon du pokedex qu'il faut set dans un MonPokemon :
-      //Si on vient de la page d'acceuil, c'est un MonPokemon de l'équipe en cours
-      //Si on vient de la page profil, c'est un MonPokemon d'une équipe sauvegardée
-    //A faire aussi : bloquer le bouton choisir si on n'a ni cliqué sur paramètres avancées d'équipe dans acceuil ni sur gérer dans profil
-      //Aka : Bloquer le bouton si on est venu nous-mêmes sur la page pokedex depuis la barre de navigation
-    // => 1 url /pokedex ; 1 url /acceuil/equipe/id/param-avances-equipe/pokedex ; 1 url /profil/equipe/id/pokedex ?
-  }
-
   listTypes(): Array<string> {
     let liste: Array<string> =  this.pokedexService.types;
     let newList : Array<string> = new Array<string>();
