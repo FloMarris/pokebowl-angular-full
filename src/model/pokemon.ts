@@ -16,7 +16,6 @@ export class Pokemon{
   generation:number;
   avatar: string;
   description:string;
-  avatar:string;
   attaques:Array<Attaque> = new Array<Attaque>();
   type1:TypeClass;
   type2:TypeClass;
