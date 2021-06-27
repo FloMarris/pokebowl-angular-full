@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Utilisateur} from "../../model/utilisateur";
+import {InscriptionComponent} from "../inscription/inscription.component";
 
 @Component({
   selector: 'app-connexion',
@@ -9,9 +10,18 @@ import {Utilisateur} from "../../model/utilisateur";
 export class ConnexionComponent implements OnInit {
 
   utilisateurForm: Utilisateur = null;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  motDePasseOublie(){
+
+  }
+
+/*  inscription(){
+    return InscriptionComponent;
+  }*/
 
 }

@@ -1,10 +1,11 @@
+@charset "UTF-8";
 @font-face {
   font-family: pokemonFont;
-  src: url(PokemonSolid.ttf);
+  src: url("../../assets/PokemonSolid.ttf");
 }
 
 .body {
-  background-image: url(fondConnexionUtilisateur.png);
+  background-image: url("../../assets/fondConnexionUtilisateur.png");
   background-color: #87CEFA;
   background-repeat: no-repeat;
   background-size: cover;
