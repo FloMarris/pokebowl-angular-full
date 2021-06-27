@@ -66,6 +66,5 @@ export class SalonComponent implements OnInit {
 
   fight(): void {
     //A faire : action bouton FIGHT
-    console.log("J'AI CLIQUE");
   }
 }

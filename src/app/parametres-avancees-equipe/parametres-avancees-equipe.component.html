@@ -10,7 +10,7 @@
       </th>
       <th>
         <select class="box sizeFixed" [(ngModel)]="equipeForm.listPokemons[index].attaque1">
-          <option selected="selected" [ngValue]="pokemon?.attaque2">{{pokemon?.attaque1?.nom}}</option>
+          <option selected="selected" [ngValue]="pokemon?.attaque1">{{pokemon?.attaque1?.nom}}</option>
           <option *ngFor="let attaque of getAttaques(pokemon?.pokeReference.nom)" [ngValue]="attaque">{{attaque?.nom}}</option>
         </select>
       </th>
@@ -37,7 +37,7 @@
     </tr>
 
     <div>
-      <button type="button" class="boutonAleatoire">?</button>
+      <button type="button" class="boutonAleatoire" (click)="aleatoire(index)">?</button>
     </div>
 
     <tr>
