@@ -15,6 +15,7 @@ export class ParametresAvanceesEquipesService {
 
   equipe: Equipe = new Equipe();
   mapAttaque: Map<string, Array<Attaque>> = new Map<string, Array<Attaque>>();
+  pokemons: Array<Pokemon> = new Array<Pokemon>();
   idEquipe: number;
 
   constructor(private http: HttpClient, private appConfig: AppConfigService, private route: ActivatedRoute) {
