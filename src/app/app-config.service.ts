@@ -14,15 +14,15 @@ export class AppConfigService {
   }
 
   findAllActions(): Observable<Array<string>> {
-    return this.http.get<Array<string>>(this.backEndUrl + "actions");
+    return this.http.get<Array<string>>(this.backEndUrl + "rest/actions");
   }
   findAllCategorieAttaques(): Observable<Array<string>> {
-    return this.http.get<Array<string>>(this.backEndUrl + "categorieAttaques");
+    return this.http.get<Array<string>>(this.backEndUrl + "rest/categorieAttaques");
   }
   findAllStatuts(): Observable<Array<string>> {
-    return this.http.get<Array<string>>(this.backEndUrl + "statuts");
+    return this.http.get<Array<string>>(this.backEndUrl + "rest/statuts");
   }
   findAllTypeEnums(): Observable<Array<string>> {
-    return this.http.get<Array<string>>(this.backEndUrl + "typeEnums");
+    return this.http.get<Array<string>>(this.backEndUrl + "rest/typeEnums");
   }
 }
