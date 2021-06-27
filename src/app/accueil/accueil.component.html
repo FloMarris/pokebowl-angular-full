@@ -1,1 +1,81 @@
-<p>accueil works!</p>
+<body class="body">
+
+<div class="cadreCreationEquipe">
+  <h2>Création d'équipe</h2>
+
+  <div class="cadreNbPokemon">
+    <label class="h3">Nombre de pokemons :</label>
+    <select name="nbPokemon" class="box" [(ngModel)]="nbPokemon">
+      <option value='3'>3</option>
+      <option value='4'>4</option>
+      <option value='5'>5</option>
+      <option value='6'>6</option>
+    </select>
+
+    <table>
+      <tr>
+        <th>&nbsp;</th>
+      </tr>
+
+        <div *ngFor="let monPokemon of getEquipeEncours().listPokemons, let index=index" class ="affichageEquipeEncours">
+            <div class ="affichageEquipeEncours">
+              <select class="box"[(ngModel)]="equipeEnCoursForm.listPokemons[index].pokeReference">
+                <option value="">Choisir un Pokemon</option>
+                <option *ngFor="let pokemon of listPokemon()" [ngValue]="pokemon">{{pokemon.nom}}</option>
+              </select>
+            </div>
+
+        <div class ="affichageEquipeEncours">
+              <img *ngIf="equipeEnCoursForm.listPokemons[index].pokeReference" src="{{equipeEnCoursForm.listPokemons[index].pokeReference.avatar}}" alt="poke.png" width="100" height="55">
+        </div>
+
+        </div>
+
+      <tr>
+        <th>&nbsp;</th>
+      </tr>
+
+      <tr>
+        <th colspan="2" class="parametreAvance">
+          <a href="C:\java\workspace\frontPokeBowl\public\Pages\3.parametresAvancesEquipeUtilisateur\parametresAvances.html" class="h3">Paramètres avancés de l'équipe</a>
+        </th>
+
+        <th colspan="2" class="equipeAleatoire">
+          <a href="" class="h3">Equipe aléatoire</a>
+        </th>
+      </tr>
+    </table>
+
+  </div>
+
+  <div class="cadreIn" >
+    <h2>Equipe précédente</h2><br>
+      <img *ngFor="let monPokemon of getEquipePrecedente().listPokemons" src="{{monPokemon.pokeReference.avatar}}" width="100" height="100">
+      <a class="h3" (click)="chargerEquipePrecedente()">Charger l'équipe</a>
+  </div>
+
+  <div class="cadreIn">
+    <h2 class="h2">Equipe perso</h2><br>
+    <label class="h5">Choisissez parmi vos équipes précédentes :</label><br><br>
+    <button type="button" class="boutonEquipe">1</button>
+    <button type="button" class="boutonEquipe">2</button><br>
+    <button type="button" class="boutonEquipe">3</button>
+    <button type="button" class="boutonEquipe">4</button><br><br>
+    <a href="" class="h3">Charger l'équipe</a>
+  </div>
+</div>
+
+<div class="cadreSalon">
+  <h1>
+    <a href="" class="h3">Créer un salon privé</a><br><br>
+    <a href="" class="h3">Rejoindre un salon privé</a><br><br>
+    <a href="" class="h3">Chercher un adversaire</a>
+  </h1>
+</div>
+
+<div class="pokeball">
+  <img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px;">
+</div>
+
+
+</body>
