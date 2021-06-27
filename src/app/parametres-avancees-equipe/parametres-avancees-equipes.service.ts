@@ -14,9 +14,13 @@ export class ParametresAvanceesEquipesService {
 
   equipe: Equipe = new Equipe();
   mapAttaque: Map<string, Array<Attaque>> = new Map<string, Array<Attaque>>();
+  pokemons: Array<Pokemon> = new Array<Pokemon>();
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
     this.loadEquipeAndListAttaques(36);
+    this.http.get<Array<Pokemon>>(this.appConfig.backEndUrl + "pokemon").subscribe(resp => {
+      this.pokemons = resp;
+    }, error => console.log(error))
   }
 
   findEquipe() {
