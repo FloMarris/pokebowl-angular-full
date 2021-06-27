@@ -45,6 +45,14 @@ h1{
   margin-left: 15px;
 }
 
+.caseValiderEquipe{
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 table{
   width: 100%;
   text-align: center;
@@ -110,4 +118,8 @@ table{
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+.pointInterrogation{
+  font-size: 80px;
 }

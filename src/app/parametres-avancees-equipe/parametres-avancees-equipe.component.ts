@@ -23,6 +23,7 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
 
   getEquipe(): Equipe {
     this.equipeForm = this.parametresAvanceesEquipesServive.findEquipe();
+    console.log(this.equipeForm);
     return this.parametresAvanceesEquipesServive.findEquipe();
   }
 
