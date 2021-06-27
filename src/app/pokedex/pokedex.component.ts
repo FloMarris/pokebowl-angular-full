@@ -17,7 +17,6 @@ export class PokedexComponent implements OnInit {
   valeur: string = "";
   type1: string = "";
   type2: string = "";
-  typePivot: string = "";
   click1: boolean = false;
   click2: boolean = false
   idEquipe: number
