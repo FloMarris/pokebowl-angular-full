@@ -272,12 +272,12 @@
   <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
   <p class="nomPoke">{{pokemon.nom}}</p>
   <span class="tooltiptext">
-			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
-			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
-			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
-			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
-      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
-      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
+			<span class="underline">Nom </span><span>: {{pokemon.nom}}</span><br>
+			<span class="underline">Type </span><span>: <img style="width: 80px" src="{{pokemon.type1.avatar}}"> <img style="width: 80px" src="{{pokemon.type2?.avatar}}"></span><br>
+			<span class="underline">Stats </span><span>: HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille </span><span>: {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids </span><span>: {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description </span><span>: {{pokemon.description}}</span><br>
 			<button *ngIf="idEquipe && idMonPokemon" class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button> <!-- <a [routerLink]="['/parametresEquipe']"> </a> -->
 		</span>
 </div>
@@ -288,13 +288,13 @@
     <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
     <p class="nomPoke">{{pokemon.nom}}</p>
     <span class="tooltiptext">
-			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
-			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
-			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
-			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
-      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
-      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
-			<button *ngIf="idEquipe && idMonPokemon" class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button>
+			<span class="underline">Nom </span><span>: {{pokemon.nom}}</span><br>
+			<span class="underline">Type </span><span>: <img style="width: 80px" src="{{pokemon.type1.avatar}}"> <img style="width: 80px" src="{{pokemon.type2?.avatar}}"></span><br>
+			<span class="underline">Stats </span><span>: HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille </span><span>: {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids </span><span>: {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description </span><span>: {{pokemon.description}}</span><br>
+			<button *ngIf="idEquipe && idMonPokemon" class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button> <!-- <a [routerLink]="['/parametresEquipe']"> </a> -->
 		</span>
   </div>
 </div>
@@ -304,13 +304,13 @@
     <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
     <p class="nomPoke">{{pokemon.nom}}</p>
     <span class="tooltiptext">
-			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
-			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
-			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
-			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
-      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
-      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
-			<button *ngIf="idEquipe && idMonPokemon" class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button>
+			<span class="underline">Nom </span><span>: {{pokemon.nom}}</span><br>
+			<span class="underline">Type </span><span>: <img style="width: 80px" src="{{pokemon.type1.avatar}}"> <img style="width: 80px" src="{{pokemon.type2?.avatar}}"></span><br>
+			<span class="underline">Stats </span><span>: HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille </span><span>: {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids </span><span>: {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description </span><span>: {{pokemon.description}}</span><br>
+			<button *ngIf="idEquipe && idMonPokemon" class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button> <!-- <a [routerLink]="['/parametresEquipe']"> </a> -->
 		</span>
   </div>
 </div>
@@ -320,13 +320,13 @@
     <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
     <p class="nomPoke">{{pokemon.nom}}</p>
     <span class="tooltiptext">
-			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
-			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
-			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
-			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
-      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
-      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
-			<button *ngIf="idEquipe && idMonPokemon" class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button>
+			<span class="underline">Nom </span><span>: {{pokemon.nom}}</span><br>
+			<span class="underline">Type </span><span>: <img style="width: 80px" src="{{pokemon.type1.avatar}}"> <img style="width: 80px" src="{{pokemon.type2?.avatar}}"></span><br>
+			<span class="underline">Stats </span><span>: HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille </span><span>: {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids </span><span>: {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description </span><span>: {{pokemon.description}}</span><br>
+			<button *ngIf="idEquipe && idMonPokemon" class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button> <!-- <a [routerLink]="['/parametresEquipe']"> </a> -->
 		</span>
   </div>
 </div>
@@ -336,13 +336,13 @@
     <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
     <p class="nomPoke">{{pokemon.nom}}</p>
     <span class="tooltiptext">
-			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
-			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
-			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
-			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
-      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
-      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
-			<button *ngIf="idEquipe && idMonPokemon" class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button>
+			<span class="underline">Nom </span><span>: {{pokemon.nom}}</span><br>
+			<span class="underline">Type </span><span>: <img style="width: 80px" src="{{pokemon.type1.avatar}}"> <img style="width: 80px" src="{{pokemon.type2?.avatar}}"></span><br>
+			<span class="underline">Stats </span><span>: HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille </span><span>: {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids </span><span>: {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description </span><span>: {{pokemon.description}}</span><br>
+			<button *ngIf="idEquipe && idMonPokemon" class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button> <!-- <a [routerLink]="['/parametresEquipe']"> </a> -->
 		</span>
   </div>
 </div>
@@ -352,13 +352,13 @@
     <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
     <p class="nomPoke">{{pokemon.nom}}</p>
     <span class="tooltiptext">
-			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
-			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
-			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
-			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
-      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
-      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
-			<button *ngIf="idEquipe && idMonPokemon" class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button>
+			<span class="underline">Nom </span><span>: {{pokemon.nom}}</span><br>
+			<span class="underline">Type </span><span>: <img style="width: 80px" src="{{pokemon.type1.avatar}}"> <img style="width: 80px" src="{{pokemon.type2?.avatar}}"></span><br>
+			<span class="underline">Stats </span><span>: HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille </span><span>: {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids </span><span>: {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description </span><span>: {{pokemon.description}}</span><br>
+			<button *ngIf="idEquipe && idMonPokemon" class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button> <!-- <a [routerLink]="['/parametresEquipe']"> </a> -->
 		</span>
   </div>
 </div>
@@ -368,13 +368,13 @@
     <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
     <p class="nomPoke">{{pokemon.nom}}</p>
     <span class="tooltiptext">
-			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
-			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
-			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
-			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
-      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
-      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
-			<button *ngIf="idEquipe && idMonPokemon" class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button>
+			<span class="underline">Nom </span><span>: {{pokemon.nom}}</span><br>
+			<span class="underline">Type </span><span>: <img style="width: 80px" src="{{pokemon.type1.avatar}}"> <img style="width: 80px" src="{{pokemon.type2?.avatar}}"></span><br>
+			<span class="underline">Stats </span><span>: HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille </span><span>: {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids </span><span>: {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description </span><span>: {{pokemon.description}}</span><br>
+			<button *ngIf="idEquipe && idMonPokemon" class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button> <!-- <a [routerLink]="['/parametresEquipe']"> </a> -->
 		</span>
   </div>
 </div>
@@ -384,13 +384,13 @@
     <img src="{{pokemon.avatar}}" class="imgPoke" alt="poke.png"><br><br>
     <p class="nomPoke">{{pokemon.nom}}</p>
     <span class="tooltiptext">
-			<span class="underline">Nom :</span><span> {{pokemon.nom}}</span><br>
-			<span class="underline">Type :</span><span> {{pokemon.type1.type | majPuisMin}} {{pokemon.type2?.type | majPuisMin}}</span><br>
-			<span class="underline">Stats :</span><span> HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
-			<span class="underline">Taille :</span><span> {{pokemon.taille}} m</span><br>
-      <span class="underline">Poids :</span><span> {{pokemon.poids}} kg</span><br>
-      <span class="underline">Description :</span><span> {{pokemon.description}}</span><br>
-			<button *ngIf="idEquipe && idMonPokemon" class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button>
+			<span class="underline">Nom </span><span>: {{pokemon.nom}}</span><br>
+			<span class="underline">Type </span><span>: <img style="width: 80px" src="{{pokemon.type1.avatar}}"> <img style="width: 80px" src="{{pokemon.type2?.avatar}}"></span><br>
+			<span class="underline">Stats </span><span>: HP {{pokemon.hp}} | A {{pokemon.attaque}} | D {{pokemon.defense}} | AS {{pokemon.attaqueSpe}} | DS {{pokemon.defenseSpe}} | V {{pokemon.speed}} </span><br>
+			<span class="underline">Taille </span><span>: {{pokemon.taille}} m</span><br>
+      <span class="underline">Poids </span><span>: {{pokemon.poids}} kg</span><br>
+      <span class="underline">Description </span><span>: {{pokemon.description}}</span><br>
+			<button *ngIf="idEquipe && idMonPokemon" class="choisir" (click)="validerMonPokemon(pokemon.id)">Choisir</button> <!-- <a [routerLink]="['/parametresEquipe']"> </a> -->
 		</span>
   </div>
 </div>
