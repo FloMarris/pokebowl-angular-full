@@ -18,11 +18,13 @@ export class AccueilHttpService {
   equipePrecedente:Equipe = new Equipe();
   equipesSauvegardees:Array<Equipe> = new Array<Equipe>()
   equipeEnCours :Equipe = new Equipe();
-  idUtilisateur: number = 19;
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
-    //this.load(19);
-    this.load(this.idUtilisateur);
+    //this.load(this.getIdUtilisateur());
+  }
+
+  getIdUtilisateur(): number {
+    return JSON.parse(sessionStorage.getItem("utilisateur")).id;
   }
 
   load(id:number) {
@@ -72,7 +74,7 @@ export class AccueilHttpService {
 
   modifyUtilisateur(utilisateur:Utilisateur){
     this.http.put<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur).subscribe(resp => {
-       this.load(this.idUtilisateur);
+       this.load(this.getIdUtilisateur());
     }, error => console.log(error))
   }
 

@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
 })
 export class AccueilComponent implements OnInit {
   utilisateurForm:Utilisateur= new Utilisateur();
-  utilisateurSession: Utilisateur = JSON.parse(sessionStorage.getItem("utilisateur"));
+  utilisateurSession: Utilisateur = new Utilisateur();
   equipeEnCoursForm:Equipe = new Equipe();
   equipePrecedenteForm:Equipe = new Equipe();
   equipeSauvegardesForm:Array<Equipe> = new Array<Equipe>();

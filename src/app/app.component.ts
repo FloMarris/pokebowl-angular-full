@@ -10,7 +10,6 @@ export class AppComponent {
   title = 'pokebowl-angular';
 
   constructor(private accueilService: AccueilHttpService) {
-    // sessionStorage.setItem("utilisateur", JSON.stringify());
   }
 
 }
