@@ -5,7 +5,8 @@
 
   <div class="cadreNbPokemon">
     <label class="h3">Nombre de pokemons :</label>
-    <select name="nbPokemon" class="box" [(ngModel)]="nbPokemon">
+    <select name="nbPokemon" class="box" [(ngModel)]="nombrePokemonParEquipe" (change)="changerTailleEquipeEnCours()">
+      <option selected="selected" [value]='nombrePokemonParEquipe'>Nombre de Pokemon</option>
       <option value='3'>3</option>
       <option value='4'>4</option>
       <option value='5'>5</option>
@@ -17,7 +18,10 @@
         <th>&nbsp;</th>
       </tr>
 
-        <div *ngFor="let monPokemon of getEquipeEncours().listPokemons, let index=index" class ="affichageEquipeEncours">
+        <div *ngFor="let monPokemon of getEquipeEncours().listPokemons, let index=index">
+
+          <!-- Si pokemon dans equipe -->
+          <div *ngIf="monPokemon.pokeReference != null">
             <div class ="affichageEquipeEncours">
               <select class="box"[(ngModel)]="equipeEnCoursForm.listPokemons[index].pokeReference">
                 <option selected="selected" [ngValue]="monPokemon.pokeReference">{{monPokemon.pokeReference.nom}}</option>
@@ -25,9 +29,24 @@
               </select>
             </div>
 
-        <div class ="affichageEquipeEncours">
-              <img *ngIf="equipeEnCoursForm.listPokemons[index].pokeReference" src="{{equipeEnCoursForm.listPokemons[index].pokeReference.avatar}}" alt="poke.png" width="100" height="55">
-        </div>
+            <div class ="affichageEquipeEncours">
+              <img *ngIf="equipeEnCoursForm.listPokemons[index].pokeReference" src="{{equipeEnCoursForm.listPokemons[index].pokeReference.avatar}}" alt="poke.png" width="130">
+            </div>
+          </div>
+
+          <!-- Si pas pokemon dans equipe -->
+          <div *ngIf="monPokemon.pokeReference == null">
+            <div class ="affichageEquipeEncours">
+              <select class="box"[(ngModel)]="equipeEnCoursForm.listPokemons[index].pokeReference">
+                <option selected="selected">Pas de pokemon</option>
+                <option *ngFor="let pokemon of listPokemon()" [ngValue]="pokemon">{{pokemon.nom}}</option>
+              </select>
+            </div>
+
+            <div class ="affichageEquipeEncours">
+              <h1 class="pointInterrogation">?</h1>
+            </div>
+          </div>
 
         </div>
 
@@ -37,8 +56,8 @@
 
       <tr>
         <th colspan="2" class="parametreAvance">
-          <a (click)="validerEquipeEnCoursForm()" class="h3">Valider les changements</a>
-          <a [routerLink]="['/parametresEquipe']" [queryParams]="{idEquipe: equipeEnCoursForm.id}" class="h3">Paramètres avancés de l'équipe</a>
+          <a (click)="validerEquipeEnCoursForm()" class="h3">Paramètres avancés de l'équipe</a>
+          <!-- <a [routerLink]="['/parametresEquipe']" [queryParams]="{idEquipe: equipeEnCoursForm.id}" class="h3">Paramètres avancés de l'équipe</a> -->
         </th>
 
         <th colspan="2" class="equipeAleatoire">
@@ -51,18 +70,17 @@
 
   <div class="cadreIn" >
     <h2>Equipe précédente</h2><br>
-      <img *ngFor="let monPokemon of getEquipePrecedente().listPokemons" src="{{monPokemon.pokeReference.avatar}}" width="100" height="100">
+      <img *ngFor="let monPokemon of getEquipePrecedente().listPokemons" src="{{monPokemon.pokeReference.avatar}}" width="130" >
       <a class="h3" (click)="chargerEquipePrecedente()">Charger l'équipe</a>
   </div>
 
   <div class="cadreIn">
     <h2 class="h2">Equipe perso</h2><br>
     <label class="h5">Choisissez parmi vos équipes précédentes :</label><br><br>
-    <button type="button" class="boutonEquipe">1</button>
-    <button type="button" class="boutonEquipe">2</button><br>
-    <button type="button" class="boutonEquipe">3</button>
-    <button type="button" class="boutonEquipe">4</button><br><br>
-    <a href="" class="h3">Charger l'équipe</a>
+    <button type="button" class="boutonEquipe" (click)="chargerEquipeSauvegardee(0)">1</button>
+    <button type="button" class="boutonEquipe" (click)="chargerEquipeSauvegardee(1)">2</button><br>
+    <button type="button" class="boutonEquipe" (click)="chargerEquipeSauvegardee(2)">3</button>
+    <button type="button" class="boutonEquipe" (click)="chargerEquipeSauvegardee(3)">4</button><br><br>
   </div>
 </div>
 
