@@ -4,20 +4,20 @@
   <img src="../../assets/logoPokemon.png" alt="pokemon.png" width="230" height="135"><br><br>
   <h1>Inscription</h1><br><br>
 
-  <label class="data">Pseudo :</label><br>
-  <input type="text" class="form-control" placeholder="Ajoutez un pseudo" [(ngModel)]="utilisateurForm.pseudo"><br><br>
-  <p *ngIf="!validerPseudo()">Le pseudo est déjà utilisé</p>
-  <input *ngIf="!validerPseudo()" type="email" class="form-control" placeholder="name@example.com" >
-  <label class="data">Mot de passe :</label><br>
+  <label class="data">Pseudo :</label><br><br>
+  <input type="text" class="form-control" placeholder="Ajoutez un pseudo" [(ngModel)]="utilisateurForm.pseudo"><br>
+  <p *ngIf="!validerPseudo()" class="valids">* Le pseudo déjà utilisé</p>
+  <label class="data">Mot de passe :</label><br><br>
   <input type="password" class="form-control" placeholder="..." [(ngModel)]="utilisateurForm.motDePasse"><br>
   <input type="password" class="form-control" placeholder="Validez mot de passe" [(ngModel)]="motDePasseBis"><br><br>
-  <p *ngIf="!validerMotDePasse()">Le mot de passe n'est pas identique</p>
-  <label class="data">Email :</label><br>
+  <p *ngIf="!validerMotDePasse()" class="valids">* Les mots de passe ne sont pas identiques</p>
+  <label class="data">Email :</label><br><br>
   <input type="email" class="form-control" placeholder="name@example.com" [(ngModel)]="utilisateurForm.email"><br><br>
-  <p *ngIf="!validerEmail()">L'email est déjà utilisé</p>
+  <p *ngIf="!validerEmail()" class="valids">* L'email est déjà utilisé</p>
 
-  <a class="data">Inscription<br><br>
+  <button class="data" (click)="inscription()">Inscription<br><br>
     <img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px;">
-  </a><br><br>
+  </button><br><br>
+  <p *ngIf="!inscriptionValidation" class="valids">* Les informations sont incorrectes</p>
 </div>
 </body>
