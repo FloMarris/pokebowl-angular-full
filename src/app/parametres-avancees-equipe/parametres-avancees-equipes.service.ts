@@ -37,10 +37,8 @@ export class ParametresAvanceesEquipesService {
     return this.mapAttaque;
   }
 
-  modify(monPokemon: MonPokemon) {
-    this.http.put<MonPokemon>(this.appConfig.backEndUrl + "monPokemon/" + monPokemon.id, monPokemon).subscribe(resp => {
-      this.loadEquipeAndListAttaques(this.idEquipe);
-    }, error => console.log(error));
+  modify(monPokemon: MonPokemon): Observable<MonPokemon> {
+    return this.http.put<MonPokemon>(this.appConfig.backEndUrl + "monPokemon/" + monPokemon.id, monPokemon);
   }
 
   loadEquipeAndListAttaques(id: number) {

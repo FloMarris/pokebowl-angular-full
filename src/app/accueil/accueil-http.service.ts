@@ -7,6 +7,7 @@ import {Utilisateur} from "../../model/utilisateur";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {MonPokemon} from "../../model/mon-pokemon";
+// import * as util from "util";
 
 @Injectable({
   providedIn: 'root'
@@ -20,21 +21,31 @@ export class AccueilHttpService {
   equipeEnCours :Equipe = new Equipe();
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
-    this.load(19);
+    //this.load(this.getIdUtilisateur());
+  }
+
+  getIdUtilisateur(): number {
+    return JSON.parse(sessionStorage.getItem("utilisateur")).id;
   }
 
   load(id:number) {
+    let utilisateur: Utilisateur = JSON.parse(sessionStorage.getItem("utilisateur"));
+    console.log(utilisateur);
+
     this.http.get<Array<Equipe>>(this.appConfig.backEndUrl + "utilisateur/" + id + "/equipes").subscribe(resp => {
       this.equipesSauvegardees = resp;
+      console.log(this.equipesSauvegardees);
     }, error => console.log(error))
 
     this.http.get<Array<Pokemon>>(this.appConfig.backEndUrl + "pokemon").subscribe(resp => {
       this.pokemons = resp;
     }, error => console.log(error))
 
-    this.http.get<Equipe>(this.appConfig.backEndUrl + "utilisateur/" + id + "/equipePrecedente").subscribe(resp => {
-      this.equipePrecedente = resp;
-    }, error => console.log(error))
+    if(utilisateur.derniereEquipe != null) {
+      this.http.get<Equipe>(this.appConfig.backEndUrl + "utilisateur/" + id + "/equipePrecedente").subscribe(resp => {
+        this.equipePrecedente = resp;
+      }, error => console.log(error))
+    }
 
     this.http.get<Equipe>(this.appConfig.backEndUrl + "utilisateur/" + id + "/equipeEnCours").subscribe(resp => {
       this.equipeEnCours = resp;
@@ -69,12 +80,19 @@ export class AccueilHttpService {
 
   modifyUtilisateur(utilisateur:Utilisateur){
     this.http.put<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur).subscribe(resp => {
-       this.load(19);
+       this.load(this.getIdUtilisateur());
     }, error => console.log(error))
   }
 
-  modifyEquipeEnCours(monPokemon:MonPokemon) {
-    this.http.put<MonPokemon>(this.appConfig.backEndUrl + "monPokemon/" + monPokemon.id, monPokemon).subscribe(resp => {
-    }, error => console.log(error))
+  modifyEquipeEnCours(monPokemon:MonPokemon): Observable<MonPokemon> {
+    return this.http.put<MonPokemon>(this.appConfig.backEndUrl + "monPokemon/" + monPokemon.id, monPokemon);
+  }
+
+  createEquipeEnCours(monPokemon:MonPokemon): Observable<MonPokemon> {
+    return this.http.post<MonPokemon>(this.appConfig.backEndUrl + "monPokemon", monPokemon);
+  }
+
+  deleteEquipeEnCours(monPokemon:MonPokemon): Observable<MonPokemon> {
+    return this.http.delete<MonPokemon>(this.appConfig.backEndUrl + "monPokemon/"+ monPokemon.id);
   }
 }
