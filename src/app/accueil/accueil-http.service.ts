@@ -18,7 +18,7 @@ export class AccueilHttpService {
   equipePrecedente:Equipe = new Equipe();
   equipesSauvegardees:Array<Equipe> = new Array<Equipe>()
   equipeEnCours :Equipe = new Equipe();
-  idUtilisateur: number = 25;
+  idUtilisateur: number = 19;
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
     //this.load(19);
