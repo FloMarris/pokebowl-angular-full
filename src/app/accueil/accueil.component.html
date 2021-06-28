@@ -20,7 +20,7 @@
         <div *ngFor="let monPokemon of getEquipeEncours().listPokemons, let index=index" class ="affichageEquipeEncours">
             <div class ="affichageEquipeEncours">
               <select class="box"[(ngModel)]="equipeEnCoursForm.listPokemons[index].pokeReference">
-                <option value="">Choisir un Pokemon</option>
+                <option selected="selected" [ngValue]="monPokemon.pokeReference">{{monPokemon.pokeReference.nom}}</option>
                 <option *ngFor="let pokemon of listPokemon()" [ngValue]="pokemon">{{pokemon.nom}}</option>
               </select>
             </div>
@@ -37,7 +37,8 @@
 
       <tr>
         <th colspan="2" class="parametreAvance">
-          <a href="C:\java\workspace\frontPokeBowl\public\Pages\3.parametresAvancesEquipeUtilisateur\parametresAvances.html" class="h3">Paramètres avancés de l'équipe</a>
+          <a (click)="validerEquipeEnCoursForm()" class="h3">Valider les changements</a>
+          <a [routerLink]="['/parametresEquipe']" [queryParams]="{idEquipe: equipeEnCoursForm.id}" class="h3">Paramètres avancés de l'équipe</a>
         </th>
 
         <th colspan="2" class="equipeAleatoire">
@@ -67,14 +68,11 @@
 
 <div class="cadreSalon">
   <h1>
-    <a href="" class="h3">Créer un salon privé</a><br><br>
-    <a href="" class="h3">Rejoindre un salon privé</a><br><br>
-    <a href="" class="h3">Chercher un adversaire</a>
+    <a href="" class="h3"><img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 100px">Créer un salon privé</a><br><br>
+    <a href="" class="h3"><img src="../../assets/superBall.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 210px">Code salon</a><br><br>
+    <a href="C:\java\workspace\frontPokeBowl\public\Pages\6.salonUtilisateur\salon.html" class="h3"><img src="../../assets/hyperBall.png" alt="pokeball.png" style="width: 80px; height: 80px; margin-right: 55px">Rejoindre un salon privé</a><br><br>
+    <a href="" class="h3"><img src="../../assets/safariBall.png" alt="pokeball.png" style="width: 80px; height: 80px; margin-right: 55px">Chercher un adversaire</a>
   </h1>
-</div>
-
-<div class="pokeball">
-  <img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px;">
 </div>
 
 
