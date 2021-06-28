@@ -1,5 +1,7 @@
 <body class="body">
 
+<a [routerLink]="['/parametresEquipe']" [queryParams]="{idEquipe: 37}">Changer</a>
+
 <div class="cadreCreationEquipe">
   <h2>Création d'équipe</h2>
 
@@ -17,7 +19,7 @@
         <th>&nbsp;</th>
       </tr>
 
-        <div *ngFor="let monPokemon of getEquipeEncours().listPokemons, let index=index" class ="affichageEquipeEncours">
+        <div *ngFor="let monPokemon of getEquipeEncours().listPokemons, let index=index">
             <div class ="affichageEquipeEncours">
               <select class="box"[(ngModel)]="equipeEnCoursForm.listPokemons[index].pokeReference">
                 <option value="">Choisir un Pokemon</option>
