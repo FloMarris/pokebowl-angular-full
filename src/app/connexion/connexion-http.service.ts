@@ -14,8 +14,6 @@ export class ConnexionHttpService{
   utilisateurs: Array<Utilisateur> = new Array<Utilisateur>()
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
-
-
   }
 
   auth(connexionForm: Connexion): Observable<Utilisateur> {
