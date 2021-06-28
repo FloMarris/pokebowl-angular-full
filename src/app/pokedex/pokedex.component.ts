@@ -168,7 +168,7 @@ export class PokedexComponent implements OnInit {
         this.monPokemonForm.pokeReference = resp;
         this.pokedexService.modifyMonPokemon(this.monPokemonForm).subscribe(resp => {
           this.parametreAvancesEquipeService.loadEquipeAndListAttaques(this.idEquipe);
-          this.router.navigate(['/parametresEquipe']);
+          this.router.navigate(['/parametresEquipe'],{ queryParams: {idEquipe: this.idEquipe}});
         }, error => console.log(error));;
       }, error => console.log(error));
   }
