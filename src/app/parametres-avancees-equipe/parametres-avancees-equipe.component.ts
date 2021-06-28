@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {Equipe} from "../../model/equipe";
 import {ParametresAvanceesEquipesService} from "./parametres-avancees-equipes.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {PokedexHttpService} from "../pokedex/pokedex-http.service";
 import {Pokemon} from "../../model/pokemon";
 import {MonPokemon} from "../../model/mon-pokemon";
 import {Attaque} from "../../model/attaque";
+import {AccueilHttpService} from "../accueil/accueil-http.service";
 
 @Component({
   selector: 'app-parametres-avancees-equipe',
@@ -19,7 +20,9 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
   id: number = 36;
   idEquipe: number;
 
-  constructor(private parametresAvanceesEquipesServive: ParametresAvanceesEquipesService, private route: ActivatedRoute, private pokedexService: PokedexHttpService) {
+  constructor(private parametresAvanceesEquipesServive: ParametresAvanceesEquipesService,
+              private route: ActivatedRoute, private pokedexService: PokedexHttpService,
+              private router: Router, private accueilService: AccueilHttpService) {
     this.route.queryParams.subscribe(params => {
       this.idEquipe = params['idEquipe'];
     });
@@ -27,7 +30,6 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
 
   getEquipe(): Equipe {
     this.equipeForm = this.parametresAvanceesEquipesServive.findEquipe();
-    console.log(this.equipeForm);
     return this.parametresAvanceesEquipesServive.findEquipe();
   }
 
@@ -39,10 +41,18 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
   }
 
   validerEquipe() {
+    let counter = 0;
     for(let i = 0; i < this.equipeForm.listPokemons.length; i++) {
       this.equipeForm.listPokemons[i].equipe = new Equipe();
       this.equipeForm.listPokemons[i].equipe.id = this.equipeForm.id;
-      this.parametresAvanceesEquipesServive.modify(this.equipeForm.listPokemons[i]);
+      this.parametresAvanceesEquipesServive.modify(this.equipeForm.listPokemons[i]).subscribe(resp => {
+        counter++;
+        if(counter == this.equipeForm.listPokemons.length - 1) {
+          this.accueilService.load(25);
+          this.router.navigate(['/accueil']); //,{ queryParams: {idUtilisateur: }});
+          console.log("Hey");
+        }
+      }, error => console.log(error));;
     }
   }
 

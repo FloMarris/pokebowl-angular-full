@@ -12,12 +12,12 @@ import {Router} from "@angular/router";
   styleUrls: ['./accueil.component.scss']
 })
 export class AccueilComponent implements OnInit {
-  nbPokemon:number = 6;
   utilisateurForm:Utilisateur= new Utilisateur();
   utilisateurSession: Utilisateur = JSON.parse(sessionStorage.getItem("utilisateur"));
   equipeEnCoursForm:Equipe = new Equipe();
   equipePrecedenteForm:Equipe = new Equipe();
-
+  equipeSauvegardesForm:Array<Equipe> = new Array<Equipe>();
+  nombrePokemonParEquipe: number;
 
   constructor(private accueilService: AccueilHttpService, private router: Router) {
   }
@@ -43,19 +43,74 @@ export class AccueilComponent implements OnInit {
      this.utilisateurForm = this.accueilService.findUtilisateur();
      this.equipeEnCoursForm = this.equipePrecedenteForm;
      this.utilisateurForm.equipeEnCours = this.equipePrecedenteForm;
-     console.log(this.utilisateurForm);
-    this.accueilService.modifyUtilisateur(this.utilisateurForm);
+     this.accueilService.modifyUtilisateur(this.utilisateurForm);
    }
 
+  chargerEquipeSauvegardee(index: number) {
+    this.utilisateurForm = this.accueilService.findUtilisateur();
+    this.equipeSauvegardesForm = this.accueilService.findEquipeSauvegardees();
+    this.equipeEnCoursForm = this.equipeSauvegardesForm[index];
+    this.utilisateurForm.equipeEnCours = this.equipeSauvegardesForm[index];
+    this.accueilService.modifyUtilisateur(this.utilisateurForm);
+  }
+
   validerEquipeEnCoursForm(){
+    let counter = 0;
     for(let i = 0; i < this.equipeEnCoursForm.listPokemons.length; i++) {
       this.equipeEnCoursForm.listPokemons[i].equipe = new Equipe();
       this.equipeEnCoursForm.listPokemons[i].equipe.id = this.equipeEnCoursForm.id;
-      this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[i]);
+      this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[i]).subscribe(resp => {
+        counter++;
+        if(counter == this.equipeEnCoursForm.listPokemons.length - 1) {
+          this.router.navigate(['/parametresEquipe'],{ queryParams: {idEquipe: this.equipeEnCoursForm.id}});
+        }
+      }, error => console.log(error));
     }
-    // this.router.navigate(['/parametresEquipe'],{ queryParams: {idEquipe: this.equipeEnCoursForm.id}});
   }
 
+  changerTailleEquipeEnCours() {
+    this.utilisateurForm = this.accueilService.findUtilisateur();
 
+    if(this.equipeEnCoursForm.listPokemons.length != 0) {
+      if(this.nombrePokemonParEquipe > this.equipeEnCoursForm.listPokemons.length) {
+        for(let i = this.equipeEnCoursForm.listPokemons.length; i < this.nombrePokemonParEquipe; i++) {
+          this.equipeEnCoursForm.listPokemons.push(new MonPokemon());
+          this.equipeEnCoursForm.listPokemons[i].equipe = new Equipe();
+          this.equipeEnCoursForm.listPokemons[i].equipe.id = this.equipeEnCoursForm.id;
+          this.accueilService.createEquipeEnCours(this.equipeEnCoursForm.listPokemons[i]).subscribe(resp => {
+            this.accueilService.load(this.utilisateurForm.id);
+          }, error => console.log(error));
+        }
+      }
+      if(this.nombrePokemonParEquipe < this.equipeEnCoursForm.listPokemons.length) {
+
+        for(let i = this.equipeEnCoursForm.listPokemons.length - 1; i >= this.nombrePokemonParEquipe; i--) {
+          console.log(i);
+          console.log(this.equipeEnCoursForm.listPokemons);
+          //this.equipeEnCoursForm.listPokemons.push(new MonPokemon());
+          //this.equipeEnCoursForm.listPokemons[i].equipe = new Equipe();
+          //this.equipeEnCoursForm.listPokemons[i].equipe.id = this.equipeEnCoursForm.id;
+          this.accueilService.deleteEquipeEnCours(this.equipeEnCoursForm.listPokemons[i]).subscribe(resp => {
+            this.accueilService.load(this.utilisateurForm.id);
+          }, error => console.log(error));
+        }
+      }
+    }
+    else{
+      this.equipeEnCoursForm.listPokemons = new Array<MonPokemon>();
+      this.equipeEnCoursForm.nbrPokemons = this.nombrePokemonParEquipe;
+      for(let i = 0; i < this.nombrePokemonParEquipe; i++) {
+        this.equipeEnCoursForm.listPokemons.push(new MonPokemon());
+        this.equipeEnCoursForm.listPokemons[i].equipe = new Equipe();
+        this.equipeEnCoursForm.listPokemons[i].equipe.id = this.equipeEnCoursForm.id;
+        this.accueilService.createEquipeEnCours(this.equipeEnCoursForm.listPokemons[i]).subscribe(resp => {
+          this.accueilService.load(this.utilisateurForm.id);
+        }, error => console.log(error));
+      }
+      console.log(this.equipeEnCoursForm);
+    }
+
+
+  }
 
 }
