@@ -49,8 +49,7 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
         counter++;
         if(counter == this.equipeForm.listPokemons.length - 1) {
           this.accueilService.load(25);
-          this.router.navigate(['/accueil']); //,{ queryParams: {idUtilisateur: }});
-          console.log("Hey");
+          this.router.navigate(['/accueil']);
         }
       }, error => console.log(error));;
     }
@@ -99,5 +98,4 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
   randomAttaqueId(listAttaques: Array<Attaque>): number {
     return listAttaques[Math.floor(Math.random() * listAttaques.length)].id;
   }
-
 }

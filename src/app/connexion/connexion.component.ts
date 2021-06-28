@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Utilisateur} from "../../model/utilisateur";
 import {InscriptionComponent} from "../inscription/inscription.component";
 import {ConnexionHttpService} from "./connexion-http.service";
 import {Router} from "@angular/router";
+import {Connexion} from "../../model/connexion";
+import {AccueilHttpService} from "../accueil/accueil-http.service";
 
 @Component({
   selector: 'app-connexion',
@@ -11,22 +13,25 @@ import {Router} from "@angular/router";
 })
 export class ConnexionComponent implements OnInit {
 
-  utilisateurForm: Utilisateur = new Utilisateur();
+  connexionForm: Connexion = new Connexion();
   connexionValidation: Boolean = true;
 
-  constructor(private connexionService: ConnexionHttpService, private router: Router) { }
+  constructor(private connexionService: ConnexionHttpService, private router: Router,
+              private accueilService: AccueilHttpService) {
+  }
 
   ngOnInit(): void {
   }
 
-  connexion(){
-    for (let i=0; i<this.connexionService.utilisateurs.length;i++){
-      if (this.utilisateurForm.email == this.connexionService.utilisateurs[i].email && this.utilisateurForm.motDePasse == this.connexionService.utilisateurs[i].motDePasse){
-        this.router.navigate(['/accueil']);
-      }
-    }
-    this.connexionValidation = false;
-
+  connexion() {
+    this.connexionService.auth(this.connexionForm).subscribe(resp => {
+      sessionStorage.setItem("utilisateur", JSON.stringify(resp));
+      this.accueilService.load(this.accueilService.getIdUtilisateur());
+      this.router.navigate(['/accueil']);
+    }, error => {
+      console.log(error);
+      this.connexionValidation = false;
+    });
   }
 
 }
