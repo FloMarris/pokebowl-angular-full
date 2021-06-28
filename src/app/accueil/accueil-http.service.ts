@@ -63,6 +63,7 @@ export class AccueilHttpService {
 
   findUtilisateur():Utilisateur {
     return this.utilisateur;
+    "Bonjour";
   }
 
   // modifyEquipeEnCours(utilisateur:Utilisateur){
@@ -70,4 +71,5 @@ export class AccueilHttpService {
   //     this.load(19);
   //   }, error => console.log(error))
   // }
+
 }
