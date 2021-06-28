@@ -110,8 +110,24 @@ p{
 }
 h6{
   font-family: pokemonFont;
-  font-size: 75px;
+  font-size: 40px;
   color: #ffcc00;
   text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
 
+}
+
+h1 {
+  font-size: 40px;
+}
+
+table {
+  width: 50%;
+}
+
+button{
+  background: rgb(100,100,100);
+  border-style: groove;
+  border-color: rgb(100,100,100);
+  font-size: 30px;
+  border-radius: 15px;
 }
