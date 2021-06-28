@@ -35,16 +35,15 @@ export class AccueilComponent implements OnInit {
 
   getEquipePrecedente():Equipe{
     this.equipePrecedenteForm =  this.accueilService.findEquipePrecedente();
-    console.log(this.equipePrecedenteForm);
     return this.accueilService.findEquipePrecedente();
   }
 
    chargerEquipePrecedente(){
-    this.equipeEnCoursForm = this.equipePrecedenteForm;
-    console.log(this.equipeEnCoursForm);
-  //   this.utilisateurForm.equipeEnCours = new Equipe();
-  //   this.utilisateurForm.equipeEnCours.id = this.equipePrecedenteForm.id;
-  //   this.accueilService.modifyEquipeEnCours(this.utilisateurForm);
+     this.utilisateurForm = this.accueilService.findUtilisateur();
+     this.equipeEnCoursForm = this.equipePrecedenteForm;
+     this.utilisateurForm.equipeEnCours = this.equipePrecedenteForm;
+     console.log(this.utilisateurForm);
+    this.accueilService.modifyEquipeEnCours(this.utilisateurForm);
    }
 
 

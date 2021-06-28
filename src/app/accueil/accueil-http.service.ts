@@ -65,9 +65,9 @@ export class AccueilHttpService {
     return this.utilisateur;
   }
 
-  // modifyEquipeEnCours(utilisateur:Utilisateur){
-  //   this.http.put<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur).subscribe(resp => {
-  //     this.load(19);
-  //   }, error => console.log(error))
-  // }
+  modifyEquipeEnCours(utilisateur:Utilisateur){
+    this.http.put<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur).subscribe(resp => {
+       this.load(19);
+    }, error => console.log(error))
+  }
 }
