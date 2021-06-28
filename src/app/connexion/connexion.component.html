@@ -3,7 +3,7 @@
 <div class="cadreConnexion">
   <img src="../../assets/logoPokemon.png" alt="pokemon.png" width="230" height="135"><br>
   <h1>Connexion</h1><br><br>
-  <label class="data">Pseudo :</label><br>
+  <label class="data">Email :</label><br>
 
   <input type="email" class="form-control" placeholder="name@example.com" [(ngModel)]="utilisateurForm.email"><br><br><br>
 
@@ -11,13 +11,13 @@
 
   <input type="password" class="form-control" placeholder="..." [(ngModel)]="utilisateurForm.motDePasse"><br><br>
 
-  <a href="" (click)=motDePasseOublie() >Mot de passe oublié</a><br><br>
-  <input *ngIf="motDePasseOublie()" type="email" class="form-control" placeholder="Rentrez votre email" [(ngModel)]="utilisateurForm.email">
-  <a href="" *ngIf="motDePasseOublie()" >Envoyer un mail de réinitialisation</a><br><br>
 
-  <a href="C:\java\workspace\frontPokeBowl\public\Pages\2.accueilUtilisateur\accueilUtilisateur.html" class="data">Connexion<br><br>
+  <button class="data" (click)="connexion()">Connexion<br><br>
     <img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px;">
-  </a><br><br>
-<!--  <a href="../inscription/inscription" (click)="inscription()">Créer un compte</a>-->
+  </button><br><br>
+  <p *ngIf="!connexionValidation" class="valids">* Les informations sont incorrectes</p>
+
+  <a [routerLink]="['/inscription']">Créer un compte</a>
+
 </div>
 </body>

@@ -15,6 +15,7 @@ import { MatchComponent } from './match/match.component';
 import { MajPuisMinPipe } from './maj-puis-min.pipe';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatButtonModule} from '@angular/material/button';
+import { ProfilComponent } from './profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MatButtonModule} from '@angular/material/button';
     PokedexComponent,
     SalonComponent,
     MatchComponent,
-    MajPuisMinPipe
+    MajPuisMinPipe,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,

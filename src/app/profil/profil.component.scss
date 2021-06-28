@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+
+.body {
+  background-image: url(../../assets/fondProfil.png);
+  background-color: #ffe866;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.nav{
+  position: relative;
+  background-color : rgba(0,0,0,0.6);
+  border-bottom-style: groove;
+  border-bottom-color:  #cc423f;
+  padding : 5px;
+}
+
+a:link, a:visited{
+  color: #ffcc00;
+}
+
+li{
+  display: inline;
+  padding: 15px;
+  font-family: pokemonFont;
+  font-size: 20px;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+}
+
+.deconnexion{
+  position: relative;
+  left: 235%;
+}
+
+.deconnexion1{
+  position: relative;
+  left: 230%;
+}
+
+.titre{
+  font-family: pokemonFont;
+  font-size: 75px;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+  text-align: center;
+  letter-spacing: 6px;
+}
+
+div{
+  /* 	background-color : rgba(0,0,0,0.6); */
+  /* 	border-style: groove; */
+  /* 	border-color: #cc423f; */
+  /* 	border-radius : 10px; */
+  /* 	padding : 20px; */
+}
+
+.profil{
+  background-color : rgba(0,0,0,0.6);
+  border-style: groove;
+  border-color: #cc423f;
+  border-radius : 10px;
+  padding : 20px;
+  display: inline-block;
+  width: 40%;
+  margin-left: 25px;
+}
+.statistiques{
+  background-color : rgba(0,0,0,0.6);
+  border-style: groove;
+  border-color: #cc423f;
+  border-radius : 10px;
+  padding : 20px;
+  float: right;
+  margin-right: 25px;
+  width: 55%;
+}
+
+.equipe{
+  background-color : rgba(0,0,0,0.6);
+  border-style: groove;
+  border-color: #cc423f;
+  border-radius : 10px;
+  padding : 20px;
+  display: inline-block;
+  width: 40%;
+  margin-left: 25px;
+  margin-top: 25px;
+}
+
+h1{
+  font-family: pokemonFont;
+  font-size: 75px;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+  text-align: center;
+}
+
+.photoProfil{
+  float: right;
+}
+
+p{
+  font-family: pokemonFont;
+  font-size: 20px;
+  color: #ffcc00;
+  text-shadow: 0 0 3px black, 0 0 5px #0000FF;
+}
+h6{
+  font-family: pokemonFont;
+  font-size: 75px;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+
+}

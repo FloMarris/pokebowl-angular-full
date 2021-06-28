@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Utilisateur} from "../../model/utilisateur";
 import {InscriptionHttpService} from "./inscription-http.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-inscription',
@@ -11,8 +12,11 @@ export class InscriptionComponent implements OnInit {
 
   utilisateurForm: Utilisateur = new Utilisateur();
   motDePasseBis: string = "";
+  inscriptionValidation: Boolean = true;
 
-  constructor(private inscriptionService: InscriptionHttpService) { }
+  constructor(private inscriptionService: InscriptionHttpService) {
+  }
+
 
   ngOnInit(): void {
   }
@@ -27,6 +31,9 @@ export class InscriptionComponent implements OnInit {
   }
 
   validerMotDePasse(): Boolean{
+    while(this.utilisateurForm.motDePasse == null){
+      return true;
+    }
     if(this.utilisateurForm.motDePasse != this.motDePasseBis){
       return false;
     }
@@ -43,11 +50,11 @@ export class InscriptionComponent implements OnInit {
   }
 
   inscription(){
-    if (this.validerPseudo() && this.validerMotDePasse() && this.validerEmail()){
-      /*changement de page*/
+    if (this.validerPseudo() && this.validerMotDePasse() && this.validerEmail() && (this.utilisateurForm.pseudo || this.utilisateurForm.email || this.utilisateurForm.motDePasse)){
+      this.inscriptionService.create(this.utilisateurForm);
     }
     else {
-   /*   on verra*/
+      this.inscriptionValidation = false;
     }
   }
 }
