@@ -5,6 +5,8 @@ import {Pokemon} from "../../model/pokemon";
 import {Equipe} from "../../model/equipe";
 import {Utilisateur} from "../../model/utilisateur";
 import {Observable} from "rxjs";
+import {Router} from "@angular/router";
+import {MonPokemon} from "../../model/mon-pokemon";
 
 @Injectable({
   providedIn: 'root'
@@ -63,12 +65,16 @@ export class AccueilHttpService {
 
   findUtilisateur():Utilisateur {
     return this.utilisateur;
-    "Bonjour";
   }
 
-  modifyEquipeEnCours(utilisateur:Utilisateur){
+  modifyUtilisateur(utilisateur:Utilisateur){
     this.http.put<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur).subscribe(resp => {
        this.load(19);
+    }, error => console.log(error))
+  }
+
+  modifyEquipeEnCours(monPokemon:MonPokemon) {
+    this.http.put<MonPokemon>(this.appConfig.backEndUrl + "monPokemon/" + monPokemon.id, monPokemon).subscribe(resp => {
     }, error => console.log(error))
   }
 }

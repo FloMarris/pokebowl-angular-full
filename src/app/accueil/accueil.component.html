@@ -20,7 +20,7 @@
         <div *ngFor="let monPokemon of getEquipeEncours().listPokemons, let index=index" class ="affichageEquipeEncours">
             <div class ="affichageEquipeEncours">
               <select class="box"[(ngModel)]="equipeEnCoursForm.listPokemons[index].pokeReference">
-                <option value="">Choisir un Pokemon</option>
+                <option selected="selected" [ngValue]="monPokemon.pokeReference">{{monPokemon.pokeReference.nom}}</option>
                 <option *ngFor="let pokemon of listPokemon()" [ngValue]="pokemon">{{pokemon.nom}}</option>
               </select>
             </div>
@@ -37,7 +37,8 @@
 
       <tr>
         <th colspan="2" class="parametreAvance">
-          <a href="C:\java\workspace\frontPokeBowl\public\Pages\3.parametresAvancesEquipeUtilisateur\parametresAvances.html" class="h3">Paramètres avancés de l'équipe</a>
+          <a (click)="validerEquipeEnCoursForm()" class="h3">Valider les changements</a>
+          <a [routerLink]="['/parametresEquipe']" [queryParams]="{idEquipe: equipeEnCoursForm.id}" class="h3">Paramètres avancés de l'équipe</a>
         </th>
 
         <th colspan="2" class="equipeAleatoire">
