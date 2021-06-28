@@ -42,13 +42,14 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
 
   validerEquipe() {
     let counter = 0;
+
     for(let i = 0; i < this.equipeForm.listPokemons.length; i++) {
       this.equipeForm.listPokemons[i].equipe = new Equipe();
       this.equipeForm.listPokemons[i].equipe.id = this.equipeForm.id;
       this.parametresAvanceesEquipesServive.modify(this.equipeForm.listPokemons[i]).subscribe(resp => {
         counter++;
         if(counter == this.equipeForm.listPokemons.length - 1) {
-          this.accueilService.load(25);
+          this.accueilService.load(JSON.parse(sessionStorage.getItem("utilisateur")).id);
           this.router.navigate(['/accueil']);
         }
       }, error => console.log(error));;
