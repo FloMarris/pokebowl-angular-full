@@ -31,6 +31,7 @@ export class ProfilComponent implements OnInit {
   }
 
   findInfos(): void {
+    console.log(this.nbrVictoires);
     this.pseudo = this.profilService.utilisateur.pseudo;
     this.email = this.profilService.utilisateur.email;
     this.avatar = this.profilService.utilisateur.avatar;
@@ -39,6 +40,7 @@ export class ProfilComponent implements OnInit {
     this.nbrVictoires = this.profilService.utilisateur.statistique.nbrVictoires;
     this.nbrDefaites = this.profilService.utilisateur.statistique.nbrDefaites;
     this.listEquipes = this.profilService.equipesSauvegardees;
+    console.log(this.nbrVictoires);
   }
 
   gerer(IdEquipeSauv: number){

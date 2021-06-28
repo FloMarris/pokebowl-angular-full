@@ -9,7 +9,7 @@ import {Salon} from "../../model/salon";
 export class SalonHttpService {
 
   salon: Salon = new Salon();
-  idSalon: number = 28; //ou 27 pour mes tests
+  idSalon: number = 27; //ou 27 pour mes tests
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
     this.load();
