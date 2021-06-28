@@ -17,7 +17,6 @@ export class InscriptionComponent implements OnInit {
   constructor(private inscriptionService: InscriptionHttpService) {
   }
 
-
   ngOnInit(): void {
   }
 

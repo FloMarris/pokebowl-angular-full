@@ -3,13 +3,13 @@
 <div class="cadreConnexion">
   <img src="../../assets/logoPokemon.png" alt="pokemon.png" width="230" height="135"><br>
   <h1>Connexion</h1><br><br>
-  <label class="data">Email :</label><br>
+  <label class="data">Pseudo :</label><br>
 
-  <input type="email" class="form-control" placeholder="name@example.com" [(ngModel)]="utilisateurForm.email"><br><br><br>
+  <input type="text" class="form-control" placeholder="tapez votre pseudo" [(ngModel)]="connexionForm.pseudo"><br><br><br>
 
   <label class="data">Mot de passe :</label><br>
 
-  <input type="password" class="form-control" placeholder="..." [(ngModel)]="utilisateurForm.motDePasse"><br><br>
+  <input type="password" class="form-control" placeholder="..." [(ngModel)]="connexionForm.motDePasse"><br><br>
 
 
   <button class="data" (click)="connexion()">Connexion<br><br>
