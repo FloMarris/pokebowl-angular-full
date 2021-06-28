@@ -11,6 +11,7 @@ import {AccueilHttpService} from "../accueil/accueil-http.service";
   templateUrl: './connexion.component.html',
   styleUrls: ['./connexion.component.scss']
 })
+
 export class ConnexionComponent implements OnInit {
 
   connexionForm: Connexion = new Connexion();
@@ -33,5 +34,4 @@ export class ConnexionComponent implements OnInit {
       this.connexionValidation = false;
     });
   }
-
 }
