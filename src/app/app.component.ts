@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AccueilHttpService} from "./accueil/accueil-http.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'pokebowl-angular';
+
+  constructor(private accueilService: AccueilHttpService) {
+    // sessionStorage.setItem("utilisateur", JSON.stringify());
+  }
+
 }
