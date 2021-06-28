@@ -1,7 +1,9 @@
 <body class="body">
-<p class="titre">Paramètres avancés de l'équipe</p><br><br>
-
+<p class="titre">Paramètres avancés de l'équipe</p><br>
  <div class="casePokemon" *ngFor = "let pokemon of getEquipe().listPokemons, let index = index;">
+
+   <!-- SI LES POKEMONS DE REFERENCE SONT DEJA ENREGISTRES -->
+   <div *ngIf="pokemon.pokeReference != null">
    <h1>{{pokemon?.pokeReference?.nom}}</h1><br>
    <table>
     <tr>
@@ -47,12 +49,63 @@
         <a [routerLink]="['/pokedex']" [queryParams]="{idEquipe: id, idMonPokemon: equipeForm.listPokemons[index].id}">Changer</a>
       </th>
     </tr>
-  </table>
+   </table>
+   </div>
+
+
+   <!-- SI LES POKEMONS DE REFERENCE NE SONT PAS ENREGISTRES -->
+   <div *ngIf="pokemon.pokeReference == null">
+     <h1>Pas de pokemon</h1><br>
+     <table>
+       <tr>
+         <th rowspan="2">
+           <h1 class="pointInterrogation">?</h1>
+           <!-- <img src= "../../assets/imagePokeDefault.png" width="150" height="150"> -->
+         </th>
+         <th>
+           <select class="box sizeFixed">
+             <option selected="selected">Pas d'attaques</option>
+           </select>
+         </th>
+         <th>
+           <select class="box sizeFixed">
+             <option selected="selected">Pas d'attaques</option>
+           </select>
+         </th>
+       </tr>
+       <tr>
+         <th>
+           <select class="box sizeFixed">
+             <option selected="selected">Pas d'attaques</option>
+           </select>
+         </th>
+         <th>
+           <select class="box sizeFixed">
+             <option selected="selected">Pas d'attaques</option>
+           </select>
+         </th>
+       </tr>
+
+       <!-- <div>
+         <button type="button" class="boutonAleatoire">?</button>
+       </div> -->
+
+       <tr>
+         <th>&nbsp;</th>
+       <tr>
+         <th>
+           <a [routerLink]="['/pokedex']" [queryParams]="{idEquipe: idEquipe, idMonPokemon: equipeForm.listPokemons[index].id}">Changer</a>
+         </th>
+       </tr>
+     </table>
+   </div>
 
 </div>
 
-<div class="center">
-  <button type="button" class="boutonValider" (click)="validerEquipe()">Valider les changements</button>
+<div class="caseValiderEquipe">
+  <div class="center">
+    <button type="button" class="boutonValider" (click)="validerEquipe()">Valider les changements</button>
+  </div>
 </div>
 
 <footer>

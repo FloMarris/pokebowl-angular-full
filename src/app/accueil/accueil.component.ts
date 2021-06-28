@@ -4,6 +4,7 @@ import {Pokemon} from "../../model/pokemon";
 import {MonPokemon} from "../../model/mon-pokemon";
 import {Utilisateur} from "../../model/utilisateur";
 import {Equipe} from "../../model/equipe";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-accueil',
@@ -18,7 +19,7 @@ export class AccueilComponent implements OnInit {
   equipePrecedenteForm:Equipe = new Equipe();
 
 
-  constructor(private accueilService: AccueilHttpService) {
+  constructor(private accueilService: AccueilHttpService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -35,17 +36,25 @@ export class AccueilComponent implements OnInit {
 
   getEquipePrecedente():Equipe{
     this.equipePrecedenteForm =  this.accueilService.findEquipePrecedente();
-    console.log(this.equipePrecedenteForm);
     return this.accueilService.findEquipePrecedente();
   }
 
    chargerEquipePrecedente(){
-    this.equipeEnCoursForm = this.equipePrecedenteForm;
-    console.log(this.equipeEnCoursForm);
-  //   this.utilisateurForm.equipeEnCours = new Equipe();
-  //   this.utilisateurForm.equipeEnCours.id = this.equipePrecedenteForm.id;
-  //   this.accueilService.modifyEquipeEnCours(this.utilisateurForm);
+     this.utilisateurForm = this.accueilService.findUtilisateur();
+     this.equipeEnCoursForm = this.equipePrecedenteForm;
+     this.utilisateurForm.equipeEnCours = this.equipePrecedenteForm;
+     console.log(this.utilisateurForm);
+    this.accueilService.modifyUtilisateur(this.utilisateurForm);
    }
+
+  validerEquipeEnCoursForm(){
+    for(let i = 0; i < this.equipeEnCoursForm.listPokemons.length; i++) {
+      this.equipeEnCoursForm.listPokemons[i].equipe = new Equipe();
+      this.equipeEnCoursForm.listPokemons[i].equipe.id = this.equipeEnCoursForm.id;
+      this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[i]);
+    }
+    // this.router.navigate(['/parametresEquipe'],{ queryParams: {idEquipe: this.equipeEnCoursForm.id}});
+  }
 
 
 
