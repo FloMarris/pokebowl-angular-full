@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Utilisateur} from "../../model/utilisateur";
 import {InscriptionComponent} from "../inscription/inscription.component";
+import {ConnexionHttpService} from "./connexion-http.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-connexion',
@@ -9,19 +11,22 @@ import {InscriptionComponent} from "../inscription/inscription.component";
 })
 export class ConnexionComponent implements OnInit {
 
-  utilisateurForm: Utilisateur = null;
+  utilisateurForm: Utilisateur = new Utilisateur();
+  connexionValidation: Boolean = true;
 
-  constructor() { }
+  constructor(private connexionService: ConnexionHttpService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  motDePasseOublie(){
+  connexion(){
+    for (let i=0; i<this.connexionService.utilisateurs.length;i++){
+      if (this.utilisateurForm.email == this.connexionService.utilisateurs[i].email && this.utilisateurForm.motDePasse == this.connexionService.utilisateurs[i].motDePasse){
+        this.router.navigate(['/accueil']);
+      }
+    }
+    this.connexionValidation = false;
 
   }
-
-/*  inscription(){
-    return InscriptionComponent;
-  }*/
 
 }
