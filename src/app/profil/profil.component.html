@@ -21,8 +21,8 @@
   <div style="display: inline-block; width: 100%; margin-top: 50px;">
     <p>Pokémon préféré : {{pokemonPref}}</p><br>
 
-    <p *ngIf="nbrTotalParties!=0">Pourcentage de vistoires : {{nbrVictoires/nbrTotalParties*100}}%</p><br>
-    <p *ngIf="nbrTotalParties==0">Pourcentage de victoires : Aucun combat encore effectué</p><br>
+    <p *ngIf="nbrTotalParties!=0 && nbrTotalParties!=null">Pourcentage de vistoires : {{nbrVictoires/nbrTotalParties*100}}%</p><br>
+    <p *ngIf="nbrTotalParties==0 || nbrTotalParties==null">Pourcentage de victoires :</p><br>
 
 <!--    <p>Equipe 1: 100%</p>-->
 <!--    <p>Equipe 2: 99%</p>-->
@@ -49,24 +49,24 @@
     <table>
       <tr>
         <th>
-          <img src="{{equipe.listPokemons[0].pokeReference.avatar}}" width="80">
+          <img src="{{equipe.listPokemons[0]?.pokeReference.avatar}}" width="80">
         </th>
         <th>
-          <img src="{{equipe.listPokemons[1].pokeReference.avatar}}" width="80">
+          <img src="{{equipe.listPokemons[1]?.pokeReference.avatar}}" width="80">
         </th>
         <th>
-          <img src="{{equipe.listPokemons[2].pokeReference.avatar}}" width="80">
+          <img src="{{equipe.listPokemons[2]?.pokeReference.avatar}}" width="80">
         </th>
       </tr>
       <tr *ngIf="equipe.listPokemons.length>3">
         <th>
-          <img src="{{equipe.listPokemons[3].pokeReference.avatar}}" width="80">
+          <img src="{{equipe.listPokemons[3]?.pokeReference.avatar}}" width="80">
         </th>
         <th *ngIf="equipe.listPokemons.length>4">
-          <img src="{{equipe.listPokemons[4].pokeReference.avatar}}" width="80">
+          <img src="{{equipe.listPokemons[4]?.pokeReference.avatar}}" width="80">
         </th>
         <th *ngIf="equipe.listPokemons.length>5">
-          <img src="{{equipe.listPokemons[5].pokeReference.avatar}}" width="80">
+          <img src="{{equipe.listPokemons[5]?.pokeReference.avatar}}" width="80">
         </th>
       </tr>
     </table>
