@@ -1,40 +1,41 @@
-//@font-face {
-//  font-family: pokemonFont;
-//  src: url(PokemonSolid.ttf);
-//}
-//
-//.body {
-//  background-image: url(fondConnexionUtilisateur.png);
-//  background-color: #87CEFA;
-//  background-repeat: no-repeat;
-//  background-size: cover;
-//  background-attachment: fixed;
-//}
-//
-//.cadreConnexion {
-//  display: inline-block;
-//  width: 50%;
-//  margin-left: 25%;
-//  margin-top: 6%;
-//  background-color: rgba(0, 0, 0, 0.6);
-//  border-style: groove;
-//  border-color: #cc423f;
-//  border-radius: 10px;
-//  text-align: center;
-//  padding : 15px;
-//}
-//
-//h1 {
-//  font-family: pokemonFont;
-//  color: #ffcc00;
-//  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
-//}
-//
-//.data {
-//  font-family: pokemonFont;
-//  font-size: 17px;
-//  color: #ffcc00;
-//  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
-//}
-//
-//
+@charset "UTF-8";
+@font-face {
+  font-family: pokemonFont;
+  src: url("../../assets/PokemonSolid.ttf");
+}
+
+.body {
+  background-image: url("../../assets/fondConnexionUtilisateur.png");
+  background-color: #87CEFA;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.cadreConnexion {
+  display: inline-block;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 6%;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-style: groove;
+  border-color: #cc423f;
+  border-radius: 10px;
+  text-align: center;
+  padding : 15px;
+}
+
+h1 {
+  font-family: pokemonFont;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+}
+
+.data {
+  font-family: pokemonFont;
+  font-size: 17px;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+}
+
+

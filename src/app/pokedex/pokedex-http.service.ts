@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "../app-config.service";
 import {Pokemon} from "../../model/pokemon";
+import {Observable} from "rxjs";
+import {MonPokemon} from "../../model/mon-pokemon";
+import {ParametresAvanceesEquipesService} from "../parametres-avancees-equipe/parametres-avancees-equipes.service";
+import {Attaque} from "../../model/attaque";
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +27,29 @@ export class PokedexHttpService {
     this.appConfig.findAllTypeEnums().subscribe(resp => {
       this.types = resp;
     }, error => console.log(error));
-
-    console.log(this.types);
   }
 
   findAll(): Array<Pokemon> {
     return this.pokemons;
   }
 
+  findMonPokemonById(id:number): Observable<MonPokemon> {
+    return this.http.get<MonPokemon>(this.appConfig.backEndUrl + "monPokemon/" + id);
+  }
+
+  findPokemonById(idPokemon: number): Observable<Pokemon> {
+    return this.http.get<Pokemon>(this.appConfig.backEndUrl + "pokemon/" + idPokemon);
+  }
+
+  modifyMonPokemon(monPokemon: MonPokemon): Observable<MonPokemon> {
+    return this.http.put<MonPokemon>(this.appConfig.backEndUrl + "monPokemon/" + monPokemon.id, monPokemon);
+  }
+
+  findAllAttaquesPokeByPokeId(id: number) : Observable<Array<Attaque>> {
+    return this.http.get<Array<Attaque>>(this.appConfig.backEndUrl + "attaque/pokemon/" + id);
+  }
+
+  findAttaqueById(id: number) : Observable<Attaque> {
+    return this.http.get<Attaque>(this.appConfig.backEndUrl + "attaque/" + id);
+  }
 }

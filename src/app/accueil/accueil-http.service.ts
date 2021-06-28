@@ -63,6 +63,7 @@ export class AccueilHttpService {
 
   findUtilisateur():Utilisateur {
     return this.utilisateur;
+    "Bonjour";
   }
 
   modifyEquipeEnCours(utilisateur:Utilisateur){
