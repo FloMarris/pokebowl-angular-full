@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {Utilisateur} from "../../model/utilisateur";
 import {AppConfigService} from "../app-config.service";
 import {Router} from "@angular/router";
+import {Equipe} from "../../model/equipe";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -22,11 +24,17 @@ export class InscriptionHttpService{
     }, error => console.log(error));
   }
 
-  create(utilisateur: Utilisateur){
-    console.log(utilisateur);
-    this.http.post<Utilisateur>(this.appConfig.backEndUrl + "utilisateur", utilisateur).subscribe(resp => {
-      utilisateur = null;
-      this.router.navigate(['/connexion']);
-    }, error => console.log(error));
+  create(utilisateur: Utilisateur): Observable<Utilisateur>{
+    return this.http.post<Utilisateur>(this.appConfig.backEndUrl + "utilisateur", utilisateur);
+  }
+
+  createEquipeVide(equipe: Equipe): Observable<Equipe> {
+    return this.http.post<Equipe>(this.appConfig.backEndUrl + "equipe", equipe);
+  }
+
+  modifyEquipe(equipe: Equipe) {
+    this.http.put<Equipe>(this.appConfig.backEndUrl + "equipe/" + equipe.id, equipe).subscribe(resp => {
+
+    })
   }
 }

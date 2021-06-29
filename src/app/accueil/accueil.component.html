@@ -70,8 +70,15 @@
 
   <div class="cadreIn" >
     <h2>Equipe précédente</h2><br>
-      <img *ngFor="let monPokemon of getEquipePrecedente().listPokemons" src="{{monPokemon.pokeReference.avatar}}" width="130" >
-      <a class="h3" (click)="chargerEquipePrecedente()">Charger l'équipe</a>
+    <div *ngFor="let monPokemon of getEquipePrecedente().listPokemons">
+      <div *ngIf="monPokemon != null">
+        <img src="{{monPokemon.pokeReference.avatar}}" width="130" >
+        <a class="h3" (click)="chargerEquipePrecedente()">Charger l'équipe</a>
+      </div>
+      <div *ngIf="monPokemon == null">
+        <h1>Pas d'équipe précédente sauvegardée</h1>
+      </div>
+    </div>
   </div>
 
   <div class="cadreIn">

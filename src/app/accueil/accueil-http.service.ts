@@ -7,6 +7,7 @@ import {Utilisateur} from "../../model/utilisateur";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {MonPokemon} from "../../model/mon-pokemon";
+// import * as util from "util";
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,9 @@ export class AccueilHttpService {
   }
 
   load(id:number) {
+    let utilisateur: Utilisateur = JSON.parse(sessionStorage.getItem("utilisateur"));
+    console.log(utilisateur);
+
     this.http.get<Array<Equipe>>(this.appConfig.backEndUrl + "utilisateur/" + id + "/equipes").subscribe(resp => {
       this.equipesSauvegardees = resp;
       console.log(this.equipesSauvegardees);
@@ -37,9 +41,11 @@ export class AccueilHttpService {
       this.pokemons = resp;
     }, error => console.log(error))
 
-    this.http.get<Equipe>(this.appConfig.backEndUrl + "utilisateur/" + id + "/equipePrecedente").subscribe(resp => {
-      this.equipePrecedente = resp;
-    }, error => console.log(error))
+    if(utilisateur.derniereEquipe != null) {
+      this.http.get<Equipe>(this.appConfig.backEndUrl + "utilisateur/" + id + "/equipePrecedente").subscribe(resp => {
+        this.equipePrecedente = resp;
+      }, error => console.log(error))
+    }
 
     this.http.get<Equipe>(this.appConfig.backEndUrl + "utilisateur/" + id + "/equipeEnCours").subscribe(resp => {
       this.equipeEnCours = resp;
