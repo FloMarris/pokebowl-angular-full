@@ -19,7 +19,7 @@ export class ProfilHttpService {
   }
 
   loadEquipesSauvegardeesByUtilisateurId(id: number): Observable<Array<Equipe>> {
-    return this.http.get<Array<Equipe>>(this.appConfig.backEndUrl +"utilisateur/" + id + "/equipes")
+    return this.http.get<Array<Equipe>>(this.appConfig.backEndUrl +"utilisateur/" + JSON.parse(sessionStorage.getItem("utilisateur")).id + "/equipes")
   }
 
 }
