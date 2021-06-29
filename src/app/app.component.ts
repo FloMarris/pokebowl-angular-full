@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {AccueilHttpService} from "./accueil/accueil-http.service";
-import {ActivatedRoute, Route, Router, UrlSegment} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -9,15 +9,18 @@ import {ActivatedRoute, Route, Router, UrlSegment} from "@angular/router";
 })
 export class AppComponent {
   title = 'pokebowl-angular';
-  url: string = "";
+  urlEssai: string="";
+  navBarre: Boolean = false;
 
-  constructor(private accueilService: AccueilHttpService, private router: Router, private  route: ActivatedRoute) {
-    this.url = this.router.url;
+  constructor(private accueilService: AccueilHttpService, private router: Router) {
   }
 
   loadAcceuil() {
     if(JSON.parse(sessionStorage.getItem("utilisateur")).id) {
       this.accueilService.load((JSON.parse(sessionStorage.getItem("utilisateur")).id));
     }
+  }
+  recupererPage(){
+    return this.router.url == '/connexion' || this.router.url == '/inscription';
   }
 }
