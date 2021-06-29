@@ -114,20 +114,25 @@ table{
 }
 
 th {
-  /* 	border: 1px solid black; */
-  width: 25%;
+/*  border: 1px solid black;*/
 }
+
+.essai{
+  display: inline-block;
+}
+
 .parametreAvance{
-  text-align: left;
+  float: left;
   font-family: pokemonFont;
   color: #ffcc00;
   text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
 }
 
 .equipeAleatoire{
-  text-align: right;
+  float: right;
   font-family: pokemonFont;
   color: #ffcc00;
+
   text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
 }
 
@@ -137,8 +142,18 @@ th {
   top: 24%;
 }
 
-.boutonEquipe{
-  background-color : rgba(128, 128, 128, 0.6);
+.pointInterrogation{
+  margin-left: 40px;
+  font-size: 80px;
+}
+
+input[type="radio"].demo2 {
+  display: none;
+}
+input[type="radio"].demo2 + label {
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
   border-style: groove;
   border-color: #808080;
   border-radius : 5px;
@@ -148,9 +163,15 @@ th {
   font-size: 30px;
   width: 160px;
   height: 80px;
+  background-color : rgba(128, 128, 128, 0.6);
+  transition: all 0.5s ease-in-out;
 }
-
-.pointInterrogation{
-  font-size: 80px;
+input[type="radio"].demo2.demoyes:hover + label {
+  background-color: #6666ff;
+  border-color: #6666ff;
+}
+input[type="radio"].demo2.demoyes:checked + label {
+  background-color: #0000ff;
+  border-color: #0000ff;
 }
 
