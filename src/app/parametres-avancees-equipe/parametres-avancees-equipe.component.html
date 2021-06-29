@@ -11,13 +11,13 @@
         <img src= "{{pokemon?.pokeReference?.avatar}}" alt="voltali.png" width="150" height="150">
       </th>
       <th>
-        <select class="box sizeFixed" [(ngModel)]="equipeForm.listPokemons[index].attaque1">
+        <select class="box sizeFixed" [(ngModel)]="equipeForm.listPokemons[index].attaque1" (change)="modifyAttaqueMonPokemon(index)">
           <option selected="selected" [ngValue]="pokemon?.attaque1">{{pokemon?.attaque1?.nom}}</option>
           <option *ngFor="let attaque of getAttaques(pokemon?.pokeReference.nom)" [ngValue]="attaque">{{attaque?.nom}}</option>
         </select>
       </th>
       <th>
-        <select class="box sizeFixed" [(ngModel)]="equipeForm.listPokemons[index].attaque2">
+        <select class="box sizeFixed" [(ngModel)]="equipeForm.listPokemons[index].attaque2" (change)="modifyAttaqueMonPokemon(index)">
           <option selected="selected" [ngValue]="pokemon?.attaque2">{{pokemon?.attaque2?.nom}}</option>
           <option *ngFor="let attaque of getAttaques(pokemon?.pokeReference.nom)" [ngValue]="attaque">{{attaque?.nom}}</option>
         </select>
@@ -25,13 +25,13 @@
     </tr>
     <tr>
       <th>
-        <select class="box sizeFixed" [(ngModel)]="equipeForm.listPokemons[index].attaque3">
+        <select class="box sizeFixed" [(ngModel)]="equipeForm.listPokemons[index].attaque3" (change)="modifyAttaqueMonPokemon(index)">
           <option selected="selected" [ngValue]="pokemon?.attaque3">{{pokemon?.attaque3?.nom}}</option>
           <option *ngFor="let attaque of getAttaques(pokemon?.pokeReference.nom)" [ngValue]="attaque">{{attaque?.nom}}</option>
         </select>
       </th>
       <th>
-        <select class="box sizeFixed" [(ngModel)]="equipeForm.listPokemons[index].attaque4">
+        <select class="box sizeFixed" [(ngModel)]="equipeForm.listPokemons[index].attaque4" (change)="modifyAttaqueMonPokemon(index)">
           <option selected="selected" [ngValue]="pokemon?.attaque4">{{pokemon?.attaque4?.nom}}</option>
           <option *ngFor="let attaque of getAttaques(pokemon?.pokeReference.nom)" [ngValue]="attaque">{{attaque?.nom}}</option>
         </select>

@@ -55,6 +55,13 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
       }, error => console.log(error));;
     }
   }
+  modifyAttaqueMonPokemon(index: number) {
+    this.equipeForm.listPokemons[index].equipe = new Equipe();
+    this.equipeForm.listPokemons[index].equipe.id = this.equipeForm.id;
+    this.parametresAvanceesEquipesServive.modify(this.equipeForm.listPokemons[index]).subscribe(resp =>{
+    }, error => console.log(error));
+  }
+
 
   aleatoire(index: number) {
     let idPoke: number = this.pokedexService.pokemons[Math.floor(Math.random() * this.pokedexService.pokemons.length)].id;
