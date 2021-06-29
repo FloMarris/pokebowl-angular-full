@@ -12,6 +12,7 @@ import {ProfilComponent} from "./profil/profil.component";
 const routes: Routes = [
   {path: "accueil", component: AccueilComponent},
   {path: "connexion", component: ConnexionComponent},
+  {path: "", component: ConnexionComponent},
   {path: "inscription", component: InscriptionComponent},
   {path: "parametresEquipe", component: ParametresAvanceesEquipeComponent},
   {path: "pokedex", component: PokedexComponent},

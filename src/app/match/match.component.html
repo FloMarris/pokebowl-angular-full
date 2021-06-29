@@ -1,1 +1,30 @@
-<p>match works!</p>
+<body class="body">
+<div class="cadreAdversaire">
+  <h1>
+    <a href="" class="h3">Pikachu</a><br><br>
+    <a href="" class="h3">Barre de vie</a>
+  </h1>
+</div>
+
+<div class="pokemonMatch">
+  <img src="{{findPokemonMatchJoueur1()?.monPokemon?.pokeReference.avatar}}"  width="500" > <br>
+</div>
+
+<div class="cadreMonPokemon">
+  <p class="p">{{findPokemonMatchJoueur1()?.monPokemon?.pokeReference.nom}}</p>
+  <p class="p">Barre de vie</p>
+  <button type="button" class="boutonEquipe">{{findPokemonMatchJoueur1()?.monPokemon?.attaque1.nom}}</button>
+  <button type="button" class="boutonEquipe">{{findPokemonMatchJoueur1()?.monPokemon?.attaque2.nom}}</button><br>
+  <button type="button" class="boutonEquipe">{{findPokemonMatchJoueur1()?.monPokemon?.attaque3.nom}}</button>
+  <button type="button" class="boutonEquipe">{{findPokemonMatchJoueur1()?.monPokemon?.attaque4.nom}}</button><br><br>
+</div>
+
+
+  <div class="cadreEquipe">
+    <div *ngFor="let monPokemon of findEquipeEnCoursJoueur1().listPokemons">
+      <img src="{{monPokemon.pokeReference.avatar}}"  width="100" > <br>
+    </div>
+  </div>
+
+
+</body>

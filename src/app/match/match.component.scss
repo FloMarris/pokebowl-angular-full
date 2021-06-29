@@ -1,0 +1,185 @@
+@charset "UTF-8";
+
+.body {
+  background-image: url('../../assets/fondCombatPokemon.png');
+  background-color: #e7e9eb;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.nav{
+  background-color : rgba(0,0,0,0.6);
+  border-bottom-style: groove;
+  border-bottom-color:  #cc423f;
+  padding : 5px;
+}
+
+a:link, a:visited{
+  color: #ffcc00;
+}
+
+li{
+  display: inline;
+  padding: 35px;
+  font-family: pokemonFont;
+  font-size: 40px;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+}
+
+.cadreCreationEquipe {
+  width: 50%;
+  background-color : rgba(0,0,0,0.6);
+  border-style: groove;
+  border-color: #cc423f;
+  border-radius : 10px;
+  padding : 10px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.cadreNbPokemon{
+  display: inline-block;
+  width: 100%;
+  border-style: groove;
+  border-color: #cc423f;
+  border-radius : 10px;
+  padding : 15px;
+  margin-top: 20px;
+}
+
+.cadreIn{
+  display: inline-block;
+  width: 49.5%;
+  border-style: groove;
+  border-color: #cc423f;
+  border-radius : 10px;
+  padding : 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.cadreAdversaire{
+  width: 450px;
+  background-color : rgba(0,0,0,0.6);
+  border-style: groove;
+  border-color: #cc423f;
+  border-radius : 10px;
+  padding : 10px;
+  position: absolute;
+  left: 3%;
+  top: 3%;
+  text-align: center;
+}
+
+.cadreMonPokemon{
+  width: 450px;
+  background-color : rgba(0,0,0,0.6);
+  border-style: groove;
+  border-color: #cc423f;
+  border-radius : 10px;
+  padding : 10px;
+  position: absolute;
+  left: 45%;
+  top: 55%;
+  text-align: center;
+}
+
+.cadreEquipe{
+  width: 180px;
+  background-color : rgba(0,0,0,0.6);
+  border-style: groove;
+  border-color: #cc423f;
+  border-radius : 10px;
+  padding : 10px;
+  position: absolute;
+  left: 85%;
+  top: 62%;
+  text-align: center;
+}
+
+.p{
+  font-family: pokemonFont;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+  font-size:25px;
+}
+
+.h2{
+  font-family: pokemonFont;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+}
+
+.h3{
+  font-family: pokemonFont;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+}
+
+.h5{
+  font-family: pokemonFont;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+  font-size: 20px;
+}
+
+.box {
+  background-color : rgba(128, 128, 128, 0.6);
+  border-style: groove;
+  border-color: #808080;
+  border-radius : 5px;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+  font-family: pokemonFont;
+}
+
+table{
+  width: 100%;
+  text-align: center;
+}
+
+th {
+  /* 	border: 1px solid black; */
+  width: 25%;
+}
+.parametreAvance{
+  text-align: left;
+  font-family: pokemonFont;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+}
+
+.equipeAleatoire{
+  text-align: right;
+  font-family: pokemonFont;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+}
+
+.pokeball{
+  position: absolute;
+  left: 64%;
+  top: 24%;
+}
+
+.boutonEquipe{
+  background-color : rgba(128, 128, 128, 0.6);
+  border-style: groove;
+  border-color: #808080;
+  border-radius : 5px;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+  font-family: pokemonFont;
+  font-size: 20px;
+  width: 160px;
+  height: 80px;
+}
+
+.pokemonMatch{
+  position: absolute;
+  left: 10%;
+  top: 55%;
+}
