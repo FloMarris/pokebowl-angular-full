@@ -15,4 +15,9 @@ export class AppComponent {
     this.url = this.router.url;
   }
 
+  loadAcceuil() {
+    if(JSON.parse(sessionStorage.getItem("utilisateur")).id) {
+      this.accueilService.load((JSON.parse(sessionStorage.getItem("utilisateur")).id));
+    }
+  }
 }

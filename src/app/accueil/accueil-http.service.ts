@@ -41,7 +41,9 @@ export class AccueilHttpService {
       this.pokemons = resp;
     }, error => console.log(error))
 
+    console.log(utilisateur);
     if(utilisateur.derniereEquipe != null) {
+      console.log("hey");
       this.http.get<Equipe>(this.appConfig.backEndUrl + "utilisateur/" + id + "/equipePrecedente").subscribe(resp => {
         this.equipePrecedente = resp;
       }, error => console.log(error))

@@ -58,12 +58,14 @@ export class ProfilComponent implements OnInit {
     this.pseudo = this.profilService.utilisateur.pseudo;
     this.email = this.profilService.utilisateur.email;
     this.avatar = this.profilService.utilisateur.avatar;
-    if (this.profilService.utilisateur.statistique) {
+
+    if(this.profilService.utilisateur.statistique != null) {
       this.pokemonPref = this.profilService.utilisateur.statistique.pokemonPrefere;
       this.nbrTotalParties = this.profilService.utilisateur.statistique.nbrPartiesJouees;
       this.nbrVictoires = this.profilService.utilisateur.statistique.nbrVictoires;
       this.nbrDefaites = this.profilService.utilisateur.statistique.nbrDefaites;
     }
+
     this.listEquipes = this.profilService.equipesSauvegardees;
   }
 
