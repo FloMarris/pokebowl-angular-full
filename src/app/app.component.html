@@ -1,4 +1,4 @@
-<div class="nav">
+<div class="nav" *ngIf="!recupererPage()">
   <ul>
     <li><a [routerLink]="['/accueil']" (click) = "loadAcceuil()">Acceuil</a></li>
     <li><a [routerLink]="['/connexion']">Connexion</a></li>
