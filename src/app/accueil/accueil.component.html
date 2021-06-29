@@ -18,16 +18,6 @@
         <th>&nbsp;</th>
       </tr>
 
-
-          <!-- Si pokemon dans equipe -->
-          <div *ngIf="monPokemon.pokeReference != null">
-            <div class ="affichageEquipeEncours">
-              <select class="box"[(ngModel)]="equipeEnCoursForm.listPokemons[index].pokeReference" (change)="changePokeReferenceMonPoke(index)">
-                <option selected="selected" [ngValue]="monPokemon.pokeReference">{{monPokemon.pokeReference.nom}}</option>
-                <option *ngFor="let pokemon of listPokemon()" [ngValue]="pokemon">{{pokemon.nom}}</option>
-              </select>
-            </div>
-
         <div *ngFor="let monPokemon of getEquipeEncours().listPokemons, let index=index" class="essai">
           <tr>
             <th>
@@ -108,7 +98,7 @@
 
 <div class="cadreSalon">
   <h1>
-    <a [routerLink]="['/salon']" class="h3"><img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 100px">Créer un salon privé</a><br><br>
+    <a (click)="creerSalon()" class="h3"><img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 100px">Créer un salon privé</a><br><br>
     <input class="search" type="text" placeholder="Entrer code salon privé..."><br>
     <a [routerLink]="['/salon']" class="h3"><img src="../../assets/superBall.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 55px">Rejoindre un salon privé</a><br><br>
     <a [routerLink]="['/match']" class="h3"><img src="../../assets/hyperBall.png" alt="pokeball.png" style="width: 80px; height: 80px; margin-right: 55px">Chercher un adversaire</a>

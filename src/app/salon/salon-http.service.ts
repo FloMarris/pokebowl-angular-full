@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "../app-config.service";
 import {Salon} from "../../model/salon";
 import {Equipe} from "../../model/equipe";
+import {Utilisateur} from "../../model/utilisateur";
+import {ActivatedRoute} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +12,20 @@ import {Equipe} from "../../model/equipe";
 export class SalonHttpService {
 
   salon: Salon = new Salon();
-  idSalon: number = 28; //ou 27 pour mes tests
+  idSalon: number; //ou 27 pour mes tests
   equipeEnCours:Equipe=new Equipe();
 
-  constructor(private http: HttpClient, private appConfig: AppConfigService) {
-    this.load();
+  constructor(private http: HttpClient, private appConfig: AppConfigService, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.idSalon = params['idSalon'];
+      if(this.idSalon) {
+        this.load(this.idSalon);
+      }
+    });
   }
 
-  load() {
-    this.http.get<Salon>(this.appConfig.backEndUrl + "salon/" + this.idSalon).subscribe(resp => {
+  load(idSalon:number) {
+    this.http.get<Salon>(this.appConfig.backEndUrl + "salon/" + idSalon + "/joueurs").subscribe(resp => {
       this.salon = resp;
     }, error => console.log(error))
 
@@ -30,5 +37,15 @@ export class SalonHttpService {
   findEquipeEnCours():Equipe {
     return this.equipeEnCours;
   }
+
+  findSalon():Salon {
+    return this.salon;
+  }
+  //
+  // modifySalon(salon:Salon){
+  //   this.http.put<Salon>(this.appConfig.backEndUrl + "salon/" + salon.id, salon).subscribe(resp => {
+  //     this.load(salon.id);
+  //   }, error => console.log(error))
+  // }
 
 }

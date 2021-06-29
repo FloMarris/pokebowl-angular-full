@@ -7,6 +7,7 @@ import {Utilisateur} from "../../model/utilisateur";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {MonPokemon} from "../../model/mon-pokemon";
+import {Salon} from "../../model/salon";
 // import * as util from "util";
 
 @Injectable({
@@ -94,5 +95,9 @@ export class AccueilHttpService {
 
   deleteEquipeEnCours(monPokemon:MonPokemon): Observable<MonPokemon> {
     return this.http.delete<MonPokemon>(this.appConfig.backEndUrl + "monPokemon/"+ monPokemon.id);
+  }
+
+  createSalon(salon:Salon):Observable<Salon>{
+    return this.http.post<Salon>(this.appConfig.backEndUrl + "salon", salon);
   }
 }

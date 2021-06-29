@@ -4,6 +4,7 @@ import {MonPokemon} from "../../model/mon-pokemon";
 import {Equipe} from "../../model/equipe";
 import {Salon} from "../../model/salon";
 import {Utilisateur} from "../../model/utilisateur";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-salon',
@@ -11,13 +12,15 @@ import {Utilisateur} from "../../model/utilisateur";
   styleUrls: ['./salon.component.scss']
 })
 export class SalonComponent implements OnInit {
-  joueur:Utilisateur=new Utilisateur();
+  joueur1:Utilisateur=JSON.parse(sessionStorage.getItem("utilisateur"));
+  joueur2:Utilisateur=new Utilisateur();
   salonForm:Salon=new Salon();
+  idSalon:number;
 
-  constructor(private salonService: SalonHttpService) {
-    this.joueur = JSON.parse(sessionStorage.getItem("utilisateur"));
-    this.salonForm = this.salonService.salon;
-    this.salonForm.joueur1 = this.joueur;
+  constructor(private salonService: SalonHttpService, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.idSalon = params['idSalon'];
+    });
   }
 
   ngOnInit(): void {
@@ -25,27 +28,33 @@ export class SalonComponent implements OnInit {
   }
 
   findNomSalon(): string {
-    this.salonForm = this.salonService.salon;
+    this.salonForm = this.salonService.findSalon();
     return this.salonForm.nom;
   }
 
   findCodeSalon(): string {
+    this.salonForm = this.salonService.findSalon();
     return this.salonForm.motDePasse;
   }
 
   findNomJ1(): string {
+   this.salonForm = this.salonService.findSalon();
     return  this.salonForm.joueur1.pseudo;
+
   }
 
   findNomJ2(): string {
+    this.salonForm = this.salonService.findSalon();
     return  this.salonForm.joueur2.pseudo;
   }
 
   findAvatarJ1(): string {
+    this.salonForm = this.salonService.findSalon();
     return this.salonForm.joueur1.avatar;
   }
 
   findAvatarJ2(): string {
+    this.salonForm = this.salonService.findSalon();
     return this.salonForm.joueur2.avatar;
   }
 
