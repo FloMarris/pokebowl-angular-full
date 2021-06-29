@@ -1,6 +1,6 @@
 <div class="nav">
   <ul>
-    <li><a [routerLink]="['/accueil']">Acceuil</a></li>
+    <li><a [routerLink]="['/accueil']" (click) = "loadAcceuil()">Acceuil</a></li>
     <li><a [routerLink]="['/connexion']">Connexion</a></li>
     <li><a [routerLink]="['/inscription']"><img src="../assets/pokedex.png" width="30" height="40"> Inscription</a></li>
     <li><a [routerLink]="['/parametresEquipe']">Paramètres de l'équipe</a></li>
@@ -11,6 +11,6 @@
   </ul>
 </div>
 
-<div class="container-fluid">
+<div>
   <router-outlet></router-outlet>
 </div>
