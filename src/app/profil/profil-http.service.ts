@@ -17,6 +17,9 @@ export class ProfilHttpService {
   equipesSauvegardees: Array<Equipe> = new Array<Equipe>();
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
+    this.http.get<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + this.getIdUtilisateur()).subscribe(resp => {
+      this.utilisateur = resp;
+    })
   }
 
   getIdUtilisateur(): number {
@@ -27,7 +30,6 @@ export class ProfilHttpService {
   }
 
   load(id: number): Observable<Array<Equipe>> {
-
     return this.http.get<Array<Equipe>>(this.appConfig.backEndUrl +"utilisateur/" + id + "/equipes");
 
   }
@@ -54,6 +56,14 @@ export class ProfilHttpService {
 
   getEquipeById(equipe: Equipe): Observable<Equipe> {
     return this.http.get<Equipe>(this.appConfig.backEndUrl + "equipe/" + equipe.id);
+  }
+
+  createEquipeEnCours(monPokemon:MonPokemon): Observable<MonPokemon> {
+    return this.http.post<MonPokemon>(this.appConfig.backEndUrl + "monPokemon", monPokemon);
+  }
+
+  deleteEquipeEnCours(monPokemon:MonPokemon): Observable<MonPokemon> {
+    return this.http.delete<MonPokemon>(this.appConfig.backEndUrl + "monPokemon/"+ monPokemon.id);
   }
 
 }
