@@ -82,9 +82,9 @@ mat-button-toggle {
   border-style: groove;
   border-color: #cc423f;
   border-radius : 10px;
-  padding : 10px;
+  padding : 1px;
   margin-top: 5px;
-  margin-left: 15px;
+  margin-left: 23px;
 }
 
 .imgPoke {
@@ -105,8 +105,8 @@ mat-button-toggle {
   color: black;
   opacity: 0;
   transition: opacity 1s;
-  bottom: 70%;
-  left: 110%;
+  bottom: 90%;
+  left: 34%;
   margin-left: -100px;
 }
 
@@ -119,12 +119,12 @@ mat-button-toggle {
 .casePokemon .tooltiptext::after {
   content: " ";
   position: absolute;
-  top: 91%;
-  right: 100%;
+  top: 102%;
+  right: 50%;
   margin-top: -5px;
   border-width: 10px;
   border-style: solid;
-  border-color: transparent rgb(230,230,230) transparent transparent;
+  border-color: rgb(230,230,230) transparent transparent transparent;
 }
 
 .pokeImg {
