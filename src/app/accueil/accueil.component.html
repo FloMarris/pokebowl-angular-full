@@ -18,7 +18,6 @@
         <th>&nbsp;</th>
       </tr>
 
-        <div *ngFor="let monPokemon of getEquipeEncours().listPokemons, let index=index">
 
           <!-- Si pokemon dans equipe -->
           <div *ngIf="monPokemon.pokeReference != null">
@@ -29,10 +28,25 @@
               </select>
             </div>
 
-            <div class ="affichageEquipeEncours">
-              <img *ngIf="equipeEnCoursForm.listPokemons[index].pokeReference" src="{{equipeEnCoursForm.listPokemons[index].pokeReference.avatar}}" alt="poke.png" width="130">
-            </div>
-          </div>
+        <div *ngFor="let monPokemon of getEquipeEncours().listPokemons, let index=index" class="essai">
+          <tr>
+            <th>
+              <!-- Si pokemon dans equipe -->
+              <div *ngIf="monPokemon.pokeReference != null">
+                <div class ="affichageEquipeEncours">
+                  <select class="box"[(ngModel)]="equipeEnCoursForm.listPokemons[index].pokeReference">
+                    <option selected="selected" [ngValue]="monPokemon.pokeReference">{{monPokemon.pokeReference.nom}}</option>
+                    <option *ngFor="let pokemon of listPokemon()" [ngValue]="pokemon">{{pokemon.nom}}</option>
+                  </select>
+                </div>
+
+
+                <div class ="affichageEquipeEncours">
+                  <img *ngIf="equipeEnCoursForm.listPokemons[index].pokeReference" src="{{equipeEnCoursForm.listPokemons[index].pokeReference.avatar}}" alt="poke.png" width="130">
+                </div>
+              </div>
+            </th>
+          </tr>
 
           <!-- Si pas pokemon dans equipe -->
           <div *ngIf="monPokemon.pokeReference == null">
@@ -52,19 +66,17 @@
 
       <tr>
         <th>&nbsp;</th>
-      </tr>
 
-      <tr>
-        <th colspan="2" class="parametreAvance">
-          <a (click)="validerEquipeEnCoursForm(true)" class="h3">Paramètres avancés de l'équipe</a>
-        </th>
-
-        <th colspan="2" class="equipeAleatoire">
-          <a href="" class="h3">Equipe aléatoire</a>
-        </th>
       </tr>
     </table>
 
+    <div class="parametreAvance">
+      <a (click)="validerEquipeEnCoursForm()" class="h3">Paramètres avancés de l'équipe</a>
+      <!--<a [routerLink]="['/parametresEquipe']" [queryParams]="{idEquipe: equipeEnCoursForm.id}" class="h3">Paramètres avancés de l'équipe</a>-->
+    </div>
+    <div class="equipeAleatoire">
+      <a href="" class="h3">Equipe aléatoire</a>
+    </div>
   </div>
 
   <div class="cadreIn" >
@@ -83,10 +95,14 @@
   <div class="cadreIn">
     <h2 class="h2">Equipe perso</h2><br>
     <label class="h5">Choisissez parmi vos équipes précédentes :</label><br><br>
-    <button type="button" class="boutonEquipe" (click)="chargerEquipeSauvegardee(0)">1</button>
-    <button type="button" class="boutonEquipe" (click)="chargerEquipeSauvegardee(1)">2</button><br>
-    <button type="button" class="boutonEquipe" (click)="chargerEquipeSauvegardee(2)">3</button>
-    <button type="button" class="boutonEquipe" (click)="chargerEquipeSauvegardee(3)">4</button><br><br>
+    <input type="radio" name="demo2" class="demo2 demoyes" (click)="chargerEquipeSauvegardee(0)" id="equipe1">
+    <label for="equipe1">1</label>
+    <input type="radio" name="demo2" class="demo2 demoyes" (click)="chargerEquipeSauvegardee(1)" id="equipe2">
+    <label for="equipe2">2</label><br>
+    <input type="radio" name="demo2" class="demo2 demoyes" (click)="chargerEquipeSauvegardee(2)" id="equipe3">
+    <label for="equipe3">3</label>
+    <input type="radio" name="demo2" class="demo2 demoyes" (click)="chargerEquipeSauvegardee(3)" id="equipe4">
+    <label for="equipe4">4</label>
   </div>
 </div>
 
