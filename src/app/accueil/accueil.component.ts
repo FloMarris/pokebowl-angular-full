@@ -75,7 +75,8 @@ export class AccueilComponent implements OnInit {
     this.equipeEnCoursForm.listPokemons[index].equipe.id = this.equipeEnCoursForm.id;
     console.log(this.equipeEnCoursForm.listPokemons[index]);
     this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[index]).subscribe(resp => {
-    }, error => console.log(error));
+      this.accueilService.load(this.accueilService.getIdUtilisateur());
+      }, error => console.log(error));
   }
 
   changerTailleEquipeEnCours() {

@@ -59,6 +59,7 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
     this.equipeForm.listPokemons[index].equipe = new Equipe();
     this.equipeForm.listPokemons[index].equipe.id = this.equipeForm.id;
     this.parametresAvanceesEquipesServive.modify(this.equipeForm.listPokemons[index]).subscribe(resp =>{
+      this.parametresAvanceesEquipesServive.loadEquipeAndListAttaques(this.idEquipe);
     }, error => console.log(error));
   }
 
