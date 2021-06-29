@@ -3,6 +3,7 @@ import {SalonHttpService} from "./salon-http.service";
 import {MonPokemon} from "../../model/mon-pokemon";
 import {Equipe} from "../../model/equipe";
 import {Salon} from "../../model/salon";
+import {Utilisateur} from "../../model/utilisateur";
 
 @Component({
   selector: 'app-salon',
@@ -10,43 +11,50 @@ import {Salon} from "../../model/salon";
   styleUrls: ['./salon.component.scss']
 })
 export class SalonComponent implements OnInit {
+  joueur:Utilisateur=new Utilisateur();
+  salonForm:Salon=new Salon();
 
   constructor(private salonService: SalonHttpService) {
+    this.joueur = JSON.parse(sessionStorage.getItem("utilisateur"));
+    this.salonForm = this.salonService.salon;
+    this.salonForm.joueur1 = this.joueur;
   }
 
   ngOnInit(): void {
+
   }
 
   findNomSalon(): string {
-    return this.salonService.salon.nom;
+    this.salonForm = this.salonService.salon;
+    return this.salonForm.nom;
   }
 
   findCodeSalon(): string {
-    return this.salonService.salon.motDePasse;
+    return this.salonForm.motDePasse;
   }
 
   findNomJ1(): string {
-    return  this.salonService.salon.joueur1.pseudo;
+    return  this.salonForm.joueur1.pseudo;
   }
 
   findNomJ2(): string {
-    return  this.salonService.salon.joueur2.pseudo;
+    return  this.salonForm.joueur2.pseudo;
   }
 
   findAvatarJ1(): string {
-    return this.salonService.salon.joueur1.avatar;
+    return this.salonForm.joueur1.avatar;
   }
 
   findAvatarJ2(): string {
-    return this.salonService.salon.joueur2.avatar;
+    return this.salonForm.joueur2.avatar;
   }
 
   findEquipeJ1(): Equipe {
-    return this.salonService.salon.joueur1.equipeEnCours;
+    return this.salonService.findEquipeEnCours();
   }
 
   findEquipeJ2(): Equipe {
-    return this.salonService.salon.joueur2.equipeEnCours;
+    return this.salonForm.joueur2.equipeEnCours;
   }
 
   IsJoueur2(): boolean {
