@@ -3,6 +3,8 @@ import {SalonHttpService} from "./salon-http.service";
 import {MonPokemon} from "../../model/mon-pokemon";
 import {Equipe} from "../../model/equipe";
 import {Salon} from "../../model/salon";
+import {Utilisateur} from "../../model/utilisateur";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-salon',
@@ -10,43 +12,58 @@ import {Salon} from "../../model/salon";
   styleUrls: ['./salon.component.scss']
 })
 export class SalonComponent implements OnInit {
+  joueur1:Utilisateur=JSON.parse(sessionStorage.getItem("utilisateur"));
+  joueur2:Utilisateur=new Utilisateur();
+  salonForm:Salon=new Salon();
+  idSalon:number;
 
-  constructor(private salonService: SalonHttpService) {
+  constructor(private salonService: SalonHttpService, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.idSalon = params['idSalon'];
+    });
   }
 
   ngOnInit(): void {
+
   }
 
   findNomSalon(): string {
-    return this.salonService.salon.nom;
+    this.salonForm = this.salonService.findSalon();
+    return this.salonForm.nom;
   }
 
   findCodeSalon(): string {
-    return this.salonService.salon.motDePasse;
+    this.salonForm = this.salonService.findSalon();
+    return this.salonForm.motDePasse;
   }
 
   findNomJ1(): string {
-    return  this.salonService.salon.joueur1.pseudo;
+   this.salonForm = this.salonService.findSalon();
+    return  this.salonForm.joueur1.pseudo;
+
   }
 
   findNomJ2(): string {
-    return  this.salonService.salon.joueur2.pseudo;
+    this.salonForm = this.salonService.findSalon();
+    return  this.salonForm.joueur2.pseudo;
   }
 
   findAvatarJ1(): string {
-    return this.salonService.salon.joueur1.avatar;
+    this.salonForm = this.salonService.findSalon();
+    return this.salonForm.joueur1.avatar;
   }
 
   findAvatarJ2(): string {
-    return this.salonService.salon.joueur2.avatar;
+    this.salonForm = this.salonService.findSalon();
+    return this.salonForm.joueur2.avatar;
   }
 
   findEquipeJ1(): Equipe {
-    return this.salonService.salon.joueur1.equipeEnCours;
+    return this.salonService.findEquipeEnCours();
   }
 
   findEquipeJ2(): Equipe {
-    return this.salonService.salon.joueur2.equipeEnCours;
+    return this.salonForm.joueur2.equipeEnCours;
   }
 
   IsJoueur2(): boolean {
