@@ -54,18 +54,29 @@ export class AccueilComponent implements OnInit {
     this.accueilService.modifyUtilisateur(this.utilisateurForm);
   }
 
-  validerEquipeEnCoursForm(){
+  validerEquipeEnCoursForm(redirect: boolean){
     let counter = 0;
+    console.log("####################")
     for(let i = 0; i < this.equipeEnCoursForm.listPokemons.length; i++) {
-      this.equipeEnCoursForm.listPokemons[i].equipe = new Equipe();
-      this.equipeEnCoursForm.listPokemons[i].equipe.id = this.equipeEnCoursForm.id;
-      this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[i]).subscribe(resp => {
-        counter++;
-        if(counter == this.equipeEnCoursForm.listPokemons.length - 1) {
-          this.router.navigate(['/parametresEquipe'],{ queryParams: {idEquipe: this.equipeEnCoursForm.id}});
-        }
-      }, error => console.log(error));
+        this.equipeEnCoursForm.listPokemons[i].equipe = new Equipe();
+        this.equipeEnCoursForm.listPokemons[i].equipe.id = this.equipeEnCoursForm.id;
+        console.log(this.equipeEnCoursForm.listPokemons[i]);
+        this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[i]).subscribe(resp => {
+          counter++;
+          if ((counter == this.equipeEnCoursForm.listPokemons.length - 1) && (redirect == true)) {
+            this.router.navigate(['/parametresEquipe'], {queryParams: {idEquipe: this.equipeEnCoursForm.id}});
+          }
+        }, error => console.log(error));
     }
+  }
+
+  changePokeReferenceMonPoke(index: number) {
+    this.equipeEnCoursForm.listPokemons[index].equipe = new Equipe();
+    this.equipeEnCoursForm.listPokemons[index].equipe.id = this.equipeEnCoursForm.id;
+    console.log(this.equipeEnCoursForm.listPokemons[index]);
+    this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[index]).subscribe(resp => {
+      this.accueilService.load(this.accueilService.getIdUtilisateur());
+      }, error => console.log(error));
   }
 
   changerTailleEquipeEnCours() {
@@ -85,11 +96,6 @@ export class AccueilComponent implements OnInit {
       if(this.nombrePokemonParEquipe < this.equipeEnCoursForm.listPokemons.length) {
 
         for(let i = this.equipeEnCoursForm.listPokemons.length - 1; i >= this.nombrePokemonParEquipe; i--) {
-          console.log(i);
-          console.log(this.equipeEnCoursForm.listPokemons);
-          //this.equipeEnCoursForm.listPokemons.push(new MonPokemon());
-          //this.equipeEnCoursForm.listPokemons[i].equipe = new Equipe();
-          //this.equipeEnCoursForm.listPokemons[i].equipe.id = this.equipeEnCoursForm.id;
           this.accueilService.deleteEquipeEnCours(this.equipeEnCoursForm.listPokemons[i]).subscribe(resp => {
             this.accueilService.load(this.utilisateurForm.id);
           }, error => console.log(error));
