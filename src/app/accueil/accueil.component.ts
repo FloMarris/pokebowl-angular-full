@@ -54,7 +54,7 @@ export class AccueilComponent implements OnInit {
     this.accueilService.modifyUtilisateur(this.utilisateurForm);
   }
 
-  validerEquipeEnCoursForm(redirect: boolean){
+  validerEquipeEnCoursForm(){
     let counter = 0;
     console.log("####################")
     for(let i = 0; i < this.equipeEnCoursForm.listPokemons.length; i++) {
@@ -63,7 +63,7 @@ export class AccueilComponent implements OnInit {
         console.log(this.equipeEnCoursForm.listPokemons[i]);
         this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[i]).subscribe(resp => {
           counter++;
-          if ((counter == this.equipeEnCoursForm.listPokemons.length - 1) && (redirect == true)) {
+          if (counter == this.equipeEnCoursForm.listPokemons.length - 1) {
             this.router.navigate(['/parametresEquipe'], {queryParams: {idEquipe: this.equipeEnCoursForm.id}});
           }
         }, error => console.log(error));
