@@ -12,4 +12,9 @@ export class AppComponent {
   constructor(private accueilService: AccueilHttpService) {
   }
 
+  loadAcceuil() {
+    if(JSON.parse(sessionStorage.getItem("utilisateur")).id) {
+      this.accueilService.load((JSON.parse(sessionStorage.getItem("utilisateur")).id));
+    }
+  }
 }
