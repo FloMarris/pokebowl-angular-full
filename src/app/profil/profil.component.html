@@ -54,7 +54,7 @@
       <option value='6'>6</option>
     </select>
 
-    <table *ngIf="equipe.listPokemons.length!=0 && equipe.nbrPokemons!=null">
+    <table *ngIf="equipe.listPokemons.length!=0">
       <tr>
         <th *ngIf="equipe.listPokemons[0]?.pokeReference?.avatar!=null">
           <img src="{{equipe.listPokemons[0]?.pokeReference?.avatar}}" width="80">

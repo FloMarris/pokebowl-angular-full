@@ -25,7 +25,7 @@ export class AppComponent {
 
   loadMatch() {
     if(JSON.parse(sessionStorage.getItem("utilisateur")).id) {
-      this.matchService.load(JSON.parse(sessionStorage.getItem("utilisateur")));
+      this.matchService.loadJ1(JSON.parse(sessionStorage.getItem("utilisateur")));
     }
   }
 
