@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AccueilHttpService} from "./accueil/accueil-http.service";
 import {Router} from "@angular/router";
+import {MatchService} from "./match/match.service";
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent {
   urlEssai: string="";
   navBarre: Boolean = false;
 
-  constructor(private accueilService: AccueilHttpService, private router: Router) {
+  constructor(private accueilService: AccueilHttpService, private router: Router,
+              private  matchService: MatchService) {
   }
 
   loadAcceuil() {
@@ -20,6 +22,13 @@ export class AppComponent {
       this.accueilService.load((JSON.parse(sessionStorage.getItem("utilisateur")).id));
     }
   }
+
+  loadMatch() {
+    if(JSON.parse(sessionStorage.getItem("utilisateur")).id) {
+      this.matchService.load(JSON.parse(sessionStorage.getItem("utilisateur")));
+    }
+  }
+
   recupererPage(){
     return this.router.url == '/connexion' || this.router.url == '/inscription';
   }

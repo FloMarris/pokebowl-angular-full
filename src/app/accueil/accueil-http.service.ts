@@ -31,20 +31,16 @@ export class AccueilHttpService {
 
   load(id:number) {
     let utilisateur: Utilisateur = JSON.parse(sessionStorage.getItem("utilisateur"));
-    console.log(utilisateur);
 
     this.http.get<Array<Equipe>>(this.appConfig.backEndUrl + "utilisateur/" + id + "/equipes").subscribe(resp => {
       this.equipesSauvegardees = resp;
-      console.log(this.equipesSauvegardees);
     }, error => console.log(error))
 
     this.http.get<Array<Pokemon>>(this.appConfig.backEndUrl + "pokemon").subscribe(resp => {
       this.pokemons = resp;
     }, error => console.log(error))
 
-    console.log(utilisateur);
     if(utilisateur.derniereEquipe != null) {
-      console.log("hey");
       this.http.get<Equipe>(this.appConfig.backEndUrl + "utilisateur/" + id + "/equipePrecedente").subscribe(resp => {
         this.equipePrecedente = resp;
       }, error => console.log(error))

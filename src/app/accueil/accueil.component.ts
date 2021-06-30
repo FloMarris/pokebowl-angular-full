@@ -59,11 +59,9 @@ export class AccueilComponent implements OnInit {
 
   validerEquipeEnCoursForm(){
     let counter = 0;
-    console.log("####################")
     for(let i = 0; i < this.equipeEnCoursForm.listPokemons.length; i++) {
         this.equipeEnCoursForm.listPokemons[i].equipe = new Equipe();
         this.equipeEnCoursForm.listPokemons[i].equipe.id = this.equipeEnCoursForm.id;
-        console.log(this.equipeEnCoursForm.listPokemons[i]);
         this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[i]).subscribe(resp => {
           counter++;
           if (counter == this.equipeEnCoursForm.listPokemons.length - 1) {
@@ -76,7 +74,6 @@ export class AccueilComponent implements OnInit {
   changePokeReferenceMonPoke(index: number) {
     this.equipeEnCoursForm.listPokemons[index].equipe = new Equipe();
     this.equipeEnCoursForm.listPokemons[index].equipe.id = this.equipeEnCoursForm.id;
-    console.log(this.equipeEnCoursForm.listPokemons[index]);
     this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[index]).subscribe(resp => {
       this.accueilService.load(this.accueilService.getIdUtilisateur());
     }, error => console.log(error));
@@ -115,7 +112,6 @@ export class AccueilComponent implements OnInit {
           this.accueilService.load(this.utilisateurForm.id);
         }, error => console.log(error));
       }
-      console.log(this.equipeEnCoursForm);
     }
   }
     creerSalon(){
