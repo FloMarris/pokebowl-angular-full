@@ -136,7 +136,6 @@ export class ProfilComponent implements OnInit {
           this.profilService.load(this.utilisateurForm.id);
         }, error => console.log(error));
       }
-      console.log(this.listEquipes[index]);
     }
   }
 }
