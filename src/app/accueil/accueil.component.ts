@@ -116,18 +116,27 @@ export class AccueilComponent implements OnInit {
     }
   }
     creerSalon(){
-    this.utilisateurForm = JSON.parse(sessionStorage.getItem("utilisateur"));
+    let equipesJ2: Array<Equipe> = this.accueilService.findEquipesSauvegardeesJoueur2();
+    let equipeEnCours: Equipe = this.accueilService.findEquipeEnCours();
     this.joueur2 = this.accueilService.findJoueur2();
-    this.salonForm = new Salon();
-    this.salonForm.joueur1 = new Utilisateur();
-    this.salonForm.joueur1.id = this.utilisateurForm.id;
-    this.salonForm.joueur2 = new Utilisateur();
-    this.salonForm.joueur2.id = this.joueur2.id;
-    this.accueilService.createSalon(this.salonForm).subscribe(resp => {
-      this.router.navigate(['/salon'], {queryParams: {idSalon: resp.id}});
-    }, error => console.log(error));
+    this.utilisateurForm = JSON.parse(sessionStorage.getItem("utilisateur"));
 
-
+    for(let i = 0; equipesJ2.length; i++) {
+      if(equipesJ2[i].listPokemons.length == equipeEnCours.listPokemons.length) {
+        this.joueur2.equipeEnCours = new Equipe();
+        this.joueur2.equipeEnCours.id = equipesJ2[i].id;
+        this.accueilService.modifyJoueur2(this.joueur2).subscribe(resp => {
+          this.salonForm = new Salon();
+          this.salonForm.joueur1 = new Utilisateur();
+          this.salonForm.joueur1.id = this.utilisateurForm.id;
+          this.salonForm.joueur2 = new Utilisateur();
+          this.salonForm.joueur2.id = resp.id;
+          this.accueilService.createSalon(this.salonForm).subscribe(resp2 => {
+            this.router.navigate(['/salon'], {queryParams: {idSalon: resp2.id}});
+          }, error => console.log(error));
+        }, error => console.log(error));
+        break;
+      }
     }
-
+  }
 }

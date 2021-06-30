@@ -40,18 +40,23 @@ export class MatchService {
     }, error => console.log(error));
   }
 
+  loadJ2(utilisateur: Utilisateur) {
+    this.joueur2 = utilisateur;
+    this.loadEquipeEnCoursJoueur1().subscribe(resp => {
+      this.equipeEnCoursJoueur2 = resp;
+      for(let i = 0; i < this.equipeEnCoursJoueur2.listPokemons.length; i++) {
+        this.pokemonsMatchJ2.push(this.initPokemonMatch(this.equipeEnCoursJoueur2.listPokemons[i]));
+      }
+      this.pokemonMatchJoueur2 = this.initPokemonMatch(this.equipeEnCoursJoueur2.listPokemons[0]);
+    }, error => console.log(error));
+  }
+
   loadEquipeEnCoursJoueur1(): Observable<Equipe>{
     return this.http.get<Equipe>(this.appConfig.backEndUrl + "utilisateur/" + this.joueur1.id + "/equipeEnCours")
   }
 
   loadEquipeEnCoursJoueur2(): Observable<Equipe>{
     return this.http.get<Equipe>(this.appConfig.backEndUrl + "utilisateur/" + this.idBot + "/equipeEnCours")
-  }
-
-  loadEquipeSauvegardees() {
-    this.http.get<Array<Equipe>>(this.appConfig.backEndUrl + "utilisateur/" + this.idBot + "/equipes").subscribe(resp => {
-      this.equipeSauvegardeesJoueur2 = resp;
-    }, error => console.log(error))
   }
 
   getEquipeEnCoursJoueur1(): Equipe {
