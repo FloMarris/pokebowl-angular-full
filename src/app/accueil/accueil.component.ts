@@ -21,8 +21,8 @@ export class AccueilComponent implements OnInit {
   equipePrecedenteForm: Equipe = new Equipe();
   equipeSauvegardesForm: Array<Equipe> = new Array<Equipe>();
   nombrePokemonParEquipe: number;
-  salonForm:Salon = new Salon();
-  joueur2:Utilisateur = new Utilisateur();
+  salonForm: Salon = new Salon();
+  joueur2: Utilisateur = new Utilisateur();
 
   constructor(private accueilService: AccueilHttpService, private router: Router, private pokedexService: PokedexHttpService) {
   }
@@ -59,17 +59,17 @@ export class AccueilComponent implements OnInit {
     this.accueilService.modifyUtilisateur(this.utilisateurForm);
   }
 
-  validerEquipeEnCoursForm(){
+  validerEquipeEnCoursForm() {
     let counter = 0;
-    for(let i = 0; i < this.equipeEnCoursForm.listPokemons.length; i++) {
-        this.equipeEnCoursForm.listPokemons[i].equipe = new Equipe();
-        this.equipeEnCoursForm.listPokemons[i].equipe.id = this.equipeEnCoursForm.id;
-        this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[i]).subscribe(resp => {
-          counter++;
-          if (counter == this.equipeEnCoursForm.listPokemons.length - 1) {
-            this.router.navigate(['/parametresEquipe'], {queryParams: {idEquipe: this.equipeEnCoursForm.id}});
-          }
-        }, error => console.log(error));
+    for (let i = 0; i < this.equipeEnCoursForm.listPokemons.length; i++) {
+      this.equipeEnCoursForm.listPokemons[i].equipe = new Equipe();
+      this.equipeEnCoursForm.listPokemons[i].equipe.id = this.equipeEnCoursForm.id;
+      this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[i]).subscribe(resp => {
+        counter++;
+        if (counter == this.equipeEnCoursForm.listPokemons.length - 1) {
+          this.router.navigate(['/parametresEquipe'], {queryParams: {idEquipe: this.equipeEnCoursForm.id}});
+        }
+      }, error => console.log(error));
     }
   }
 
@@ -116,27 +116,15 @@ export class AccueilComponent implements OnInit {
       }
     }
   }
-    creerSalon(){
+
+  creerSalon() {
     let equipesJ2: Array<Equipe> = this.accueilService.findEquipesSauvegardeesJoueur2();
     let equipeEnCours: Equipe = this.accueilService.findEquipeEnCours();
     this.joueur2 = this.accueilService.findJoueur2();
     this.utilisateurForm = JSON.parse(sessionStorage.getItem("utilisateur"));
 
-    aleatoire(){
-     for(let index = 0; index<this.equipeEnCoursForm.listPokemons.length; index++) {
-       let idPoke: number = this.pokedexService.pokemons[Math.floor(Math.random() * this.pokedexService.pokemons.length)].id;
-       this.pokedexService.findPokemonById(idPoke).subscribe(resp => {
-         this.equipeEnCoursForm.listPokemons[index].pokeReference = resp;
-         this.equipeEnCoursForm.listPokemons[index].equipe = new Equipe();
-         this.equipeEnCoursForm.listPokemons[index].equipe.id = this.equipeEnCoursForm.id;
-         this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[index]).subscribe(resp => {
-         }, error => console.log(error));
-
-       }, error => console.log(error))
-     }
-
-    for(let i = 0; equipesJ2.length; i++) {
-      if(equipesJ2[i].listPokemons.length == equipeEnCours.listPokemons.length) {
+    for (let i = 0; equipesJ2.length; i++) {
+      if (equipesJ2[i].listPokemons.length == equipeEnCours.listPokemons.length) {
         this.joueur2.equipeEnCours = new Equipe();
         this.joueur2.equipeEnCours.id = equipesJ2[i].id;
         this.accueilService.modifyJoueur2(this.joueur2).subscribe(resp => {
@@ -151,6 +139,21 @@ export class AccueilComponent implements OnInit {
         }, error => console.log(error));
         break;
       }
+    }
+  }
+
+  aleatoire() {
+    for (let index = 0; index < this.equipeEnCoursForm.listPokemons.length; index++) {
+      let idPoke: number = this.pokedexService.pokemons[Math.floor(Math.random() * this.pokedexService.pokemons.length)].id;
+      this.pokedexService.findPokemonById(idPoke).subscribe(resp => {
+        this.equipeEnCoursForm.listPokemons[index].pokeReference = resp;
+        this.equipeEnCoursForm.listPokemons[index].equipe = new Equipe();
+        this.equipeEnCoursForm.listPokemons[index].equipe.id = this.equipeEnCoursForm.id;
+        this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[index]).subscribe(resp => {
+          this.accueilService.load(this.utilisateurForm.id);
+        }, error => console.log(error));
+
+      }, error => console.log(error))
     }
   }
 }
