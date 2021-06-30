@@ -17,7 +17,7 @@ export class AppComponent {
               private  matchService: MatchService) {
   }
 
-  loadAcceuil() {
+  loadAccueil() {
     if(JSON.parse(sessionStorage.getItem("utilisateur")).id) {
       this.accueilService.load((JSON.parse(sessionStorage.getItem("utilisateur")).id));
     }
@@ -30,6 +30,6 @@ export class AppComponent {
   }
 
   recupererPage(){
-    return this.router.url == '/connexion' || this.router.url == '/inscription';
+    return this.router.url == '/connexion' || this.router.url == '/inscription' || this.router.url == '/match' || this.router.url == '/';
   }
 }
