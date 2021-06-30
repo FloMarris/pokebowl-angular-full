@@ -3,6 +3,7 @@ import {SalonHttpService} from "./salon-http.service";
 import {Equipe} from "../../model/equipe";
 import {Salon} from "../../model/salon";
 import {ActivatedRoute} from "@angular/router";
+import {MatchService} from "../match/match.service";
 
 @Component({
   selector: 'app-salon',
@@ -13,7 +14,8 @@ export class SalonComponent implements OnInit {
   salonForm:Salon=new Salon();
   idSalon:number;
 
-  constructor(private salonService: SalonHttpService, private route: ActivatedRoute) {
+  constructor(private salonService: SalonHttpService, private route: ActivatedRoute,
+              private matchService: MatchService) {
     this.route.queryParams.subscribe(params => {
       this.idSalon = params['idSalon'];
     });
@@ -60,6 +62,11 @@ export class SalonComponent implements OnInit {
 
   findEquipeJ2(): Equipe {
     return this.salonService.findEquipeEnCoursJoueur2();
+  }
+
+  loadMatch(){
+    this.matchService.loadJ1(this.salonForm.joueur1);
+    this.matchService.loadJ2(this.salonService.findJoueur2());
   }
 
   IsJoueur2(): boolean {

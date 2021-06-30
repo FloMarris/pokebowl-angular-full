@@ -23,6 +23,11 @@ export class AccueilComponent implements OnInit {
   nombrePokemonParEquipe: number;
   salonForm:Salon = new Salon();
   joueur2:Utilisateur = new Utilisateur();
+  message: string =  "";
+  message2: string =  "";
+  message3: string =  "";
+  afficherMessageErreur: boolean = false;
+  paramAvancesFocus: boolean = false;
 
   constructor(private accueilService: AccueilHttpService, private router: Router, private pokedexService: PokedexHttpService) {
   }
@@ -59,17 +64,17 @@ export class AccueilComponent implements OnInit {
     this.accueilService.modifyUtilisateur(this.utilisateurForm);
   }
 
-  validerEquipeEnCoursForm(){
+  validerEquipeEnCoursForm() {
     let counter = 0;
-    for(let i = 0; i < this.equipeEnCoursForm.listPokemons.length; i++) {
-        this.equipeEnCoursForm.listPokemons[i].equipe = new Equipe();
-        this.equipeEnCoursForm.listPokemons[i].equipe.id = this.equipeEnCoursForm.id;
-        this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[i]).subscribe(resp => {
-          counter++;
-          if (counter == this.equipeEnCoursForm.listPokemons.length - 1) {
-            this.router.navigate(['/parametresEquipe'], {queryParams: {idEquipe: this.equipeEnCoursForm.id}});
-          }
-        }, error => console.log(error));
+    for (let i = 0; i < this.equipeEnCoursForm.listPokemons.length; i++) {
+      this.equipeEnCoursForm.listPokemons[i].equipe = new Equipe();
+      this.equipeEnCoursForm.listPokemons[i].equipe.id = this.equipeEnCoursForm.id;
+      this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[i]).subscribe(resp => {
+        counter++;
+        if (counter == this.equipeEnCoursForm.listPokemons.length - 1) {
+          this.router.navigate(['/parametresEquipe'], {queryParams: {idEquipe: this.equipeEnCoursForm.id}});
+        }
+      }, error => console.log(error));
     }
   }
 
@@ -116,32 +121,92 @@ export class AccueilComponent implements OnInit {
       }
     }
   }
-    creerSalon(){
-    this.utilisateurForm = JSON.parse(sessionStorage.getItem("utilisateur"));
+
+  creerSalon() {
+    let equipesJ2: Array<Equipe> = this.accueilService.findEquipesSauvegardeesJoueur2();
+    let equipeEnCours: Equipe = this.accueilService.findEquipeEnCours();
     this.joueur2 = this.accueilService.findJoueur2();
-    this.salonForm = new Salon();
-    this.salonForm.joueur1 = new Utilisateur();
-    this.salonForm.joueur1.id = this.utilisateurForm.id;
-    this.salonForm.joueur2 = new Utilisateur();
-    this.salonForm.joueur2.id = this.joueur2.id;
-    this.accueilService.createSalon(this.salonForm).subscribe(resp => {
-      this.router.navigate(['/salon'], {queryParams: {idSalon: resp.id}});
-    }, error => console.log(error));
+    this.utilisateurForm = JSON.parse(sessionStorage.getItem("utilisateur"));
+
+    for (let i = 0; equipesJ2.length; i++) {
+      if (equipesJ2[i].listPokemons.length == equipeEnCours.listPokemons.length) {
+        this.joueur2.equipeEnCours = new Equipe();
+        this.joueur2.equipeEnCours.id = equipesJ2[i].id;
+        this.accueilService.modifyJoueur2(this.joueur2).subscribe(resp => {
+          this.salonForm = new Salon();
+          this.salonForm.joueur1 = new Utilisateur();
+          this.salonForm.joueur1.id = this.utilisateurForm.id;
+          this.salonForm.joueur2 = new Utilisateur();
+          this.salonForm.joueur2.id = resp.id;
+          this.accueilService.createSalon(this.salonForm).subscribe(resp2 => {
+            this.router.navigate(['/salon'], {queryParams: {idSalon: resp2.id}});
+          }, error => console.log(error));
+        }, error => console.log(error));
+        break;
+      }
+    }
+  }
+
+  aleatoire() {
+    for (let index = 0; index < this.equipeEnCoursForm.listPokemons.length; index++) {
+      let idPoke: number = this.pokedexService.pokemons[Math.floor(Math.random() * this.pokedexService.pokemons.length)].id;
+      this.pokedexService.findPokemonById(idPoke).subscribe(resp => {
+        this.equipeEnCoursForm.listPokemons[index].pokeReference = resp;
+        this.equipeEnCoursForm.listPokemons[index].equipe = new Equipe();
+        this.equipeEnCoursForm.listPokemons[index].equipe.id = this.equipeEnCoursForm.id;
+        this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[index]).subscribe(resp => {
+          this.accueilService.load(this.utilisateurForm.id);
+        }, error => console.log(error));
+
+      }, error => console.log(error))
     }
 
-    aleatoire(){
-     for(let index = 0; index<this.equipeEnCoursForm.listPokemons.length; index++) {
-       let idPoke: number = this.pokedexService.pokemons[Math.floor(Math.random() * this.pokedexService.pokemons.length)].id;
-       this.pokedexService.findPokemonById(idPoke).subscribe(resp => {
-         this.equipeEnCoursForm.listPokemons[index].pokeReference = resp;
-         this.equipeEnCoursForm.listPokemons[index].equipe = new Equipe();
-         this.equipeEnCoursForm.listPokemons[index].equipe.id = this.equipeEnCoursForm.id;
-         this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[index]).subscribe(resp => {
-         }, error => console.log(error));
-
-       }, error => console.log(error))
-     }
-
+  pasDattaque(): boolean {
+    if (this.utilisateurSession.equipeEnCours == null) {
+      return true
     }
+    for (let pokemon of this.utilisateurSession.equipeEnCours.listPokemons) {
+      if (!pokemon.attaque1 && !pokemon.attaque2 && !pokemon.attaque3 && !pokemon.attaque4) {
+        this.paramAvancesFocus = true;
+        return true;
+      }
+    }
+    this.message = "";
+    this.message2 = "";
+    this.message3 = "";
+    this.afficherMessageErreur = false;
+    this.paramAvancesFocus = false;
+    return false;
+  }
+
+  afficherMessage(): void {
+    this.afficherMessageErreur = true;
+    if (this.utilisateurSession.equipeEnCours == null) {
+      this.message = "*Vous devez avoir des Pokémons dans votre équipe pour créer un salon !";
+    }
+    else {
+      this.message = "*Un ou plusieurs Pokémons n'ont pas d'attaque, cliquez sur Paramètres avancés";
+    }
+  }
+
+  afficherMessage2(): void {
+    this.afficherMessageErreur = true;
+    if (this.utilisateurSession.equipeEnCours == null) {
+      this.message2 = "*Vous devez avoir des Pokémons dans votre équipe pour rejoindre un salon !";
+    }
+    else {
+      this.message2 = "*Un ou plusieurs Pokémons n'ont pas d'attaque, cliquez sur Paramètres avancés";
+    }
+  }
+
+  afficherMessage3(): void {
+    this.afficherMessageErreur = true;
+    if (this.utilisateurSession.equipeEnCours == null) {
+      this.message3 = "*Vous devez avoir des Pokémons dans votre équipe pour chercher un adversaire !";
+    }
+    else {
+      this.message3 = "*Un ou plusieurs Pokémons n'ont pas d'attaque, cliquez sur Paramètres avancés";
+    }
+  }
 
 }

@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 .body {
   background-image: url('../../assets/fondAcceuilUtilisateur.png');
   background-color: #e7e9eb;
@@ -157,6 +158,13 @@ th {
   text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
 }
 
+.parametreAvanceError{
+  float: left;
+  font-family: pokemonFont;
+  color: red;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+}
+
 .equipeAleatoire{
   float: right;
   font-family: pokemonFont;
@@ -207,3 +215,9 @@ input[type="radio"].demo2.demoyes:checked + label {
   font-size: 20px;
   text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
 }
+
+.error {
+  font-size: 15px;
+  color: #ffcc00;
+}
+
