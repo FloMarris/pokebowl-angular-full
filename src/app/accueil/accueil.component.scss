@@ -79,6 +79,20 @@ li{
   display: inline-block;
 }
 
+.affichageEquipeEncours1{
+  width: 49%;
+  display: inline-block;
+  position: relative;
+  bottom: 37px;
+  left: 10px;
+}
+
+.pointInterrogation{
+  margin-left: 40px;
+  display: inline-block;
+  font-size: 80px;
+}
+
 .cadreSalon{
   width: 500px;
   background-color : rgba(0,0,0,0.6);
@@ -128,6 +142,8 @@ table{
 
 th {
 /*  border: 1px solid black;*/
+  /*width: 150px;
+  height: 150px;*/
 }
 
 .essai{
@@ -153,11 +169,6 @@ th {
   position: absolute;
   left: 64%;
   top: 24%;
-}
-
-.pointInterrogation{
-  margin-left: 40px;
-  font-size: 80px;
 }
 
 input[type="radio"].demo2 {
