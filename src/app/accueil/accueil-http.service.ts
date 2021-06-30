@@ -21,6 +21,9 @@ export class AccueilHttpService {
   equipesSauvegardees:Array<Equipe> = new Array<Equipe>()
   equipeEnCours :Equipe = new Equipe();
 
+  joueur2:Utilisateur = new Utilisateur();
+  idJoueur2 = 21;
+
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
     //this.load(this.getIdUtilisateur());
   }
@@ -55,6 +58,13 @@ export class AccueilHttpService {
       this.utilisateur = resp;
     }, error => console.log(error))
 
+    // On charge un joueur 2 pour le salon
+    //
+    this.http.get<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + this.idJoueur2).subscribe(resp => {
+      this.joueur2 = resp;
+    }, error => console.log(error))
+
+
   }
 
   findAllPokemon(): Array<Pokemon> {
@@ -75,6 +85,10 @@ export class AccueilHttpService {
 
   findUtilisateur():Utilisateur {
     return this.utilisateur;
+  }
+
+  findJoueur2():Utilisateur {
+    return this.joueur2;
   }
 
   modifyUtilisateur(utilisateur:Utilisateur){
@@ -98,4 +112,5 @@ export class AccueilHttpService {
   createSalon(salon:Salon):Observable<Salon>{
     return this.http.post<Salon>(this.appConfig.backEndUrl + "salon", salon);
   }
+
 }
