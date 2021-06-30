@@ -55,7 +55,6 @@ export class ProfilComponent implements OnInit {
   }
 
   findInfos(): void {
-    console.log(this.nbrVictoires);
     this.pseudo = this.profilService.utilisateur.pseudo;
     this.email = this.profilService.utilisateur.email;
     this.avatar = this.profilService.utilisateur.avatar;
@@ -68,7 +67,6 @@ export class ProfilComponent implements OnInit {
     }
 
     this.listEquipes = this.profilService.equipesSauvegardees;
-    console.log(this.nbrVictoires);
   }
 
   gerer(indexEquipeSauv: number){
@@ -109,7 +107,7 @@ export class ProfilComponent implements OnInit {
         }
       }
 
-     else if(this.nombrePokemonParEquipe[index] < this.listEquipes[index].listPokemons.length) {
+      else if(this.nombrePokemonParEquipe[index] < this.listEquipes[index].listPokemons.length) {
         this.listEquipes[index].nbrPokemons = this.nombrePokemonParEquipe[index];
         this.listEquipes[index].utilisateurEquipeSauv.id = this.utilisateurForm.id;
         this.profilService.modifyEquipeSauv(this.listEquipes[index]).subscribe(resp => {
@@ -138,7 +136,6 @@ export class ProfilComponent implements OnInit {
           this.profilService.load(this.utilisateurForm.id);
         }, error => console.log(error));
       }
-      console.log(this.listEquipes[index]);
     }
   }
 }
