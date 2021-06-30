@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {Utilisateur} from "../../model/utilisateur";
 import {MatchService} from "./match.service";
 import {Equipe} from "../../model/equipe";
@@ -17,13 +17,20 @@ export class MatchComponent implements OnInit {
   hpJ2: number = 100;
   pokemonMatchJ1: PokemonMatch = new PokemonMatch();
   pokemonMatchJ2: PokemonMatch = new PokemonMatch();
+
   flag1: boolean = false;
   flag2: boolean = false;
+  flag3: boolean = false;
+
+  flagAttaque: boolean = false;
+  messageAttaqueJ1: string;
+  messageAttaqueJ2: string;
+
   counter: { min: number, sec: number }
   spanVictoire: string = null;
   spanChangerPokemon: string = null;
 
-  constructor(private matchService: MatchService) {
+  constructor(private matchService: MatchService, private cd: ChangeDetectorRef) {
     //this.startTimer();
   }
 
@@ -38,8 +45,6 @@ export class MatchComponent implements OnInit {
     if(this.flag1) {
       this.matchService.setPokemonMatchJoueur1(null);
       return this.matchService.getPokemonMatchJoueur1();
-      this.spanChangerPokemon = "Changer de pokemon";
-      console.log("HEEEEEYEYEYYEYE");
     }
     return this.matchService.getPokemonMatchJoueur1();
   }
@@ -56,7 +61,6 @@ export class MatchComponent implements OnInit {
     if(this.flag1) {
       this.flag1 = false;
       this.hpJ1 = 100;
-      this.spanChangerPokemon = null;
     }
     this.matchService.pokemonMatchJoeur1 = this.matchService.getPokemonMatchJ1()[index];
   }
@@ -72,7 +76,19 @@ export class MatchComponent implements OnInit {
     }
   }
 
+  deletePokemonMatchJoueur1() {
+    for(let i = 0; i < this.matchService.getEquipeEnCoursJoueur1().listPokemons.length; i++) {
+      if(this.matchService.getPokemonMatchJoueur1().monPokemon.pokeReference.nom === this.matchService.getEquipeEnCoursJoueur1().listPokemons[i].pokeReference.nom) {
+        this.matchService.getEquipeEnCoursJoueur1().listPokemons.splice(i,1);
+        this.matchService.getPokemonMatchJ1().splice(i, 1);
+        break;
+      }
+    }
+  }
+
   attaquer(index: number) {
+    this.flagAttaque = true;
+
     let pokemonMatchJ1: PokemonMatch = this.findPokemonMatchJoueur1();
     let pokemonMatchJ2: PokemonMatch = this.findPokemonMatchJoueur2();
 
@@ -80,12 +96,20 @@ export class MatchComponent implements OnInit {
     let attaqueJoueur1: Attaque = this.chooseAttaque(index);
     let attaqueJoueur2: Attaque = this.chooseAttaque(index2);
 
+    let degatJ1: number = Math.floor((((0.4+2)*pokemonMatchJ1.attackMatch*attaqueJoueur1.puissance)/(pokemonMatchJ2.defenseMatch*50)) + 2);
+    let degatJ2: number = Math.floor((((0.4+2)*pokemonMatchJ2.attackMatch*attaqueJoueur2.puissance)/(pokemonMatchJ1.defenseMatch*50)) + 2);
+
     pokemonMatchJ1.hpMatch -= (((0.4+2)*pokemonMatchJ2.attackMatch*attaqueJoueur2.puissance)/(pokemonMatchJ1.defenseMatch*50)) + 2
     pokemonMatchJ2.hpMatch -= (((0.4+2)*pokemonMatchJ1.attackMatch*attaqueJoueur1.puissance)/(pokemonMatchJ2.defenseMatch*50)) + 2
 
     if(pokemonMatchJ1.hpMatch <= 0) {
-      this.flag1 = true;
       this.hpJ1 = 0;
+      this.deletePokemonMatchJoueur1();
+      if(this.matchService.getEquipeEnCoursJoueur1().listPokemons.length == 0) {
+        this.flag3 = true;
+      } else {
+        this.flag1 = true;
+      }
     } else {
       this.hpJ1 = Math.floor((pokemonMatchJ1.hpMatch/pokemonMatchJ1.monPokemon.pokeReference.hp)*100);
     }
@@ -99,6 +123,11 @@ export class MatchComponent implements OnInit {
 
     this.matchService.setPokemonMatchJoueur1(pokemonMatchJ1);
     this.matchService.setPokemonMatchJoueur2(pokemonMatchJ2);
+
+    this.messageAttaqueJ1 = pokemonMatchJ1.monPokemon.pokeReference.nom + " attaque " + attaqueJoueur1.nom + " " + degatJ1 + " dégats !";
+    this.messageAttaqueJ2 = pokemonMatchJ2.monPokemon.pokeReference.nom + " attaque " + attaqueJoueur2.nom + " " + degatJ2 + " dégats !";
+
+    setTimeout(() => { this.flagAttaque = false }, 1700);
   }
 
   private chooseAttaque(index: number): Attaque {
