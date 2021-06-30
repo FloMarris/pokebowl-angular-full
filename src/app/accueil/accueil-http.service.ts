@@ -31,11 +31,9 @@ export class AccueilHttpService {
 
   load(id:number) {
     let utilisateur: Utilisateur = JSON.parse(sessionStorage.getItem("utilisateur"));
-    console.log(utilisateur);
 
     this.http.get<Array<Equipe>>(this.appConfig.backEndUrl + "utilisateur/" + id + "/equipes").subscribe(resp => {
       this.equipesSauvegardees = resp;
-      console.log(this.equipesSauvegardees);
     }, error => console.log(error))
 
     this.http.get<Array<Pokemon>>(this.appConfig.backEndUrl + "pokemon").subscribe(resp => {
