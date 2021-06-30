@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Utilisateur} from "../../model/utilisateur";
 import {MatchService} from "./match.service";
 import {Equipe} from "../../model/equipe";
+import {PokemonMatch} from "../../model/pokemon-match";
 
 @Component({
   selector: 'app-match',
@@ -22,13 +23,14 @@ export class MatchComponent implements OnInit {
   }
 
   findEquipeEnCoursJoueur1() {
-    //console.log(this.matchService.getEquipeEnCoursJoueur1());
     return this.matchService.getEquipeEnCoursJoueur1();
   }
 
   findPokemonMatchJoueur1() {
-    //console.log(this.matchService.getPokemonMatchJoueur1());
     return this.matchService.getPokemonMatchJoueur1();
   }
 
+  changePokemonMatch(index: number) {
+    this.matchService.pokemonMatchJoeur1 = this.matchService.pokemonsMatchJ1[index];
+  }
 }
