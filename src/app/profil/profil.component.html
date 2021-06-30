@@ -54,7 +54,7 @@
       <option value='6'>6</option>
     </select>
 
-    <table *ngIf="equipe.nbrPokemons!=0">
+    <table *ngIf="equipe.nbrPokemons!=0 && equipe.nbrPokemons!=null">
       <tr>
         <th *ngIf="equipe.listPokemons[0]?.pokeReference?.avatar!=null">
           <img src="{{equipe.listPokemons[0]?.pokeReference?.avatar}}" width="80">
@@ -96,6 +96,7 @@
         </th>
       </tr>
     </table>
+    <br><br><br>
   </div>
 <!--  <div style="float: right; width: 50%">-->
 <!--    <h6 style="text-align: right"> Equipe 2</h6>-->
