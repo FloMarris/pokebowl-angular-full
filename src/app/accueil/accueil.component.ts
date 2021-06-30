@@ -7,6 +7,7 @@ import {Equipe} from "../../model/equipe";
 import {Router} from "@angular/router";
 import {Salon} from "../../model/salon";
 import {SalonComponent} from "../salon/salon.component";
+import {PokedexHttpService} from "../pokedex/pokedex-http.service";
 
 @Component({
   selector: 'app-accueil',
@@ -23,7 +24,7 @@ export class AccueilComponent implements OnInit {
   salonForm:Salon = new Salon();
   joueur2:Utilisateur = new Utilisateur();
 
-  constructor(private accueilService: AccueilHttpService, private router: Router) {
+  constructor(private accueilService: AccueilHttpService, private router: Router, private pokedexService: PokedexHttpService) {
   }
 
   ngOnInit(): void {
@@ -126,7 +127,20 @@ export class AccueilComponent implements OnInit {
     this.accueilService.createSalon(this.salonForm).subscribe(resp => {
       this.router.navigate(['/salon'], {queryParams: {idSalon: resp.id}});
     }, error => console.log(error));
+    }
 
+    aleatoire(){
+     for(let index = 0; index<this.equipeEnCoursForm.listPokemons.length; index++) {
+       let idPoke: number = this.pokedexService.pokemons[Math.floor(Math.random() * this.pokedexService.pokemons.length)].id;
+       this.pokedexService.findPokemonById(idPoke).subscribe(resp => {
+         this.equipeEnCoursForm.listPokemons[index].pokeReference = resp;
+         this.equipeEnCoursForm.listPokemons[index].equipe = new Equipe();
+         this.equipeEnCoursForm.listPokemons[index].equipe.id = this.equipeEnCoursForm.id;
+         this.accueilService.modifyEquipeEnCours(this.equipeEnCoursForm.listPokemons[index]).subscribe(resp => {
+         }, error => console.log(error));
+
+       }, error => console.log(error))
+     }
 
     }
 

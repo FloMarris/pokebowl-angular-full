@@ -83,60 +83,33 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
         if (attaquesPoke.length==0) {
           this.aleatoire(index);
         }
-        else if (attaquesPoke.length==1) {
-          this.equipeForm.listPokemons[index].attaque1 = new Attaque();
-          this.equipeForm.listPokemons[index].attaque2 = new Attaque();
-          this.equipeForm.listPokemons[index].attaque3 = new Attaque();
-          this.equipeForm.listPokemons[index].attaque4 = new Attaque();
+
+        this.equipeForm.listPokemons[index].attaque1 = new Attaque();
+        this.equipeForm.listPokemons[index].attaque2 = new Attaque();
+        this.equipeForm.listPokemons[index].attaque3 = new Attaque();
+        this.equipeForm.listPokemons[index].attaque4 = new Attaque();
+
+        if (attaquesPoke.length <= 4) {
           this.pokedexService.findAttaqueById(attaquesPoke[0].id).subscribe(resp => {
             this.equipeForm.listPokemons[index].attaque1 = resp;
           });
+          if (attaquesPoke.length == 2) {
+            this.pokedexService.findAttaqueById(attaquesPoke[1].id).subscribe(resp => {
+              this.equipeForm.listPokemons[index].attaque2 = resp;
+            });
+          }
+          if (attaquesPoke.length == 3) {
+            this.pokedexService.findAttaqueById(attaquesPoke[2].id).subscribe(resp => {
+              this.equipeForm.listPokemons[index].attaque3 = resp;
+            });
+          }
+          if (attaquesPoke.length == 4) {
+            this.pokedexService.findAttaqueById(attaquesPoke[3].id).subscribe(resp => {
+              this.equipeForm.listPokemons[index].attaque4 = resp;
+            });
+          }
         }
-        else if (attaquesPoke.length==2) {
-          this.equipeForm.listPokemons[index].attaque1 = new Attaque();
-          this.equipeForm.listPokemons[index].attaque2 = new Attaque();
-          this.equipeForm.listPokemons[index].attaque3 = new Attaque();
-          this.equipeForm.listPokemons[index].attaque4 = new Attaque();
-          this.pokedexService.findAttaqueById(attaquesPoke[0].id).subscribe(resp => {
-            this.equipeForm.listPokemons[index].attaque1 = resp;
-          });
-          this.pokedexService.findAttaqueById(attaquesPoke[1].id).subscribe(resp => {
-            this.equipeForm.listPokemons[index].attaque2 = resp;
-          });
-        }
-        else if (attaquesPoke.length==3) {
-          this.equipeForm.listPokemons[index].attaque1 = new Attaque();
-          this.equipeForm.listPokemons[index].attaque2 = new Attaque();
-          this.equipeForm.listPokemons[index].attaque3 = new Attaque();
-          this.equipeForm.listPokemons[index].attaque4 = new Attaque();
-          this.pokedexService.findAttaqueById(attaquesPoke[0].id).subscribe(resp => {
-            this.equipeForm.listPokemons[index].attaque1 = resp;
-          });
-          this.pokedexService.findAttaqueById(attaquesPoke[1].id).subscribe(resp => {
-            this.equipeForm.listPokemons[index].attaque2 = resp;
-          });
-          this.pokedexService.findAttaqueById(attaquesPoke[2].id).subscribe(resp => {
-            this.equipeForm.listPokemons[index].attaque3 = resp;
-          });
-        }
-        else if (attaquesPoke.length==4) {
-          this.equipeForm.listPokemons[index].attaque1 = new Attaque();
-          this.equipeForm.listPokemons[index].attaque2 = new Attaque();
-          this.equipeForm.listPokemons[index].attaque3 = new Attaque();
-          this.equipeForm.listPokemons[index].attaque4 = new Attaque();
-          this.pokedexService.findAttaqueById(attaquesPoke[0].id).subscribe(resp => {
-            this.equipeForm.listPokemons[index].attaque1 = resp;
-          });
-          this.pokedexService.findAttaqueById(attaquesPoke[1].id).subscribe(resp => {
-            this.equipeForm.listPokemons[index].attaque2 = resp;
-          });
-          this.pokedexService.findAttaqueById(attaquesPoke[2].id).subscribe(resp => {
-            this.equipeForm.listPokemons[index].attaque3 = resp;
-          });
-          this.pokedexService.findAttaqueById(attaquesPoke[3].id).subscribe(resp => {
-            this.equipeForm.listPokemons[index].attaque4 = resp;
-          });
-        }
+
         else {
           let idA1: number = this.randomAttaqueId(attaquesPoke);
           let idA2: number = this.randomAttaqueId(attaquesPoke);
@@ -157,10 +130,6 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
             idA4 = this.randomAttaqueId(attaquesPoke);
             i++;
           }
-          this.equipeForm.listPokemons[index].attaque1 = new Attaque();
-          this.equipeForm.listPokemons[index].attaque2 = new Attaque();
-          this.equipeForm.listPokemons[index].attaque3 = new Attaque();
-          this.equipeForm.listPokemons[index].attaque4 = new Attaque();
           this.pokedexService.findAttaqueById(idA1).subscribe(resp => {
             this.equipeForm.listPokemons[index].attaque1 = resp;
           });
