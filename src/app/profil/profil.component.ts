@@ -21,7 +21,7 @@ export class ProfilComponent implements OnInit {
   nbrDefaites: number = 0;
   nbrTotalParties: number = 0;
   listEquipes: Array<Equipe> = new Array<Equipe>();
-  nombrePokemonParEquipe: number;
+  nombrePokemonParEquipe: Array<number> = new Array<number>();
   utilisateurForm: Utilisateur= new Utilisateur();
   equipeSauvForm: Equipe = new Equipe();
   boutonActive: boolean = false;
@@ -72,50 +72,69 @@ export class ProfilComponent implements OnInit {
   }
 
   gerer(indexEquipeSauv: number){
-    this.router.navigate(['/parametresEquipe'],{ queryParams: {idEquipe: this.listEquipes[indexEquipeSauv].id}});
+    this.router.navigate(['/parametresEquipe'],{ queryParams: {idEquipe: this.listEquipes[indexEquipeSauv].id, Profil: 1}});
   }
 
   changerTailleEquipeEnCours(index: number) {
     this.utilisateurForm = this.profilService.findUtilisateur();
 
     if(this.listEquipes[index].listPokemons.length != 0) {
-      if(this.nombrePokemonParEquipe > this.listEquipes[index].listPokemons.length) {
-        this.listEquipes[index].nbrPokemons = this.nombrePokemonParEquipe;
+
+      if (this.nombrePokemonParEquipe[index]==0) {
+        this.listEquipes[index].nbrPokemons = this.nombrePokemonParEquipe[index];
+        this.listEquipes[index].utilisateurEquipeSauv.id = this.utilisateurForm.id;
         this.profilService.modifyEquipeSauv(this.listEquipes[index]).subscribe(resp => {
           this.listEquipes[index] = resp;
         })
-        for(let i = this.listEquipes[index].listPokemons.length; i < this.nombrePokemonParEquipe; i++) {
-          this.listEquipes[index].listPokemons.push(new MonPokemon());
-          this.listEquipes[index].listPokemons[i].equipe = new Equipe();
-          this.listEquipes[index].listPokemons[i].equipe.id = this.listEquipes[index].id;
-          this.profilService.createEquipeEnCours(this.listEquipes[index].listPokemons[i]).subscribe(resp => {
+        for (let i = 0; i < this.listEquipes[index].listPokemons.length; i++) {
+          this.profilService.deleteMonPoke(this.listEquipes[index].listPokemons[i]).subscribe(resp => {
             this.profilService.load(this.utilisateurForm.id);
           }, error => console.log(error));
         }
       }
-      if(this.nombrePokemonParEquipe < this.listEquipes[index].listPokemons.length) {
-        this.listEquipes[index].nbrPokemons = this.nombrePokemonParEquipe;
+
+      else if(this.nombrePokemonParEquipe[index] > this.listEquipes[index].listPokemons.length) {
+        this.listEquipes[index].nbrPokemons = this.nombrePokemonParEquipe[index];
+        this.listEquipes[index].utilisateurEquipeSauv.id = this.utilisateurForm.id;
         this.profilService.modifyEquipeSauv(this.listEquipes[index]).subscribe(resp => {
           this.listEquipes[index] = resp;
         })
-        for(let i = this.listEquipes[index].listPokemons.length - 1; i >= this.nombrePokemonParEquipe; i--) {
-          this.profilService.deleteEquipeEnCours(this.listEquipes[index].listPokemons[i]).subscribe(resp => {
+        for(let i = this.listEquipes[index].listPokemons.length; i < this.nombrePokemonParEquipe[index]; i++) {
+          this.listEquipes[index].listPokemons.push(new MonPokemon());
+          this.listEquipes[index].listPokemons[i].equipe = new Equipe();
+          this.listEquipes[index].listPokemons[i].equipe.id = this.listEquipes[index].id;
+          this.profilService.createMonPoke(this.listEquipes[index].listPokemons[i]).subscribe(resp => {
+            this.profilService.load(this.utilisateurForm.id);
+          }, error => console.log(error));
+        }
+      }
+
+     else if(this.nombrePokemonParEquipe[index] < this.listEquipes[index].listPokemons.length) {
+        this.listEquipes[index].nbrPokemons = this.nombrePokemonParEquipe[index];
+        this.listEquipes[index].utilisateurEquipeSauv.id = this.utilisateurForm.id;
+        this.profilService.modifyEquipeSauv(this.listEquipes[index]).subscribe(resp => {
+          this.listEquipes[index] = resp;
+        })
+        for(let i = this.listEquipes[index].listPokemons.length - 1; i >= this.nombrePokemonParEquipe[index]; i--) {
+          this.profilService.deleteMonPoke(this.listEquipes[index].listPokemons[i]).subscribe(resp => {
             this.profilService.load(this.utilisateurForm.id);
           }, error => console.log(error));
         }
       }
     }
+
     else{
       this.listEquipes[index].listPokemons = new Array<MonPokemon>();
-      this.listEquipes[index].nbrPokemons = this.nombrePokemonParEquipe;
+      this.listEquipes[index].nbrPokemons = this.nombrePokemonParEquipe[index];
+      this.listEquipes[index].utilisateurEquipeSauv.id = this.utilisateurForm.id;
       this.profilService.modifyEquipeSauv(this.listEquipes[index]).subscribe(resp => {
         this.listEquipes[index] = resp;
       })
-      for(let i = 0; i < this.nombrePokemonParEquipe; i++) {
+      for(let i = 0; i < this.nombrePokemonParEquipe[index]; i++) {
         this.listEquipes[index].listPokemons.push(new MonPokemon());
         this.listEquipes[index].listPokemons[i].equipe = new Equipe();
         this.listEquipes[index].listPokemons[i].equipe.id = this.listEquipes[index].id;
-        this.profilService.createEquipeEnCours(this.listEquipes[index].listPokemons[i]).subscribe(resp => {
+        this.profilService.createMonPoke(this.listEquipes[index].listPokemons[i]).subscribe(resp => {
           this.profilService.load(this.utilisateurForm.id);
         }, error => console.log(error));
       }
