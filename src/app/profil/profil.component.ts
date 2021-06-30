@@ -72,7 +72,7 @@ export class ProfilComponent implements OnInit {
   }
 
   gerer(indexEquipeSauv: number){
-    this.router.navigate(['/parametresEquipe'],{ queryParams: {idEquipe: this.listEquipes[indexEquipeSauv].id}});
+    this.router.navigate(['/parametresEquipe'],{ queryParams: {idEquipe: this.listEquipes[indexEquipeSauv].id, Profil: 1}});
   }
 
   changerTailleEquipeEnCours(index: number) {

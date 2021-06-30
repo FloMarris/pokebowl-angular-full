@@ -47,7 +47,7 @@
     <h6>Equipe {{index+1}}  <button *ngIf="equipe.listPokemons.length>0" (click)="gerer(index)">Gérer</button></h6>
     <label class="h3">Choisir le nombre de pokemons :</label>
     <select name="nbPokemon" class="box" [(ngModel)]="nombrePokemonParEquipe[index]" (change)="changerTailleEquipeEnCours(index)">
-      <option value="0">0</option>
+      <option value="0">Supprimer</option>
       <option value='3'>3</option>
       <option value='4'>4</option>
       <option value='5'>5</option>
