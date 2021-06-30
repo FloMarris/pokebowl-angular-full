@@ -1,29 +1,70 @@
 <body class="body">
-<div class="cadreAdversaire">
-  <h1>
-    <a href="" class="h3">Pikachu</a><br><br>
-    <a href="" class="h3">Barre de vie</a>
-  </h1>
-</div>
 
-<div class="pokemonMatch">
-  <img src="{{findPokemonMatchJoueur1()?.monPokemon?.pokeReference.avatar}}"  width="500" > <br>
-</div>
+  <div class="cadreAdversaire">
+    <h1>
+      <a href="" class="h3">{{findPokemonMatchJoueur2()?.monPokemon?.pokeReference.nom}}</a><br><br>
+      <div class="progress">
+        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: hpJ2 + '%'}">
+        </div>
+      </div>
+    </h1>
+  </div>
 
-<div class="cadreMonPokemon">
-  <p class="p">{{findPokemonMatchJoueur1()?.monPokemon?.pokeReference.nom}}</p>
-  <p class="p">Barre de vie</p>
-  <button type="button" class="boutonEquipe">{{findPokemonMatchJoueur1()?.monPokemon?.attaque1.nom}}</button>
-  <button type="button" class="boutonEquipe">{{findPokemonMatchJoueur1()?.monPokemon?.attaque2.nom}}</button><br>
-  <button type="button" class="boutonEquipe">{{findPokemonMatchJoueur1()?.monPokemon?.attaque3.nom}}</button>
-  <button type="button" class="boutonEquipe">{{findPokemonMatchJoueur1()?.monPokemon?.attaque4.nom}}</button><br><br>
-</div>
+  <div class="victoireSpan">
+    <span *ngIf="spanVictoire != null">{{spanVictoire}}</span>
+  </div>
+
+  <div class="changerPokemonSpan">
+    <span *ngIf="spanChangerPokemon != null">{{spanChangerPokemon}}</span>
+  </div>
+
+
+  <div class="pokemonMatch2">
+    <img src="{{findPokemonMatchJoueur2()?.monPokemon?.pokeReference.avatar}}"  width="250" > <br>
+  </div>
+
+  <div class="pokemonMatch">
+    <img src="{{findPokemonMatchJoueur1()?.monPokemon?.pokeReference.avatar}}"  width="430" > <br>
+  </div>
+
+  <div class="cadreMonPokemon">
+    <p class="p">{{findPokemonMatchJoueur1()?.monPokemon?.pokeReference.nom}}</p>
+    <div class="progress mb-3">
+      <div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: hpJ1 + '%'}">
+      </div>
+    </div>
+    <button type="button" class="boutonEquipe" (click)="attaquer(0)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque1.nom}}</button>
+    <button type="button" class="boutonEquipe" (click)="attaquer(1)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque2.nom}}</button><br>
+    <button type="button" class="boutonEquipe" (click)="attaquer(2)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque3.nom}}</button>
+    <button type="button" class="boutonEquipe" (click)="attaquer(3)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque4.nom}}</button><br><br>
+  </div>
 
 
   <div class="cadreEquipe">
-    <div *ngFor="let monPokemon of findEquipeEnCoursJoueur1().listPokemons">
-      <img src="{{monPokemon.pokeReference.avatar}}"  width="100" > <br>
-    </div>
+    <table>
+      <tr>
+        <th>
+          <img src="{{findEquipeEnCoursJoueur1().listPokemons[0]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(0)">
+        </th>
+        <th>
+          <img src="{{findEquipeEnCoursJoueur1().listPokemons[1]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(1)">
+        </th>
+        <th>
+          <img src="{{findEquipeEnCoursJoueur1().listPokemons[2]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(2)">
+        </th>
+      </tr>
+      <tr *ngIf="findEquipeEnCoursJoueur1().listPokemons.length>3">
+        <th>
+          <img src="{{findEquipeEnCoursJoueur1().listPokemons[3]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(3)">
+        </th>
+        <th *ngIf="findEquipeEnCoursJoueur1().listPokemons.length>4">
+          <img src="{{findEquipeEnCoursJoueur1().listPokemons[4]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(4)">
+        </th>
+        <th *ngIf="findEquipeEnCoursJoueur1().listPokemons.length>5">
+          <img src="{{findEquipeEnCoursJoueur1().listPokemons[5]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(5)">
+        </th>
+      </tr>
+    </table>
   </div>
 
 

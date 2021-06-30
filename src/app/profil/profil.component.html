@@ -54,7 +54,7 @@
       <option value='6'>6</option>
     </select>
 
-    <table *ngIf="equipe.nbrPokemons!=0 && equipe.nbrPokemons!=null">
+    <table *ngIf="equipe.listPokemons.length!=0">
       <tr>
         <th *ngIf="equipe.listPokemons[0]?.pokeReference?.avatar!=null">
           <img src="{{equipe.listPokemons[0]?.pokeReference?.avatar}}" width="80">
@@ -75,7 +75,7 @@
           <h3 class="pointInterrogation">?</h3>
         </th>
       </tr>
-      <tr *ngIf="equipe.nbrPokemons>3">
+      <tr *ngIf="equipe.listPokemons.length>3">
         <th *ngIf="equipe.listPokemons[3]?.pokeReference?.avatar!=null">
           <img src="{{equipe.listPokemons[3]?.pokeReference?.avatar}}" width="80">
         </th>
@@ -98,91 +98,6 @@
     </table>
     <br><br><br>
   </div>
-<!--  <div style="float: right; width: 50%">-->
-<!--    <h6 style="text-align: right"> Equipe 2</h6>-->
-<!--    <table style="float: right">-->
-<!--      <tr>-->
-<!--        <th>-->
-<!--          <img src="arbok.png" width="80">-->
-<!--        </th>-->
-<!--        <th>-->
-<!--          <img src="arcanin.png" width="80">-->
-<!--        </th>-->
-<!--        <th>-->
-<!--          <img src="chrysacier.png" width="80">-->
-<!--        </th>-->
-<!--      </tr>-->
-<!--      <tr>-->
-<!--        <th>-->
-<!--          <img src="florizarre.png" width="80">-->
-<!--        </th>-->
-<!--        <th>-->
-<!--          <img src="grolem.png" width="80">-->
-<!--        </th>-->
-<!--        <th>-->
-<!--          <img src="ronflex.png" width="80">-->
-<!--        </th>-->
-<!--      </tr>-->
-<!--    </table>-->
-<!--  </div>-->
-<!--  <div style="display: inline-block; width: 50%">-->
-<!--    <br><br>-->
-<!--    <h6> Equipe 3</h6>-->
-
-<!--    <table>-->
-<!--      <tr>-->
-<!--        <th>-->
-<!--          <img src="arbok.png" width="80">-->
-<!--        </th>-->
-<!--        <th>-->
-<!--          <img src="arcanin.png" width="80">-->
-<!--        </th>-->
-<!--        <th>-->
-<!--          <img src="chrysacier.png" width="80">-->
-<!--        </th>-->
-<!--      </tr>-->
-<!--      <tr>-->
-<!--        <th>-->
-<!--          <img src="florizarre.png" width="80">-->
-<!--        </th>-->
-<!--        <th>-->
-<!--          <img src="grolem.png" width="80">-->
-<!--        </th>-->
-<!--        <th>-->
-<!--          <img src="ronflex.png" width="80">-->
-<!--        </th>-->
-<!--      </tr>-->
-<!--    </table>-->
-<!--  </div>-->
-<!--  <div style="float: right; width: 50%">-->
-<!--    <br><br>-->
-<!--    <h6 style="text-align: right"> Equipe 4</h6>-->
-
-<!--    <table style="float: right">-->
-<!--      <tr>-->
-<!--        <th>-->
-<!--          <img src="arbok.png" width="80">-->
-<!--        </th>-->
-<!--        <th>-->
-<!--          <img src="arcanin.png" width="80">-->
-<!--        </th>-->
-<!--        <th>-->
-<!--          <img src="chrysacier.png" width="80">-->
-<!--        </th>-->
-<!--      </tr>-->
-<!--      <tr>-->
-<!--        <th>-->
-<!--          <img src="florizarre.png" width="80">-->
-<!--        </th>-->
-<!--        <th>-->
-<!--          <img src="grolem.png" width="80">-->
-<!--        </th>-->
-<!--        <th>-->
-<!--          <img src="ronflex.png" width="80">-->
-<!--        </th>-->
-<!--      </tr>-->
-<!--    </table>-->
-<!--  </div>-->
 
 </div>
 

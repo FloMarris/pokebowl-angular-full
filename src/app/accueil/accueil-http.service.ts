@@ -22,7 +22,8 @@ export class AccueilHttpService {
   equipeEnCours :Equipe = new Equipe();
 
   joueur2:Utilisateur = new Utilisateur();
-  idJoueur2 = 21;
+  equipeSauvegardeesJoueur2: Array<Equipe> = new Array<Equipe>()
+  idJoueur2 = 644;
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
     //this.load(this.getIdUtilisateur());
@@ -65,6 +66,9 @@ export class AccueilHttpService {
     }, error => console.log(error))
 
 
+      this.http.get<Array<Equipe>>(this.appConfig.backEndUrl + "utilisateur/" + this.idJoueur2 + "/equipes").subscribe(resp => {
+        this.equipeSauvegardeesJoueur2 = resp;
+      }, error => console.log(error))
   }
 
   findAllPokemon(): Array<Pokemon> {
@@ -91,10 +95,18 @@ export class AccueilHttpService {
     return this.joueur2;
   }
 
+  findEquipesSauvegardeesJoueur2(): Array<Equipe> {
+    return this.equipeSauvegardeesJoueur2;
+  }
+
   modifyUtilisateur(utilisateur:Utilisateur){
     this.http.put<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur).subscribe(resp => {
        this.load(this.getIdUtilisateur());
     }, error => console.log(error))
+  }
+
+  modifyJoueur2(utilisateur: Utilisateur): Observable<Utilisateur> {
+    return this.http.put<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur);
   }
 
   modifyEquipeEnCours(monPokemon:MonPokemon): Observable<MonPokemon> {
