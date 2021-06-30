@@ -6,6 +6,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  height: 1000px;
 }
 
 .nav{
@@ -70,12 +71,13 @@ li{
   padding : 10px;
   position: absolute;
   left: 3%;
-  top: 3%;
+  top: 7%;
   text-align: center;
 }
 
 .cadreMonPokemon{
   width: 450px;
+  height: 310px;
   background-color : rgba(0,0,0,0.6);
   border-style: groove;
   border-color: #cc423f;
@@ -88,15 +90,16 @@ li{
 }
 
 .cadreEquipe{
-  width: 180px;
+  width: 450px;
+  height: 310px;
   background-color : rgba(0,0,0,0.6);
   border-style: groove;
   border-color: #cc423f;
   border-radius : 10px;
   padding : 10px;
   position: absolute;
-  left: 85%;
-  top: 62%;
+  left: 70%;
+  top: 55%;
   text-align: center;
 }
 
@@ -180,6 +183,6 @@ th {
 
 .pokemonMatch{
   position: absolute;
-  left: 10%;
-  top: 55%;
+  left: 15%;
+  top: 37%;
 }

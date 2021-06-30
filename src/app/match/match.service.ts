@@ -15,21 +15,48 @@ import {MonPokemon} from "../../model/mon-pokemon";
 export class MatchService {
 
   joueur1: Utilisateur = new Utilisateur();
+  joueur2: Utilisateur = new Utilisateur();
   equipeEnCoursJoueur1: Equipe = new Equipe();
+  equipeEnCoursJoueur2: Equipe = new Equipe();
+  equipeSauvegardeesJoueur2: Array<Equipe> = new Array<Equipe>();
   pokemonMatchJoeur1: PokemonMatch = new PokemonMatch();
+  pokemonMatchJoueur2: PokemonMatch = new PokemonMatch();
+  pokemonsMatchJ1: Array<PokemonMatch> = new Array<PokemonMatch>();
+  pokemonsMatchJ2: Array<PokemonMatch> = new Array<PokemonMatch>();
+  idBot: number = 644;
 
-  constructor(private http: HttpClient, private appConfig: AppConfigService, private router: Router) { }
+  constructor(private http: HttpClient, private appConfig: AppConfigService, private router: Router) {
+    console.log(this.equipeSauvegardeesJoueur2);
+  }
 
-  load(utilisateur: Utilisateur) {
+  loadJ1(utilisateur: Utilisateur) {
     this.joueur1 = utilisateur;
     this.loadEquipeEnCoursJoueur1().subscribe(resp => {
       this.equipeEnCoursJoueur1 = resp;
-      this.initPokemonMatch(this.equipeEnCoursJoueur1.listPokemons[0]);
+      for(let i = 0; i < this.equipeEnCoursJoueur1.listPokemons.length; i++) {
+        this.pokemonsMatchJ1.push(this.initPokemonMatch(this.equipeEnCoursJoueur1.listPokemons[i]));
+      }
+      this.pokemonMatchJoeur1 = this.initPokemonMatch(this.equipeEnCoursJoueur1.listPokemons[0]);
     }, error => console.log(error));
   }
 
-  loadEquipeEnCoursJoueur1() : Observable<Equipe>{
+  loadJ2(utilisateur: Utilisateur) {
+    this.joueur2 = utilisateur;
+    this.loadEquipeEnCoursJoueur1().subscribe(resp => {
+      this.equipeEnCoursJoueur2 = resp;
+      for(let i = 0; i < this.equipeEnCoursJoueur2.listPokemons.length; i++) {
+        this.pokemonsMatchJ2.push(this.initPokemonMatch(this.equipeEnCoursJoueur2.listPokemons[i]));
+      }
+      this.pokemonMatchJoueur2 = this.initPokemonMatch(this.equipeEnCoursJoueur2.listPokemons[0]);
+    }, error => console.log(error));
+  }
+
+  loadEquipeEnCoursJoueur1(): Observable<Equipe>{
     return this.http.get<Equipe>(this.appConfig.backEndUrl + "utilisateur/" + this.joueur1.id + "/equipeEnCours")
+  }
+
+  loadEquipeEnCoursJoueur2(): Observable<Equipe>{
+    return this.http.get<Equipe>(this.appConfig.backEndUrl + "utilisateur/" + this.idBot + "/equipeEnCours")
   }
 
   getEquipeEnCoursJoueur1(): Equipe {
@@ -37,22 +64,34 @@ export class MatchService {
   }
 
   getPokemonMatchJoueur1(): PokemonMatch {
-    console.log(this.pokemonMatchJoeur1);
     return this.pokemonMatchJoeur1;
   }
 
-  initPokemonMatch(monPokemon: MonPokemon) {
-    this.pokemonMatchJoeur1.hpMatch = monPokemon.pokeReference.hp;
-    this.pokemonMatchJoeur1.attackMatch = monPokemon.pokeReference.attaque;
-    this.pokemonMatchJoeur1.defenseMatch = monPokemon.pokeReference.defense;
-    this.pokemonMatchJoeur1.specialAttackMatch = monPokemon.pokeReference.attaqueSpe;
-    this.pokemonMatchJoeur1.specialDefenseMatch = monPokemon.pokeReference.defenseSpe;
-    this.pokemonMatchJoeur1.speedMatch = monPokemon.pokeReference.speed;
-    this.pokemonMatchJoeur1.ppAttaque1 = monPokemon.attaque1.pointDePouvoir;
-    this.pokemonMatchJoeur1.ppAttaque2 = monPokemon.attaque2.pointDePouvoir;
-    this.pokemonMatchJoeur1.ppAttaque3 = monPokemon.attaque3.pointDePouvoir;
-    this.pokemonMatchJoeur1.ppAttaque4 = monPokemon.attaque4.pointDePouvoir;
-    this.pokemonMatchJoeur1.monPokemon = monPokemon;
-    console.log(this.pokemonMatchJoeur1);
+  getEquipesJoueur2(): Array<Equipe> {
+    return this.equipeSauvegardeesJoueur2;
+  }
+
+  initPokemonMatch(monPokemon: MonPokemon): PokemonMatch{
+    let pokemonMatch = new PokemonMatch();
+
+    pokemonMatch.hpMatch = monPokemon.pokeReference.hp;
+    pokemonMatch.attackMatch = monPokemon.pokeReference.attaque;
+    pokemonMatch.defenseMatch = monPokemon.pokeReference.defense;
+    pokemonMatch.specialAttackMatch = monPokemon.pokeReference.attaqueSpe;
+    pokemonMatch.specialDefenseMatch = monPokemon.pokeReference.defenseSpe;
+    pokemonMatch.speedMatch = monPokemon.pokeReference.speed;
+    pokemonMatch.ppAttaque1 = monPokemon.attaque1.pointDePouvoir;
+    pokemonMatch.ppAttaque2 = monPokemon.attaque2.pointDePouvoir;
+    pokemonMatch.ppAttaque3 = monPokemon.attaque3.pointDePouvoir;
+    pokemonMatch.ppAttaque4 = monPokemon.attaque4.pointDePouvoir;
+    pokemonMatch.monPokemon = monPokemon;
+
+    return pokemonMatch;
+  }
+
+  loadBot(){
+    this.loadEquipeEnCoursJoueur2().subscribe(resp => {
+      this.equipeEnCoursJoueur2 = resp;
+    })
   }
 }

@@ -82,7 +82,7 @@
 
 <div class="container" *ngIf="IsJoueur2()">
   <div class="center">
-    <button style="background-color: rgba(0,0,0,0.6);" [routerLink]="['/match']" [queryParams]="{idSalon : salonForm.id}"><h1>FIGHT</h1></button>
+    <button style="background-color: rgba(0,0,0,0.6);" [routerLink]="['/match']" [queryParams]="{idSalon : salonForm.id}" (click)="loadMatch()"><h1>FIGHT</h1></button>
   </div>
 </div>
 
