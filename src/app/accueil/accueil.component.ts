@@ -21,6 +21,7 @@ export class AccueilComponent implements OnInit {
   equipeSauvegardesForm: Array<Equipe> = new Array<Equipe>();
   nombrePokemonParEquipe: number;
   salonForm:Salon = new Salon();
+  joueur2:Utilisateur = new Utilisateur();
 
   constructor(private accueilService: AccueilHttpService, private router: Router) {
   }
@@ -116,9 +117,12 @@ export class AccueilComponent implements OnInit {
   }
     creerSalon(){
     this.utilisateurForm = JSON.parse(sessionStorage.getItem("utilisateur"));
+    this.joueur2 = this.accueilService.findJoueur2();
     this.salonForm = new Salon();
     this.salonForm.joueur1 = new Utilisateur();
     this.salonForm.joueur1.id = this.utilisateurForm.id;
+    this.salonForm.joueur2 = new Utilisateur();
+    this.salonForm.joueur2.id = this.joueur2.id;
     this.accueilService.createSalon(this.salonForm).subscribe(resp => {
       this.router.navigate(['/salon'], {queryParams: {idSalon: resp.id}});
     }, error => console.log(error));
