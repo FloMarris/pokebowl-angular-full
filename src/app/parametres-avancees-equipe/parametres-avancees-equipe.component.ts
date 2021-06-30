@@ -19,12 +19,16 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
   flag: boolean = false;
   id: number = 36;
   idEquipe: number;
+  fromProfil: boolean = false;
 
   constructor(private parametresAvanceesEquipesServive: ParametresAvanceesEquipesService,
               private route: ActivatedRoute, private pokedexService: PokedexHttpService,
               private router: Router, private accueilService: AccueilHttpService) {
     this.route.queryParams.subscribe(params => {
       this.idEquipe = params['idEquipe'];
+      if (params['Profil']!=null) {
+        this.fromProfil = true;
+      }
     });
   }
 
@@ -50,7 +54,12 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
         counter++;
         if(counter == this.equipeForm.listPokemons.length - 1) {
           this.accueilService.load(JSON.parse(sessionStorage.getItem("utilisateur")).id);
-          this.router.navigate(['/accueil']);
+          if (this.fromProfil) {
+            this.router.navigate(['/profil']);
+          }
+          else {
+            this.router.navigate(['/accueil']);
+          }
         }
       }, error => console.log(error));;
     }
