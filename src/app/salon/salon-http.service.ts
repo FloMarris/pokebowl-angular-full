@@ -57,6 +57,7 @@ export class SalonHttpService {
   }
 
   findJoueur2(): Utilisateur {
+    console.log(this.joueur2.equipeEnCours);
     return this.joueur2;
   }
 
