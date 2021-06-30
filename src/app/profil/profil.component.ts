@@ -107,7 +107,7 @@ export class ProfilComponent implements OnInit {
         }
       }
 
-     else if(this.nombrePokemonParEquipe[index] < this.listEquipes[index].listPokemons.length) {
+      else if(this.nombrePokemonParEquipe[index] < this.listEquipes[index].listPokemons.length) {
         this.listEquipes[index].nbrPokemons = this.nombrePokemonParEquipe[index];
         this.listEquipes[index].utilisateurEquipeSauv.id = this.utilisateurForm.id;
         this.profilService.modifyEquipeSauv(this.listEquipes[index]).subscribe(resp => {
