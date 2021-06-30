@@ -44,54 +44,54 @@
 <div class="equipe">
 
   <div *ngFor="let equipe of listEquipes, let index=index" style="display: inline-block; width: 50%">
-    <h6>Equipe {{index+1}}  <button *ngIf="equipe.listPokemons?.length>0" (click)="gerer(index)">Gérer</button></h6>
+    <h6>Equipe {{index+1}}  <button *ngIf="equipe.listPokemons.length>0" (click)="gerer(index)">Gérer</button></h6>
     <label class="h3">Choisir le nombre de pokemons :</label>
-    <select name="nbPokemon" class="box" [(ngModel)]="nombrePokemonParEquipe" (change)="changerTailleEquipeEnCours(index)">
-      <option class="dropdown-item" disabled selected value="0">0</option>
+    <select name="nbPokemon" class="box" [(ngModel)]="nombrePokemonParEquipe[index]" (change)="changerTailleEquipeEnCours(index)">
+      <option value="0">0</option>
       <option value='3'>3</option>
       <option value='4'>4</option>
       <option value='5'>5</option>
       <option value='6'>6</option>
     </select>
 
-    <table>
+    <table *ngIf="equipe.nbrPokemons!=0">
       <tr>
-        <th *ngIf="equipe?.listPokemons[0]?.pokeReference?.avatar!=null">
-          <img src="{{equipe?.listPokemons[0]?.pokeReference?.avatar}}" width="80">
+        <th *ngIf="equipe.listPokemons[0]?.pokeReference?.avatar!=null">
+          <img src="{{equipe.listPokemons[0]?.pokeReference?.avatar}}" width="80">
         </th>
-        <th *ngIf="equipe?.listPokemons[0]?.pokeReference?.avatar==null">
+        <th *ngIf="equipe.listPokemons[0]?.pokeReference?.avatar==null">
           <h3 class="pointInterrogation">?</h3>
         </th>
-        <th *ngIf="equipe?.listPokemons[1]?.pokeReference?.avatar!=null">
-          <img src="{{equipe?.listPokemons[1]?.pokeReference?.avatar}}" width="80">
+        <th *ngIf="equipe.listPokemons[1]?.pokeReference?.avatar!=null">
+          <img src="{{equipe.listPokemons[1]?.pokeReference?.avatar}}" width="80">
         </th>
-        <th *ngIf="equipe?.listPokemons[1]?.pokeReference?.avatar==null">
+        <th *ngIf="equipe.listPokemons[1]?.pokeReference?.avatar==null">
           <h3 class="pointInterrogation">?</h3>
         </th>
-        <th *ngIf="equipe?.listPokemons[2]?.pokeReference?.avatar!=null">
-          <img src="{{equipe?.listPokemons[2]?.pokeReference?.avatar}}" width="80">
+        <th *ngIf="equipe.listPokemons[2]?.pokeReference?.avatar!=null">
+          <img src="{{equipe.listPokemons[2]?.pokeReference?.avatar}}" width="80">
         </th>
-        <th *ngIf="equipe?.listPokemons[2]?.pokeReference?.avatar==null">
+        <th *ngIf="equipe.listPokemons[2]?.pokeReference?.avatar==null">
           <h3 class="pointInterrogation">?</h3>
         </th>
       </tr>
-      <tr *ngIf="equipe.listPokemons.length>3">
-        <th *ngIf="equipe?.listPokemons[3]?.pokeReference?.avatar!=null">
-          <img src="{{equipe?.listPokemons[3]?.pokeReference?.avatar}}" width="80">
+      <tr *ngIf="equipe.nbrPokemons>3">
+        <th *ngIf="equipe.listPokemons[3]?.pokeReference?.avatar!=null">
+          <img src="{{equipe.listPokemons[3]?.pokeReference?.avatar}}" width="80">
         </th>
-        <th *ngIf="equipe?.listPokemons[3]?.pokeReference?.avatar==null">
+        <th *ngIf="equipe.listPokemons[3]?.pokeReference?.avatar==null">
           <h3 class="pointInterrogation">?</h3>
         </th>
-        <th *ngIf="equipe.listPokemons.length>4 && equipe?.listPokemons[4]?.pokeReference?.avatar!=null">
+        <th *ngIf="equipe.listPokemons.length>4 && equipe.listPokemons[4]?.pokeReference?.avatar!=null">
           <img src="{{equipe.listPokemons[4]?.pokeReference?.avatar}}" width="80">
         </th>
-        <th *ngIf="equipe.listPokemons.length>4 && equipe?.listPokemons[4]?.pokeReference?.avatar==null">
+        <th *ngIf="equipe.listPokemons.length>4 && equipe.listPokemons[4]?.pokeReference?.avatar==null">
           <h3 class="pointInterrogation">?</h3>
         </th>
-        <th *ngIf="equipe.listPokemons.length>5 && equipe?.listPokemons[5]?.pokeReference?.avatar!=null">
+        <th *ngIf="equipe.listPokemons.length>5 && equipe.listPokemons[5]?.pokeReference?.avatar!=null">
           <img src="{{equipe.listPokemons[5]?.pokeReference?.avatar}}" width="80">
         </th>
-        <th *ngIf="equipe.listPokemons.length>5 && equipe?.listPokemons[5]?.pokeReference?.avatar==null">
+        <th *ngIf="equipe.listPokemons.length>5 && equipe.listPokemons[5]?.pokeReference?.avatar==null">
           <h3 class="pointInterrogation">?</h3>
         </th>
       </tr>
