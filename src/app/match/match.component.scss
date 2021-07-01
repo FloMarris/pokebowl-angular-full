@@ -203,12 +203,42 @@ th {
   text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
 }
 
+.defaiteSpan {
+  position: absolute;
+  left: 25%;
+  top: 30%;
+  font-size: 100px;
+  font-family: pokemonFont;
+  color: #ff0900;
+  text-shadow: 0 0 3px #ab601f, 0 0 5px #ffd500;
+}
+
 .changerPokemonSpan {
   position: absolute;
   left: 10%;
-  top: 50%;
-  font-size: 100px;
+  top: 65%;
+  font-size: 50px;
   font-family: pokemonFont;
   color: #ffcc00;
   text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+}
+
+.attaqueJ1Span{
+  position: absolute;
+  left: 10%;
+  top: 35%;
+  font-size: 30px;
+  font-family: pokemonFont;
+  color: #ff0900;
+  text-shadow: 0 0 3px #ab601f, 0 0 5px #ffd500;
+}
+
+.attaqueJ2Span{
+  position: absolute;
+  left: 65%;
+  top: 35%;
+  font-size: 30px;
+  font-family: pokemonFont;
+  color: #ff0900;
+  text-shadow: 0 0 3px #ab601f, 0 0 5px #ffd500;
 }

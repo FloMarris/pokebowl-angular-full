@@ -14,16 +14,27 @@
     <span *ngIf="spanVictoire != null">{{spanVictoire}}</span>
   </div>
 
-  <div class="changerPokemonSpan">
-    <span *ngIf="spanChangerPokemon != null">{{spanChangerPokemon}}</span>
+  <div class="defaiteSpan">
+    <span *ngIf="flag3">Vous avez perdu...</span>
   </div>
 
+  <div class="changerPokemonSpan">
+    <span *ngIf="flag1">Changer de pokemon</span>
+  </div>
+
+  <div class="attaqueJ1Span">
+    <span *ngIf="flagAttaque">{{messageAttaqueJ1}}</span>
+  </div>
+
+  <div class="attaqueJ2Span">
+    <span *ngIf="flagAttaque">{{messageAttaqueJ2}}</span>
+  </div>
 
   <div class="pokemonMatch2">
     <img src="{{findPokemonMatchJoueur2()?.monPokemon?.pokeReference.avatar}}"  width="250" > <br>
   </div>
 
-  <div class="pokemonMatch">
+  <div class="pokemonMatch" *ngIf="findPokemonMatchJoueur1()">
     <img src="{{findPokemonMatchJoueur1()?.monPokemon?.pokeReference.avatar}}"  width="430" > <br>
   </div>
 
@@ -44,24 +55,24 @@
     <table>
       <tr>
         <th>
-          <img src="{{findEquipeEnCoursJoueur1().listPokemons[0]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(0)">
+            <img src="{{findEquipeEnCoursJoueur1().listPokemons[0]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(0)">
         </th>
         <th>
-          <img src="{{findEquipeEnCoursJoueur1().listPokemons[1]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(1)">
+            <img src="{{findEquipeEnCoursJoueur1().listPokemons[1]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(1)">
         </th>
         <th>
-          <img src="{{findEquipeEnCoursJoueur1().listPokemons[2]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(2)">
+            <img src="{{findEquipeEnCoursJoueur1().listPokemons[2]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(2)">
         </th>
       </tr>
       <tr *ngIf="findEquipeEnCoursJoueur1().listPokemons.length>3">
         <th>
-          <img src="{{findEquipeEnCoursJoueur1().listPokemons[3]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(3)">
+            <img src="{{findEquipeEnCoursJoueur1().listPokemons[3]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(3)">
         </th>
         <th *ngIf="findEquipeEnCoursJoueur1().listPokemons.length>4">
-          <img src="{{findEquipeEnCoursJoueur1().listPokemons[4]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(4)">
+            <img src="{{findEquipeEnCoursJoueur1().listPokemons[4]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(4)">
         </th>
         <th *ngIf="findEquipeEnCoursJoueur1().listPokemons.length>5">
-          <img src="{{findEquipeEnCoursJoueur1().listPokemons[5]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(5)">
+            <img src="{{findEquipeEnCoursJoueur1().listPokemons[5]?.pokeReference.avatar}}" width="130" (click)="changePokemonMatch(5)">
         </th>
       </tr>
     </table>

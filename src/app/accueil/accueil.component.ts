@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 import {Salon} from "../../model/salon";
 import {SalonComponent} from "../salon/salon.component";
 import {PokedexHttpService} from "../pokedex/pokedex-http.service";
+import {Attaque} from "../../model/attaque";
 
 @Component({
   selector: 'app-accueil',
@@ -162,7 +163,7 @@ export class AccueilComponent implements OnInit {
     }
   }
   pasDattaque(): boolean {
-    if (this.utilisateurSession.equipeEnCours == null) {
+    if (this.utilisateurSession.equipeEnCours == null || this.utilisateurSession.equipeEnCours.id == null) {
       return true
     }
     for (let pokemon of this.utilisateurSession.equipeEnCours.listPokemons) {
