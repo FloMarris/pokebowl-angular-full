@@ -23,7 +23,7 @@ export class AccueilHttpService {
 
   joueur2:Utilisateur = new Utilisateur();
   equipeSauvegardeesJoueur2: Array<Equipe> = new Array<Equipe>()
-  idJoueur2 = 456;
+  idJoueur2 = 119;
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
     //this.load(this.getIdUtilisateur());

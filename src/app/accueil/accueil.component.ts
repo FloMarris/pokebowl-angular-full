@@ -162,7 +162,6 @@ export class AccueilComponent implements OnInit {
       }, error => console.log(error))
     }
   }
-
   pasDattaque(): boolean {
     if (this.utilisateurSession.equipeEnCours == null || this.utilisateurSession.equipeEnCours.id == null) {
       return true
