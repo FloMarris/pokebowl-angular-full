@@ -108,7 +108,7 @@
       </table>
       </div>
       <div *ngIf="getEquipePrecedente().listPokemons == null">
-        <h1>Pas d'équipe précédente sauvegardée</h1>
+        <h3>Pas d'équipe précédente sauvegardée</h3>
       </div>
       <a class="h3" (click)="chargerEquipePrecedente()">Charger l'équipe</a>
     </div>
@@ -136,12 +136,15 @@
   </h1>
 </div>
 
-<!--<div *ngIf="!pasDattaque()" class="cadreSalon">-->
+<!--<div *ngIf="pasDattaque()" class="cadreSalon">-->
 <!--  <h1>-->
-<!--    <a (click)="creerSalon()" class="h3"><img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 100px">Créer un salon privé</a><br><br>-->
+<!--    <a (click)="afficherMessage()" class="h3"><img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 100px">Créer un salon privé</a>-->
+<!--    <br><span class="error">{{message}}</span><br><br>-->
 <!--    <input class="search" type="text" placeholder="Entrer code salon privé..."><br>-->
-<!--    <a [routerLink]="['/salon']" class="h3"><img src="../../assets/superBall.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 55px">Rejoindre un salon privé</a><br><br>-->
-<!--    <a [routerLink]="['/match']" class="h3"><img src="../../assets/hyperBall.png" alt="pokeball.png" style="width: 80px; height: 80px; margin-right: 55px">Chercher un adversaire</a>-->
+<!--    <a (click)="afficherMessage2()" class="h3"><img src="../../assets/superBall.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 55px">Rejoindre un salon privé</a>-->
+<!--    <br><span class="error">{{message2}}</span><br><br>-->
+<!--    <a (click)="afficherMessage3()" class="h3"><img src="../../assets/hyperBall.png" alt="pokeball.png" style="width: 80px; height: 80px; margin-right: 55px">Chercher un adversaire</a>-->
+<!--    <br><span class="error">{{message3}}</span>-->
 <!--  </h1>-->
 <!--</div>-->
 
