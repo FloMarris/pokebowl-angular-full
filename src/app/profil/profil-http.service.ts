@@ -17,6 +17,10 @@ export class ProfilHttpService {
   equipesSauvegardees: Array<Equipe> = new Array<Equipe>();
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
+    this.loadUtilisateur();
+  }
+
+  loadUtilisateur() {
     this.http.get<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + this.getIdUtilisateur()).subscribe(resp => {
       this.utilisateur = resp;
     })

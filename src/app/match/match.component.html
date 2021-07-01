@@ -82,7 +82,12 @@
 
   <div class="container" *ngIf="flagFinCombat">
     <div class="center">
-      <button (click)="retourAccueil()"><h1>ACCUEIL</h1></button>
+      <div *ngIf="flagVictoire">
+        <button (click)="retourAccueil(true)"><h1>ACCUEIL</h1></button>
+      </div>
+      <div *ngIf="!flagVictoire">
+        <button (click)="retourAccueil(false)"><h1>ACCUEIL</h1></button>
+      </div>
     </div>
   </div>
 
