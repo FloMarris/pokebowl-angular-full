@@ -244,3 +244,18 @@ th {
   color: #ff0900;
   text-shadow: 0 0 3px black, 0 0 5px black;
 }
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 48.7%;
+  font-family: pokemonFont;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-style: groove;
+  border-color: #cc423f;
+  border-radius : 10px;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #1f5cab, 0 0 5px #0000FF;
+}

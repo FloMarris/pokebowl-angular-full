@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Utilisateur} from "../../model/utilisateur";
 import {Equipe} from "../../model/equipe";
+import {Statistique} from "../../model/statistique";
 import {InscriptionHttpService} from "./inscription-http.service";
 import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-inscription',
@@ -53,6 +55,10 @@ export class InscriptionComponent implements OnInit {
     if (this.validerPseudo() && this.validerMotDePasse() && this.validerEmail() && (this.utilisateurForm.pseudo || this.utilisateurForm.email || this.utilisateurForm.motDePasse)){
       this.inscriptionService.createEquipeVide(new Equipe()).subscribe(resp => {
         this.utilisateurForm.equipeEnCours = new Equipe();
+        this.utilisateurForm.statistique = new Statistique();
+        this.utilisateurForm.statistique.nbrPartiesJouees = 0;
+        this.utilisateurForm.statistique.nbrVictoires = 0;
+        this.utilisateurForm.statistique.nbrDefaites = 0;
         //this.utilisateurForm.derniereEquipe = new Equipe();
         this.utilisateurForm.equipeEnCours.id = resp.id;
         //this.utilisateurForm.derniereEquipe.id = resp.id;

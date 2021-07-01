@@ -46,10 +46,12 @@
         {{hpJ1}} PV
       </div>
     </div>
-    <button type="button" class="boutonEquipe" (click)="attaquer(0)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque1.nom}}</button>
-    <button type="button" class="boutonEquipe" (click)="attaquer(1)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque2.nom}}</button><br>
-    <button type="button" class="boutonEquipe" (click)="attaquer(2)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque3.nom}}</button>
-    <button type="button" class="boutonEquipe" (click)="attaquer(3)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque4.nom}}</button><br><br>
+    <div *ngIf="flagFinCombat == false">
+      <button type="button" class="boutonEquipe" (click)="attaquer(0)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque1.nom}}</button>
+      <button type="button" class="boutonEquipe" (click)="attaquer(1)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque2.nom}}</button><br>
+      <button type="button" class="boutonEquipe" (click)="attaquer(2)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque3.nom}}</button>
+      <button type="button" class="boutonEquipe" (click)="attaquer(3)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque4.nom}}</button><br><br>
+    </div>
   </div>
 
 
@@ -78,6 +80,17 @@
         </th>
       </tr>
     </table>
+  </div>
+
+  <div class="container" *ngIf="flagFinCombat">
+    <div class="center">
+      <div *ngIf="flagVictoire">
+        <button (click)="retourAccueil(true)"><h1>ACCUEIL</h1></button>
+      </div>
+      <div *ngIf="!flagVictoire">
+        <button (click)="retourAccueil(false)"><h1>ACCUEIL</h1></button>
+      </div>
+    </div>
   </div>
 
 

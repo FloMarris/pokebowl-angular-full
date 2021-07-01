@@ -1,12 +1,10 @@
 export class Statistique{
-  id: number;
   pokemonPrefere: string;
   nbrVictoires: number;
   nbrPartiesJouees: number;
   nbrDefaites: number;
 
-  constructor(id?: number, pokemonPrefere?: string, nbrVictoires?: number, nbrPartiesJouees?: number, nbrDefaites?: number) {
-    this.id = id;
+  constructor(pokemonPrefere?: string, nbrVictoires?: number, nbrPartiesJouees?: number, nbrDefaites?: number) {
     this.pokemonPrefere = pokemonPrefere;
     this.nbrVictoires = nbrVictoires;
     this.nbrPartiesJouees = nbrPartiesJouees;
