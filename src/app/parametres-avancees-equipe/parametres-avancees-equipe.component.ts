@@ -7,6 +7,7 @@ import {Pokemon} from "../../model/pokemon";
 import {MonPokemon} from "../../model/mon-pokemon";
 import {Attaque} from "../../model/attaque";
 import {AccueilHttpService} from "../accueil/accueil-http.service";
+import {ProfilHttpService} from "../profil/profil-http.service";
 
 @Component({
   selector: 'app-parametres-avancees-equipe',
@@ -20,10 +21,15 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
   id: number = 36;
   idEquipe: number;
   fromProfil: boolean = false;
+  equipeProvisoireForm: Equipe = new Equipe();
+  isEquipeProvisoire: Array<boolean> = [false, false, false, false, false, false];
+  pokeProvisoires: Array<Pokemon> = [new Pokemon(), new Pokemon(), new Pokemon(), new Pokemon(), new Pokemon(), new Pokemon()];
+
 
   constructor(private parametresAvanceesEquipesServive: ParametresAvanceesEquipesService,
               private route: ActivatedRoute, private pokedexService: PokedexHttpService,
-              private router: Router, private accueilService: AccueilHttpService) {
+              private router: Router, private accueilService: AccueilHttpService,
+              private  profilService: ProfilHttpService) {
     this.route.queryParams.subscribe(params => {
       this.idEquipe = params['idEquipe'];
       if (params['Profil']!=null) {
@@ -41,6 +47,10 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
     return this.parametresAvanceesEquipesServive.findAttaques().get(nom);
   }
 
+  getAttaquesProvisoires(idPoke: number) {
+    return this.parametresAvanceesEquipesServive.getAllAttaques()[idPoke];
+  }
+
   ngOnInit(): void {
   }
 
@@ -48,12 +58,16 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
     let counter = 0;
 
     for(let i = 0; i < this.equipeForm.listPokemons.length; i++) {
+      if (this.isEquipeProvisoire[i]) {
+        this.equipeForm.listPokemons[i] = this.equipeProvisoireForm.listPokemons[i];
+      }
       this.equipeForm.listPokemons[i].equipe = new Equipe();
       this.equipeForm.listPokemons[i].equipe.id = this.equipeForm.id;
       this.parametresAvanceesEquipesServive.modify(this.equipeForm.listPokemons[i]).subscribe(resp => {
         counter++;
         if(counter == this.equipeForm.listPokemons.length - 1) {
           this.accueilService.load(JSON.parse(sessionStorage.getItem("utilisateur")).id);
+          this.profilService.load(JSON.parse(sessionStorage.getItem("utilisateur")).id)
           if (this.fromProfil) {
             this.router.navigate(['/profil']);
           }
@@ -72,11 +86,12 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
     }, error => console.log(error));
   }
 
-
   aleatoire(index: number) {
+    this.isEquipeProvisoire[index] = true;
+    this.equipeProvisoireForm = this.equipeForm;
     let idPoke: number = this.pokedexService.pokemons[Math.floor(Math.random() * this.pokedexService.pokemons.length)].id;
     this.pokedexService.findPokemonById(idPoke).subscribe(resp => {
-      this.equipeForm.listPokemons[index].pokeReference = resp;
+      this.equipeProvisoireForm.listPokemons[index].pokeReference = resp;
       let attaquesPoke: Array<Attaque> = new Array<Attaque>();
       this.pokedexService.findAllAttaquesPokeByPokeId(idPoke).subscribe(resp => {
         attaquesPoke = resp;
@@ -84,28 +99,28 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
           this.aleatoire(index);
         }
 
-        this.equipeForm.listPokemons[index].attaque1 = new Attaque();
-        this.equipeForm.listPokemons[index].attaque2 = new Attaque();
-        this.equipeForm.listPokemons[index].attaque3 = new Attaque();
-        this.equipeForm.listPokemons[index].attaque4 = new Attaque();
+        this.equipeProvisoireForm.listPokemons[index].attaque1 = new Attaque();
+        this.equipeProvisoireForm.listPokemons[index].attaque2 = new Attaque();
+        this.equipeProvisoireForm.listPokemons[index].attaque3 = new Attaque();
+        this.equipeProvisoireForm.listPokemons[index].attaque4 = new Attaque();
 
         if (attaquesPoke.length <= 4) {
           this.pokedexService.findAttaqueById(attaquesPoke[0].id).subscribe(resp => {
-            this.equipeForm.listPokemons[index].attaque1 = resp;
+            this.equipeProvisoireForm.listPokemons[index].attaque1 = resp;
           });
           if (attaquesPoke.length == 2) {
             this.pokedexService.findAttaqueById(attaquesPoke[1].id).subscribe(resp => {
-              this.equipeForm.listPokemons[index].attaque2 = resp;
+              this.equipeProvisoireForm.listPokemons[index].attaque2 = resp;
             });
           }
           if (attaquesPoke.length == 3) {
             this.pokedexService.findAttaqueById(attaquesPoke[2].id).subscribe(resp => {
-              this.equipeForm.listPokemons[index].attaque3 = resp;
+              this.equipeProvisoireForm.listPokemons[index].attaque3 = resp;
             });
           }
           if (attaquesPoke.length == 4) {
             this.pokedexService.findAttaqueById(attaquesPoke[3].id).subscribe(resp => {
-              this.equipeForm.listPokemons[index].attaque4 = resp;
+              this.equipeProvisoireForm.listPokemons[index].attaque4 = resp;
             });
           }
         }
@@ -131,16 +146,16 @@ export class ParametresAvanceesEquipeComponent implements OnInit {
             i++;
           }
           this.pokedexService.findAttaqueById(idA1).subscribe(resp => {
-            this.equipeForm.listPokemons[index].attaque1 = resp;
+            this.equipeProvisoireForm.listPokemons[index].attaque1 = resp;
           });
           this.pokedexService.findAttaqueById(idA2).subscribe(resp => {
-            this.equipeForm.listPokemons[index].attaque2 = resp;
+            this.equipeProvisoireForm.listPokemons[index].attaque2 = resp;
           });
           this.pokedexService.findAttaqueById(idA3).subscribe(resp => {
-            this.equipeForm.listPokemons[index].attaque3 = resp;
+            this.equipeProvisoireForm.listPokemons[index].attaque3 = resp;
           });
           this.pokedexService.findAttaqueById(idA4).subscribe(resp => {
-            this.equipeForm.listPokemons[index].attaque4 = resp;
+            this.equipeProvisoireForm.listPokemons[index].attaque4 = resp;
           });
         }
         }, error => console.log(error))

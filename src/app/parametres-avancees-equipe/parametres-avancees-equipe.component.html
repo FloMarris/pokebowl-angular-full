@@ -3,7 +3,7 @@
  <div class="casePokemon" *ngFor = "let pokemon of getEquipe().listPokemons, let index = index;">
 
    <!-- SI LES POKEMONS DE REFERENCE SONT DEJA ENREGISTRES -->
-   <div *ngIf="pokemon.pokeReference != null">
+   <div *ngIf="pokemon.pokeReference != null && isEquipeProvisoire[index]==false">
    <h1>{{pokemon?.pokeReference?.nom}}</h1><br>
    <table>
     <tr>
@@ -52,6 +52,58 @@
       </th>
     </tr>
    </table>
+   </div>
+
+   <!-- SI LES POKEMONS DE REFERENCE SONT DEJA ENREGISTRES ET J'AI FAIT ALEATOIRE -->
+   <div *ngIf="pokemon.pokeReference != null && isEquipeProvisoire[index]==true">
+     <h1>{{equipeProvisoireForm.listPokemons[index].pokeReference?.nom}}</h1><br>
+     <table>
+       <tr>
+         <th rowspan="2">
+           <img src= "{{equipeProvisoireForm.listPokemons[index].pokeReference?.avatar}}" alt="voltali.png" width="150" height="150">
+         </th>
+         <th>
+           <select class="box sizeFixed" [(ngModel)]="equipeProvisoireForm.listPokemons[index].attaque1"> <!--(change)="modifyAttaqueMonPokemon(index)"-->
+             <option selected="selected" [ngValue]="equipeProvisoireForm.listPokemons[index].attaque1">{{equipeProvisoireForm.listPokemons[index].attaque1?.nom}}</option>
+             <option *ngFor="let attaque of getAttaquesProvisoires(equipeProvisoireForm.listPokemons[index].pokeReference.id)" [ngValue]="attaque">{{attaque?.nom}}
+               <!-- <img style="width: 80px" src="{{attaque.typeAttaque.avatar}}"/> -->
+             </option>
+           </select>
+         </th>
+         <th>
+           <select class="box sizeFixed" [(ngModel)]="equipeProvisoireForm.listPokemons[index].attaque2"> <!--(change)="modifyAttaqueMonPokemon(index)"-->
+             <option selected="selected" [ngValue]="equipeProvisoireForm.listPokemons[index].attaque2">{{equipeProvisoireForm.listPokemons[index].attaque2?.nom}}</option>
+             <option *ngFor="let attaque of getAttaquesProvisoires(equipeProvisoireForm.listPokemons[index].pokeReference.id)" [ngValue]="attaque">{{attaque?.nom}}</option>
+           </select>
+         </th>
+       </tr>
+       <tr>
+         <th>
+           <select class="box sizeFixed" [(ngModel)]="equipeProvisoireForm.listPokemons[index].attaque3"> <!-- (change)="modifyAttaqueMonPokemon(index)"-->
+             <option selected="selected" [ngValue]="equipeProvisoireForm.listPokemons[index].attaque3">{{equipeProvisoireForm.listPokemons[index].attaque3?.nom}}</option>
+             <option *ngFor="let attaque of getAttaquesProvisoires(equipeProvisoireForm.listPokemons[index].pokeReference.id)" [ngValue]="attaque">{{attaque?.nom}}</option>
+           </select>
+         </th>
+         <th>
+           <select class="box sizeFixed" [(ngModel)]="equipeProvisoireForm.listPokemons[index].attaque4"> <!--(change)="modifyAttaqueMonPokemon(index)"-->
+             <option selected="selected" [ngValue]="equipeProvisoireForm.listPokemons[index].attaque4">{{equipeProvisoireForm.listPokemons[index].attaque4?.nom}}</option>
+             <option *ngFor="let attaque of getAttaquesProvisoires(equipeProvisoireForm.listPokemons[index].pokeReference.id)" [ngValue]="attaque">{{attaque?.nom}}</option>
+           </select>
+         </th>
+       </tr>
+
+       <div>
+         <button type="button" class="boutonAleatoire" (click)="aleatoire(index)">?</button>
+       </div>
+
+       <tr>
+         <th>&nbsp;</th>
+       <tr>
+         <th>
+           <a [routerLink]="['/pokedex']" [queryParams]="{idEquipe: idEquipe, idMonPokemon: equipeForm.listPokemons[index].id}">Changer</a>
+         </th>
+       </tr>
+     </table>
    </div>
 
 
