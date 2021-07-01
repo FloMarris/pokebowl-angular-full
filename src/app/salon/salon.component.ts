@@ -74,13 +74,11 @@ export class SalonComponent implements OnInit {
     this.joueur1.derniereEquipe.id = this.salonService.findEquipeEnCoursJoueur1().id;
     this.joueur1.equipeEnCours = new Equipe();
     this.joueur1.equipeEnCours.id = this.salonService.findEquipeEnCoursJoueur1().id;
-    this.salonService.modifyUtilisateur(this.joueur1);
+    //this.salonService.modifyUtilisateur(this.joueur1);
 
 
     this.matchService.loadJ1(this.salonForm.joueur1);
     this.matchService.loadJ2(this.salonService.findJoueur2());
-
-
   }
 
   IsJoueur2(): boolean {
