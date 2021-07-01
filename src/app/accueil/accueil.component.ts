@@ -184,11 +184,11 @@ export class AccueilComponent implements OnInit {
     this.paramAvancesFocus = false;
     this.afficherMessageErreur = true;
     if (this.equipeEnCoursForm == null || this.equipeEnCoursForm.listPokemons.length == null || this.equipeEnCoursForm.listPokemons.length == 0) {
-      this.message = "*Vous devez avoir des Pokémons dans votre équipe pour créer un salon !";
+      this.message = "*Vous devez avoir une équipe complète de Pokémons pour créer un salon !";
     }
     else {
       this.paramAvancesFocus = true;
-      this.message = "*Un ou plusieurs Pokémons n'ont pas d'attaque, cliquez sur Paramètres avancés";
+      this.message = "*Un ou plusieurs Pokémons n'ont pas 4 attaques, cliquez sur Paramètres avancés !";
     }
   }
 
