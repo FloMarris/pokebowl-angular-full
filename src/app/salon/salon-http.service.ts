@@ -17,6 +17,7 @@ export class SalonHttpService {
   equipeEnCoursJoueur2 = new Equipe();
   idJoueur2 = 119;
   joueur2: Utilisateur = new Utilisateur();
+  joueur1: Utilisateur = new Utilisateur();
 
   constructor(private http: HttpClient, private appConfig: AppConfigService, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
@@ -43,6 +44,10 @@ export class SalonHttpService {
     this.http.get<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + this.idJoueur2).subscribe(resp => {
       this.joueur2 = resp;
     }, error => console.log(error))
+
+    this.http.get<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + JSON.parse(sessionStorage.getItem("utilisateur")).id).subscribe(resp => {
+      this.joueur1 = resp;
+    }, error => console.log(error))
   }
 
   findEquipeEnCoursJoueur1():Equipe {
@@ -59,6 +64,16 @@ export class SalonHttpService {
   findJoueur2(): Utilisateur {
     console.log(this.joueur2.equipeEnCours);
     return this.joueur2;
+  }
+
+  findJoueur1(): Utilisateur {
+    return this.joueur1;
+  }
+
+  modifyUtilisateur(utilisateur:Utilisateur){
+    return this.http.put<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur).subscribe(resp => {
+
+    }, error => console.log(error))
   }
 
 
