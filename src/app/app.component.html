@@ -3,7 +3,7 @@
     <li class="lien"><a [routerLink]="['/accueil']" (click) = "loadAccueil()">Accueil</a></li>
     <li class="lien"><a [routerLink]="['/pokedex']">Pokedex         <img src="../assets/pokedex.png" width="30" height="40"></a></li>
     <li class="lien"><a [routerLink]="['/profil']">Profil</a></li>
-    <li class="deconnexion222"><a [routerLink]="['/connexion']">Déconnexion <img src="../assets/deconnexion.png" width="40" height="40"></a></li>
+    <li class="deconnexion222"><a (click)="resetSession()">Déconnexion <img src="../assets/deconnexion.png" width="40" height="40"></a></li>
   </ul>
 </div>
 

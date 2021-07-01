@@ -32,4 +32,10 @@ export class AppComponent {
   recupererPage(){
     return this.router.url == '/connexion' || this.router.url == '/inscription' || this.router.url == '/match' || this.router.url == '/';
   }
+
+  resetSession() {
+    this.accueilService.flagFinChargement = false;
+    sessionStorage.setItem("utilisateur", null);
+    this.router.navigate(['/connexion']);
+  }
 }
