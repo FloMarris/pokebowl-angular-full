@@ -16,7 +16,7 @@ export class SalonHttpService {
   idSalon: number; //ou 27 pour mes tests
   equipeEnCoursJoueur1:Equipe=new Equipe();
   equipeEnCoursJoueur2 = new Equipe();
-  idJoueur2 = 644;
+  idJoueur2 = 165;
   joueur2: Utilisateur = new Utilisateur();
   joueur1: Utilisateur = new Utilisateur();
 
@@ -69,6 +69,12 @@ export class SalonHttpService {
 
   findJoueur1(): Utilisateur {
     return this.joueur1;
+  }
+
+  modifyUtilisateur(utilisateur:Utilisateur){
+    this.http.put<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur).subscribe(resp => {
+    }, error => console.log(error))
+
   }
 
 
