@@ -22,7 +22,7 @@ export class MatchService {
   pokemonMatchJoueur2: PokemonMatch = new PokemonMatch();
   pokemonsMatchJ1: Array<PokemonMatch> = new Array<PokemonMatch>();
   pokemonsMatchJ2: Array<PokemonMatch> = new Array<PokemonMatch>();
-  idBot: number = 644;
+  idBot: number = 456;
 
   constructor(private http: HttpClient, private appConfig: AppConfigService, private router: Router) {
   }
