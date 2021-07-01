@@ -18,6 +18,7 @@ export class ParametresAvanceesEquipesService {
   pokemons: Array<Pokemon> = new Array<Pokemon>();
   idEquipe: number;
 
+
   constructor(private http: HttpClient, private appConfig: AppConfigService, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       this.idEquipe = params['idEquipe'];
@@ -26,6 +27,7 @@ export class ParametresAvanceesEquipesService {
       } //else {
         //this.loadEquipeAndListAttaques(36);
       //}
+      //this.loadAttaquesAllPoke();
     });
   }
 
@@ -53,4 +55,12 @@ export class ParametresAvanceesEquipesService {
       }
     }, error => console.log(error));
   }
+
+
+
+  getAllAttaques() {
+    return this.appConfig.attaqueProvisoires;
+  }
+
+
 }

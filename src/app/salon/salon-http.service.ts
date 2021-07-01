@@ -71,6 +71,12 @@ export class SalonHttpService {
     return this.joueur1;
   }
 
+  modifyUtilisateur(utilisateur:Utilisateur){
+    this.http.put<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur).subscribe(resp => {
+    }, error => console.log(error))
+
+  }
+
 
   //
   // modifySalon(salon:Salon){

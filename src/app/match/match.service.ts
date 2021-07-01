@@ -116,4 +116,8 @@ export class MatchService {
     return this.http.put<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur);
   }
 
+  getUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + utilisateur.id);
+  }
+
 }
