@@ -136,7 +136,7 @@
 <div *ngIf="!pasDattaque()" class="cadreSalon">
   <h1>
     <p class="error">{{message}}</p>
-    <a (click)="creerSalon()" class="h3"><img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 100px">Créer un salon privé</a><br><br>
+    <a (click)="creerSalon()" class="h3"><img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 100px">Combattre un bot</a><br><br>
     <input class="search" type="text" placeholder="Entrer code salon privé..."><br>
     <a [routerLink]="['/salon']" class="h3"><img src="../../assets/superBall.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 55px">Rejoindre un salon privé</a><br><br>
     <a [routerLink]="['/match']" class="h3"><img src="../../assets/hyperBall.png" alt="pokeball.png" style="width: 80px; height: 80px; margin-right: 55px">Chercher un adversaire</a>
@@ -146,7 +146,7 @@
 <div *ngIf="pasDattaque()" class="cadreSalon">
   <h1>
     <p class="error">{{message}}</p>
-    <a (click)="afficherMessage()" class="h3"><img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 100px">Créer un salon privé</a>
+    <a (click)="afficherMessage()" class="h3"><img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 100px">Combattre un bot</a>
     <input class="search" type="text" placeholder="Entrer code salon privé..."><br>
     <a (click)="afficherMessage()" class="h3"><img src="../../assets/superBall.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 55px">Rejoindre un salon privé</a>
     <a (click)="afficherMessage()" class="h3"><img src="../../assets/hyperBall.png" alt="pokeball.png" style="width: 80px; height: 80px; margin-right: 55px">Chercher un adversaire</a>

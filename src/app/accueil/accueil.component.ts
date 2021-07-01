@@ -170,7 +170,7 @@ export class AccueilComponent implements OnInit {
       return true
     }
     for (let pokemon of this.equipeEnCoursForm.listPokemons) {
-      if (!pokemon.attaque1 && !pokemon.attaque2 && !pokemon.attaque3 && !pokemon.attaque4) {
+      if (!pokemon.attaque1 || !pokemon.attaque2 || !pokemon.attaque3 || !pokemon.attaque4) {
         return true;
       }
     }
