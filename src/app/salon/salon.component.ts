@@ -79,8 +79,6 @@ export class SalonComponent implements OnInit {
 
     this.matchService.loadJ1(this.salonForm.joueur1);
     this.matchService.loadJ2(this.salonService.findJoueur2());
-
-
   }
 
   IsJoueur2(): boolean {

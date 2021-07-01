@@ -36,6 +36,10 @@ export class AccueilComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getFlagFinChargement(): boolean {
+    return this.accueilService.flagFinChargement;
+  }
+
   listPokemon(): Array<Pokemon> {
     return this.accueilService.findAllPokemon();
   }

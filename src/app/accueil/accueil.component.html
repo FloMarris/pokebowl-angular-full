@@ -80,6 +80,8 @@
 
   <div class="cadreIn" >
     <h2>Equipe précédente</h2><br>
+
+    <div *ngIf="getFlagFinChargement()">
     <div *ngIf="getEquipePrecedente().listPokemons != null">
 
     <table>
@@ -111,6 +113,7 @@
         <h3>Pas d'équipe précédente sauvegardée</h3>
       </div>
       <a class="h3" (click)="chargerEquipePrecedente()">Charger l'équipe</a>
+    </div>
     </div>
 
     <div class="cadreIn">

@@ -7,6 +7,7 @@ import {Attaque} from "../../model/attaque";
 import {Statistique} from "../../model/statistique";
 import { timer } from 'rxjs';
 import {Router} from "@angular/router";
+import {AccueilHttpService} from "../accueil/accueil-http.service";
 
 @Component({
   selector: 'app-match',
@@ -33,7 +34,7 @@ export class MatchComponent implements OnInit {
 
   joueur1Form: Utilisateur = new Utilisateur();
 
-  constructor(private matchService: MatchService, private router: Router) {
+  constructor(private matchService: MatchService, private router: Router, private accueilService: AccueilHttpService) {
   }
 
   ngOnInit(): void {
@@ -114,10 +115,16 @@ export class MatchComponent implements OnInit {
   }
 
   retourAccueil() {
-    //this.matchService.saveUtilisateur(this.joueur1Form).subscribe(resp => {
-    //  console.log(resp);
-      this.router.navigate(['/accueil']);
-    //}, error => console.log(error));
+  //  this.matchService.saveUtilisateur(this.joueur1Form).subscribe(resp => {
+  //    console.log(resp);
+      this.matchService.getUtilisateur(this.joueur1Form).subscribe(resp => {
+        sessionStorage.setItem("utilisateur", JSON.stringify(resp));
+        this.accueilService.load(resp.id);
+        this.router.navigate(['/accueil']);
+      }, error => console.log(error));
+      //this.accueilService.load(JSON.parse(sessionStorage.getItem("utilisateur")).id);
+      //this.router.navigate(['/accueil']);
+  //  }, error => console.log(error));
   }
 
   attaquer(index: number) {
