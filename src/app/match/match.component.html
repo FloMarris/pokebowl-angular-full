@@ -44,10 +44,12 @@
       <div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: hpJ1 + '%'}">
       </div>
     </div>
-    <button type="button" class="boutonEquipe" (click)="attaquer(0)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque1.nom}}</button>
-    <button type="button" class="boutonEquipe" (click)="attaquer(1)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque2.nom}}</button><br>
-    <button type="button" class="boutonEquipe" (click)="attaquer(2)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque3.nom}}</button>
-    <button type="button" class="boutonEquipe" (click)="attaquer(3)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque4.nom}}</button><br><br>
+    <div *ngIf="flagFinCombat == false">
+      <button type="button" class="boutonEquipe" (click)="attaquer(0)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque1.nom}}</button>
+      <button type="button" class="boutonEquipe" (click)="attaquer(1)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque2.nom}}</button><br>
+      <button type="button" class="boutonEquipe" (click)="attaquer(2)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque3.nom}}</button>
+      <button type="button" class="boutonEquipe" (click)="attaquer(3)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque4.nom}}</button><br><br>
+    </div>
   </div>
 
 
@@ -76,6 +78,12 @@
         </th>
       </tr>
     </table>
+  </div>
+
+  <div class="container" *ngIf="flagFinCombat">
+    <div class="center">
+      <button (click)="retourAccueil()"><h1>ACCUEIL</h1></button>
+    </div>
   </div>
 
 

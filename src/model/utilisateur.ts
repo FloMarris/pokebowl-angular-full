@@ -8,7 +8,7 @@ export class Utilisateur {
   email: string;
   avatar: string;
   motDePasse: string;
-  statistique: Statistique;
+  statistique: Statistique = new Statistique();
   salons: Array<Salon> = new Array<Salon>();
   equipeSauvegardees: Array<Equipe> = new Array<Equipe>();
   derniereEquipe: Equipe;
@@ -20,6 +20,6 @@ export class Utilisateur {
     this.email = email;
     this.avatar = avatar;
     this.motDePasse = motDePasse;
-    this.statistique = statistique;
+    this.statistique = new Statistique();
   }
 }
