@@ -160,7 +160,7 @@ export class AccueilComponent implements OnInit {
 
       }, error => console.log(error))
     }
-
+  }
   pasDattaque(): boolean {
     if (this.utilisateurSession.equipeEnCours == null) {
       return true
