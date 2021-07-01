@@ -127,9 +127,9 @@ export class MatchComponent implements OnInit {
     this.messageAttaqueJ1 = pokemonMatchJ1.monPokemon.pokeReference.nom + " attaque " + attaqueJoueur1.nom + " " + degatJ1 + " dégats !";
     this.messageAttaqueJ2 = pokemonMatchJ2.monPokemon.pokeReference.nom + " attaque " + attaqueJoueur2.nom + " " + degatJ2 + " dégats !";
 
-    setTimeout(() => { this.flagAttaque = false }, 1700);
-  }
 
+    setTimeout(() => { this.flagAttaque = false}, 1700);
+  }
   private chooseAttaque(index: number): Attaque {
     if(index == 0) {
       return this.findPokemonMatchJoueur1().monPokemon.attaque1;

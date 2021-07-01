@@ -5,6 +5,7 @@
       <a href="" class="h3">{{findPokemonMatchJoueur2()?.monPokemon?.pokeReference.nom}}</a><br><br>
       <div class="progress">
         <div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: hpJ2 + '%'}">
+          {{hpJ2}} PV
         </div>
       </div>
     </h1>
@@ -42,6 +43,7 @@
     <p class="p">{{findPokemonMatchJoueur1()?.monPokemon?.pokeReference.nom}}</p>
     <div class="progress mb-3">
       <div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: hpJ1 + '%'}">
+        {{hpJ1}} PV
       </div>
     </div>
     <button type="button" class="boutonEquipe" (click)="attaquer(0)">{{findPokemonMatchJoueur1()?.monPokemon?.attaque1.nom}}</button>
