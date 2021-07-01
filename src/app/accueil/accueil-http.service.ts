@@ -23,7 +23,8 @@ export class AccueilHttpService {
 
   joueur2:Utilisateur = new Utilisateur();
   equipeSauvegardeesJoueur2: Array<Equipe> = new Array<Equipe>()
-  idJoueur2 = 456;
+  idJoueur2 = 644;
+  flagFinChargement = false;
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
     //this.load(this.getIdUtilisateur());
@@ -34,6 +35,7 @@ export class AccueilHttpService {
   }
 
   load(id:number) {
+    this.flagFinChargement = false;
     let utilisateur: Utilisateur = JSON.parse(sessionStorage.getItem("utilisateur"));
 
     this.http.get<Array<Equipe>>(this.appConfig.backEndUrl + "utilisateur/" + id + "/equipes").subscribe(resp => {
@@ -44,9 +46,12 @@ export class AccueilHttpService {
       this.pokemons = resp;
     }, error => console.log(error))
 
+    console.log(utilisateur);
+
     if(utilisateur.derniereEquipe != null) {
       this.http.get<Equipe>(this.appConfig.backEndUrl + "utilisateur/" + id + "/equipePrecedente").subscribe(resp => {
         this.equipePrecedente = resp;
+        console.log(this.equipePrecedente);
       }, error => console.log(error))
     }
 
@@ -69,6 +74,8 @@ export class AccueilHttpService {
       this.http.get<Array<Equipe>>(this.appConfig.backEndUrl + "utilisateur/" + this.idJoueur2 + "/equipes").subscribe(resp => {
         this.equipeSauvegardeesJoueur2 = resp;
       }, error => console.log(error))
+
+    this.flagFinChargement = true;
   }
 
   findAllPokemon(): Array<Pokemon> {
