@@ -20,8 +20,8 @@
 
   <div style="display: inline-block; width: 100%; margin-top: 50px;">
     <p>Pokémon préféré : {{pokemonPref}}</p><br>
-
-    <p *ngIf="nbrTotalParties!=0 && nbrTotalParties!=null">Pourcentage de vistoires : {{nbrVictoires/nbrTotalParties*100}}%</p><br>
+    
+    <p *ngIf="nbrTotalParties!=0 && nbrTotalParties!=null">Pourcentage de victoires : {{(nbrVictoires/nbrTotalParties)*100}}%</p><br>
     <p *ngIf="nbrTotalParties==0 || nbrTotalParties==null">Pourcentage de victoires :</p><br>
 
 <!--    <p>Equipe 1: 100%</p>-->

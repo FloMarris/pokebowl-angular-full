@@ -25,8 +25,6 @@ export class AccueilComponent implements OnInit {
   salonForm:Salon = new Salon();
   joueur2:Utilisateur = new Utilisateur();
   message: string =  "";
-  message2: string =  "";
-  message3: string =  "";
   afficherMessageErreur: boolean = false;
   paramAvancesFocus: boolean = false;
 
@@ -167,50 +165,30 @@ export class AccueilComponent implements OnInit {
     }
   }
   pasDattaque(): boolean {
-    if (this.utilisateurSession.equipeEnCours == null || this.utilisateurSession.equipeEnCours.id == null) {
+    if (this.equipeEnCoursForm == null || this.equipeEnCoursForm.listPokemons.length == null || this.equipeEnCoursForm.listPokemons.length == 0) {
+      this.paramAvancesFocus = false;
       return true
     }
-    for (let pokemon of this.utilisateurSession.equipeEnCours.listPokemons) {
-      if (!pokemon.attaque1 && !pokemon.attaque2 && !pokemon.attaque3 && !pokemon.attaque4) {
-        this.paramAvancesFocus = true;
+    for (let pokemon of this.equipeEnCoursForm.listPokemons) {
+      if (!pokemon.attaque1 || !pokemon.attaque2 || !pokemon.attaque3 || !pokemon.attaque4) {
         return true;
       }
     }
     this.message = "";
-    this.message2 = "";
-    this.message3 = "";
     this.afficherMessageErreur = false;
     this.paramAvancesFocus = false;
     return false;
   }
 
   afficherMessage(): void {
+    this.paramAvancesFocus = false;
     this.afficherMessageErreur = true;
-    if (this.utilisateurSession.equipeEnCours == null) {
-      this.message = "*Vous devez avoir des Pokémons dans votre équipe pour créer un salon !";
+    if (this.equipeEnCoursForm == null || this.equipeEnCoursForm.listPokemons.length == null || this.equipeEnCoursForm.listPokemons.length == 0) {
+      this.message = "*Vous devez avoir une équipe complète de Pokémons pour créer un salon !";
     }
     else {
-      this.message = "*Un ou plusieurs Pokémons n'ont pas d'attaque, cliquez sur Paramètres avancés";
-    }
-  }
-
-  afficherMessage2(): void {
-    this.afficherMessageErreur = true;
-    if (this.utilisateurSession.equipeEnCours == null) {
-      this.message2 = "*Vous devez avoir des Pokémons dans votre équipe pour rejoindre un salon !";
-    }
-    else {
-      this.message2 = "*Un ou plusieurs Pokémons n'ont pas d'attaque, cliquez sur Paramètres avancés";
-    }
-  }
-
-  afficherMessage3(): void {
-    this.afficherMessageErreur = true;
-    if (this.utilisateurSession.equipeEnCours == null) {
-      this.message3 = "*Vous devez avoir des Pokémons dans votre équipe pour chercher un adversaire !";
-    }
-    else {
-      this.message3 = "*Un ou plusieurs Pokémons n'ont pas d'attaque, cliquez sur Paramètres avancés";
+      this.paramAvancesFocus = true;
+      this.message = "*Un ou plusieurs Pokémons n'ont pas 4 attaques, cliquez sur Paramètres avancés !";
     }
   }
 

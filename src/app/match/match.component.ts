@@ -8,6 +8,7 @@ import {Statistique} from "../../model/statistique";
 import { timer } from 'rxjs';
 import {Router} from "@angular/router";
 import {AccueilHttpService} from "../accueil/accueil-http.service";
+import {ProfilHttpService} from "../profil/profil-http.service";
 
 @Component({
   selector: 'app-match',
@@ -25,6 +26,7 @@ export class MatchComponent implements OnInit {
   flag2: boolean = false;
   flag3: boolean = false;
   flagFinCombat: boolean = false;
+  flagVictoire: boolean = false;
 
   flagAttaque: boolean = false;
   messageAttaqueJ1: string;
@@ -34,7 +36,8 @@ export class MatchComponent implements OnInit {
 
   joueur1Form: Utilisateur = new Utilisateur();
 
-  constructor(private matchService: MatchService, private router: Router, private accueilService: AccueilHttpService) {
+  constructor(private matchService: MatchService, private router: Router, private accueilService: AccueilHttpService,
+              private profilService: ProfilHttpService) {
   }
 
   ngOnInit(): void {
@@ -71,6 +74,7 @@ export class MatchComponent implements OnInit {
   deleteAndChangePokemonMatchJoueur2() {
     this.matchService.getPokemonMatchJ2().shift();
     if(this.matchService.getPokemonMatchJ2().length == 0) {
+      this.flagVictoire = true;
       this.flagFinCombat = true;
       this.majStatJoueur1(false);
       this.spanVictoire = "Vous avez gagné !!!"
@@ -107,24 +111,24 @@ export class MatchComponent implements OnInit {
     } else {
       this.joueur1Form.statistique.nbrDefaites += 1;
     }
-
-    //this.matchService.saveUtilisateur(joueur1).subscribe(resp => {
-    //  console.log(resp);
-    //}, error => console.log(error));
-
   }
 
-  retourAccueil() {
-  //  this.matchService.saveUtilisateur(this.joueur1Form).subscribe(resp => {
-  //    console.log(resp);
+  retourAccueil(flag: boolean) {
       this.matchService.getUtilisateur(this.joueur1Form).subscribe(resp => {
         sessionStorage.setItem("utilisateur", JSON.stringify(resp));
         this.accueilService.load(resp.id);
-        this.router.navigate(['/accueil']);
+        resp.statistique.nbrPartiesJouees += 1;
+        if(flag == true) {
+          resp.statistique.nbrVictoires += 1;
+        } else {
+          resp.statistique.nbrDefaites += 1;
+        }
+        this.matchService.saveUtilisateur(resp).subscribe(resp => {
+          this.router.navigate(['/accueil']);
+          this.profilService.loadUtilisateur();
+        }, error => console.log(error));
       }, error => console.log(error));
-      //this.accueilService.load(JSON.parse(sessionStorage.getItem("utilisateur")).id);
-      //this.router.navigate(['/accueil']);
-  //  }, error => console.log(error));
+
   }
 
   attaquer(index: number) {
@@ -148,6 +152,7 @@ export class MatchComponent implements OnInit {
       this.deletePokemonMatchJoueur1();
       if(this.matchService.getEquipeEnCoursJoueur1().listPokemons.length == 0) {
         this.flagFinCombat = true;
+        this.flagVictoire = false;
         this.flag3 = true;
         this.majStatJoueur1(false);
       } else {
@@ -170,9 +175,9 @@ export class MatchComponent implements OnInit {
     this.messageAttaqueJ1 = pokemonMatchJ1.monPokemon.pokeReference.nom + " attaque " + attaqueJoueur1.nom + " " + degatJ1 + " dégats !";
     this.messageAttaqueJ2 = pokemonMatchJ2.monPokemon.pokeReference.nom + " attaque " + attaqueJoueur2.nom + " " + degatJ2 + " dégats !";
 
-    setTimeout(() => { this.flagAttaque = false }, 1700);
-  }
 
+    setTimeout(() => { this.flagAttaque = false}, 1700);
+  }
   private chooseAttaque(index: number): Attaque {
     if(index == 0) {
       return this.findPokemonMatchJoueur1().monPokemon.attaque1;
