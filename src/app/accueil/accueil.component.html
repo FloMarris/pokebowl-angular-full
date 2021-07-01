@@ -64,15 +64,18 @@
 
     </table>
 
-<!--    <div *ngIf="!paramAvancesFocus" class="parametreAvance">-->
-<!--      <a (click)="validerEquipeEnCoursForm()" class="h3">Paramètres avancés de l'équipe</a>-->
-<!--    </div>-->
-<!--    <div *ngIf="paramAvancesFocus" class="parametreAvanceError">-->
-<!--      <a (click)="validerEquipeEnCoursForm()" class="h3">Paramètres avancés de l'équipe</a>-->
-<!--    </div>-->
-    <div class="parametreAvanceError">
+    <div *ngIf="paramAvancesFocus; else elseBlock" class="parametreAvance">
+      <a (click)="validerEquipeEnCoursForm()" class="h3Error">Paramètres avancés de l'équipe</a>
+    </div>
+    <ng-template #elseBlock>
+    <div class="parametreAvance">
       <a (click)="validerEquipeEnCoursForm()" class="h3">Paramètres avancés de l'équipe</a>
     </div>
+    </ng-template>
+
+<!--    <div class="parametreAvanceError">-->
+<!--      <a (click)="validerEquipeEnCoursForm()" class="h3">Paramètres avancés de l'équipe</a>-->
+<!--    </div>-->
     <div class="equipeAleatoire">
       <button type="button" class="boutonAleatoire" (click)="aleatoire()">Equipe aléatoire</button>
     </div>
@@ -130,8 +133,9 @@
     </div>
   </div>
 
-<div class="cadreSalon">
+<div *ngIf="!pasDattaque()" class="cadreSalon">
   <h1>
+    <p class="error">{{message}}</p>
     <a (click)="creerSalon()" class="h3"><img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 100px">Créer un salon privé</a><br><br>
     <input class="search" type="text" placeholder="Entrer code salon privé..."><br>
     <a [routerLink]="['/salon']" class="h3"><img src="../../assets/superBall.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 55px">Rejoindre un salon privé</a><br><br>
@@ -139,29 +143,15 @@
   </h1>
 </div>
 
-<!--<div *ngIf="pasDattaque()" class="cadreSalon">-->
-<!--  <h1>-->
-<!--    <a (click)="afficherMessage()" class="h3"><img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 100px">Créer un salon privé</a>-->
-<!--    <br><span class="error">{{message}}</span><br><br>-->
-<!--    <input class="search" type="text" placeholder="Entrer code salon privé..."><br>-->
-<!--    <a (click)="afficherMessage2()" class="h3"><img src="../../assets/superBall.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 55px">Rejoindre un salon privé</a>-->
-<!--    <br><span class="error">{{message2}}</span><br><br>-->
-<!--    <a (click)="afficherMessage3()" class="h3"><img src="../../assets/hyperBall.png" alt="pokeball.png" style="width: 80px; height: 80px; margin-right: 55px">Chercher un adversaire</a>-->
-<!--    <br><span class="error">{{message3}}</span>-->
-<!--  </h1>-->
-<!--</div>-->
-
-<!--<div *ngIf="pasDattaque()" class="cadreSalon">-->
-<!--  <h1>-->
-<!--    <a (click)="afficherMessage()" class="h3"><img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 100px">Créer un salon privé</a>-->
-<!--    <br><span class="error">{{message}}</span><br><br>-->
-<!--    <input class="search" type="text" placeholder="Entrer code salon privé..."><br>-->
-<!--    <a (click)="afficherMessage2()" class="h3"><img src="../../assets/superBall.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 55px">Rejoindre un salon privé</a>-->
-<!--    <br><span class="error">{{message2}}</span><br><br>-->
-<!--    <a (click)="afficherMessage3()" class="h3"><img src="../../assets/hyperBall.png" alt="pokeball.png" style="width: 80px; height: 80px; margin-right: 55px">Chercher un adversaire</a>-->
-<!--    <br><span class="error">{{message3}}</span>-->
-<!--  </h1>-->
-<!--</div>-->
+<div *ngIf="pasDattaque()" class="cadreSalon">
+  <h1>
+    <p class="error">{{message}}</p>
+    <a (click)="afficherMessage()" class="h3"><img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 100px">Créer un salon privé</a>
+    <input class="search" type="text" placeholder="Entrer code salon privé..."><br>
+    <a (click)="afficherMessage()" class="h3"><img src="../../assets/superBall.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 55px">Rejoindre un salon privé</a>
+    <a (click)="afficherMessage()" class="h3"><img src="../../assets/hyperBall.png" alt="pokeball.png" style="width: 80px; height: 80px; margin-right: 55px">Chercher un adversaire</a>
+  </h1>
+</div>
 
 
   </body>
