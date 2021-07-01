@@ -140,7 +140,7 @@ export class AccueilComponent implements OnInit {
           this.salonForm.joueur2 = new Utilisateur();
           this.salonForm.joueur2.id = resp.id;
           this.accueilService.createSalon(this.salonForm).subscribe(resp2 => {
-            this.router.navigate(['/salon'], {queryParams: {idSalon: resp2.id}});
+              this.router.navigate(['/salon'], {queryParams: {idSalon: resp2.id}});
           }, error => console.log(error));
         }, error => console.log(error));
         break;
