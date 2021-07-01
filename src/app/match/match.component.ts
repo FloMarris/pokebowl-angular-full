@@ -114,10 +114,10 @@ export class MatchComponent implements OnInit {
   }
 
   retourAccueil() {
-    //this.matchService.saveUtilisateur(this.joueur1Form).subscribe(resp => {
-    //  console.log(resp);
+  //  this.matchService.saveUtilisateur(this.joueur1Form).subscribe(resp => {
+  //    console.log(resp);
       this.router.navigate(['/accueil']);
-    //}, error => console.log(error));
+  //  }, error => console.log(error));
   }
 
   attaquer(index: number) {
