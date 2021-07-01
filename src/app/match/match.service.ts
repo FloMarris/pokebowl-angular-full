@@ -22,7 +22,7 @@ export class MatchService {
   pokemonMatchJoueur2: PokemonMatch = new PokemonMatch();
   pokemonsMatchJ1: Array<PokemonMatch> = new Array<PokemonMatch>();
   pokemonsMatchJ2: Array<PokemonMatch> = new Array<PokemonMatch>();
-  idBot: number = 165;
+  idBot: number = 644;
 
   constructor(private http: HttpClient, private appConfig: AppConfigService, private router: Router) {
   }
@@ -111,4 +111,9 @@ export class MatchService {
 
     return pokemonMatch;
   }
+
+  saveUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur> {
+    return this.http.put<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur);
+  }
+
 }

@@ -5,6 +5,7 @@ import {Salon} from "../../model/salon";
 import {Equipe} from "../../model/equipe";
 import {ActivatedRoute} from "@angular/router";
 import {Utilisateur} from "../../model/utilisateur";
+import {Observable, ObservableLike} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class SalonHttpService {
   idSalon: number; //ou 27 pour mes tests
   equipeEnCoursJoueur1:Equipe=new Equipe();
   equipeEnCoursJoueur2 = new Equipe();
-  idJoueur2 = 165;
+  idJoueur2 = 644;
   joueur2: Utilisateur = new Utilisateur();
   joueur1: Utilisateur = new Utilisateur();
 
@@ -68,12 +69,6 @@ export class SalonHttpService {
 
   findJoueur1(): Utilisateur {
     return this.joueur1;
-  }
-
-  modifyUtilisateur(utilisateur:Utilisateur){
-    return this.http.put<Utilisateur>(this.appConfig.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur).subscribe(resp => {
-
-    }, error => console.log(error))
   }
 
 
