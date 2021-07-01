@@ -15,7 +15,7 @@ export class SalonHttpService {
   idSalon: number; //ou 27 pour mes tests
   equipeEnCoursJoueur1:Equipe=new Equipe();
   equipeEnCoursJoueur2 = new Equipe();
-  idJoueur2 = 644;
+  idJoueur2 = 456;
   joueur2: Utilisateur = new Utilisateur();
 
   constructor(private http: HttpClient, private appConfig: AppConfigService, private route: ActivatedRoute) {

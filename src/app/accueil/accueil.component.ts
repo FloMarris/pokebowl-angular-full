@@ -164,7 +164,7 @@ export class AccueilComponent implements OnInit {
   }
 
   pasDattaque(): boolean {
-    if (this.utilisateurSession.equipeEnCours == null) {
+    if (this.utilisateurSession.equipeEnCours == null || this.utilisateurSession.equipeEnCours.id == null) {
       return true
     }
     for (let pokemon of this.utilisateurSession.equipeEnCours.listPokemons) {
