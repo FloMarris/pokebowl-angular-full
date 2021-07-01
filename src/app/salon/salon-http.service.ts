@@ -5,6 +5,7 @@ import {Salon} from "../../model/salon";
 import {Equipe} from "../../model/equipe";
 import {ActivatedRoute} from "@angular/router";
 import {Utilisateur} from "../../model/utilisateur";
+import {Observable, ObservableLike} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class SalonHttpService {
   idSalon: number; //ou 27 pour mes tests
   equipeEnCoursJoueur1:Equipe=new Equipe();
   equipeEnCoursJoueur2 = new Equipe();
-  idJoueur2 = 456;
+  idJoueur2 = 644;
   joueur2: Utilisateur = new Utilisateur();
 
   constructor(private http: HttpClient, private appConfig: AppConfigService, private route: ActivatedRoute) {
@@ -60,6 +61,7 @@ export class SalonHttpService {
     console.log(this.joueur2.equipeEnCours);
     return this.joueur2;
   }
+
 
 
   //
