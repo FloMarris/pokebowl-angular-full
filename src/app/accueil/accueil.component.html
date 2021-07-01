@@ -124,7 +124,8 @@
     </div>
   </div>
 
-<div *ngIf="!pasDattaque()" class="cadreSalon">
+
+<div  class="cadreSalon"> <!-- *ngIf="!pasDattaque()" -->
   <h1>
     <a (click)="creerSalon()" class="h3"><img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 100px">Créer un salon privé</a><br><br>
     <input class="search" type="text" placeholder="Entrer code salon privé..."><br>
@@ -133,6 +134,7 @@
   </h1>
 </div>
 
+<!--
 <div *ngIf="pasDattaque()" class="cadreSalon">
   <h1>
     <a (click)="afficherMessage()" class="h3"><img src="../../assets/pokeball.png" alt="pokeball.png" style="width: 60px; height: 60px; margin-right: 100px">Créer un salon privé</a>
@@ -143,7 +145,6 @@
     <a (click)="afficherMessage3()" class="h3"><img src="../../assets/hyperBall.png" alt="pokeball.png" style="width: 80px; height: 80px; margin-right: 55px">Chercher un adversaire</a>
     <br><span class="error">{{message3}}</span>
   </h1>
-</div>
+</div> -->
 
-
-  </body>
+</body>
